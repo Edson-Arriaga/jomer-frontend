@@ -23,7 +23,7 @@ export default function Layout() {
                     <div className='col-span-9 block lg:hidden lg:col-span-3'>
                         <div className='text-right flex justify-end items-center h-full'>
                             <button
-                                onClick={() => setIsActiveMenu(false)}
+                                onClick={() => setIsActiveMenu(true)}
                                 className='w-16 mr-5'
                             >
                                 <img loading='lazy' src="/logo-menu.svg" alt="Logo menu" />
@@ -42,7 +42,7 @@ export default function Layout() {
                             >
                                 <div className={isActiveMenu ? 'absolute text-white shadow-md w-full sm:4/6 text-left' : 'absolute hidden'}>
                                         <button
-                                            onClick={() => setIsActiveMenu(!isActiveMenu)}
+                                            onClick={() => setIsActiveMenu(false)}
                                             className={'bg-white w-full pb-5 pl-10'}
                                         >
                                             <img loading='lazy' className='invert w-10 hover:w-12 transition-all ease' src="/tache.svg" alt="Logo menu" />
