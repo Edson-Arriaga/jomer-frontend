@@ -23,29 +23,29 @@ export default function Layout() {
                     <div className='col-span-9 block lg:hidden lg:col-span-3'>
                         <div className='text-right flex justify-end items-center h-full'>
                             <button
-                                onClick={() => setIsActiveMenu(true)}
+                                onClick={() => setIsActiveMenu(false)}
                                 className='w-16 mr-5'
                             >
-                                <img src="/logo-menu.svg" alt="Logo menu" />
+                                <img loading='lazy' src="/logo-menu.svg" alt="Logo menu" />
                                 
                             </button>
 
                             <Transition
                                 show={isActiveMenu}
-                                enter="transition-all"
-                                enterFrom="translate-x-full"
-                                enterTo="translate-x-0"
+                                enter="transition-all duration-1000"
+                                enterFrom="opacity-0 translate-x-full"
+                                enterTo="opacity-100 translate-x-0"
 
-                                leave="transition-all duration-700"
+                                leave="transition-all duration-1000"
                                 leaveFrom="opacity-100 translate-x-0"
                                 leaveTo="opacity-0 translate-x-full"
                             >
                                 <div className={isActiveMenu ? 'absolute text-white shadow-md w-full sm:4/6 text-left' : 'absolute hidden'}>
                                         <button
-                                            onClick={() => setIsActiveMenu(false)}
+                                            onClick={() => setIsActiveMenu(!isActiveMenu)}
                                             className={'bg-white w-full pb-5 pl-10'}
                                         >
-                                            <img className='invert w-10 hover:w-12 transition-all ease' src="/tache.svg" alt="Logo menu" />
+                                            <img loading='lazy' className='invert w-10 hover:w-12 transition-all ease' src="/tache.svg" alt="Logo menu" />
                                             
                                         </button>
                                   
