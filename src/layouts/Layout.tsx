@@ -5,35 +5,34 @@ import { useState, useRef, useEffect } from 'react'
 
 export default function Layout() {
 
-    const [isActiveMenu, setIsActiveMenu] = useState(false)
-
-    const fixedMenuRef = useRef<HTMLDivElement>(null);
-    const [fixedMenu, setFixedMenu] = useState(false)
-    const [heightMenu, setHeightMenu] = useState(0)
+    const fixedHeaderRef = useRef<HTMLDivElement>(null);
+    const [isActiveHeaderPhone, setIsActiveHeaderPhone] = useState(false)
+    const [fixedHeader, setFixedHeader] = useState(false)
+    const [heightHeader, setHeightHeader] = useState(0)
 
     useEffect(() => {
-        if (fixedMenuRef.current) {
-            // Obtener la altura del elemento fijo
-            setHeightMenu (fixedMenuRef.current.offsetHeight);
-          }
-    }, [])
-
-    window.addEventListener('scroll', () => {
-        
-        if(window.scrollY > 250){
-            setFixedMenu(true)
-        } 
-        
-        if(window.scrollY === 0){
-            setFixedMenu(false)
+        if (fixedHeaderRef.current) {
+            // Get the height of the fixed header
+            setHeightHeader (fixedHeaderRef.current.offsetHeight);
         }
-    })
+
+        const handleScroll = () => {
+            if(window.scrollY > 250){
+                setFixedHeader(true)
+            } 
+            if (window.scrollY === 0){
+                setFixedHeader(false)
+            }
+        }
+          
+        window.addEventListener('scroll', handleScroll)
+    }, [])
 
     return (
         <>
             <header
-                className={fixedMenu ? 'shadow-md w-full bg-white fixed z-30' : 'shadow-md w-full bg-white'}
-                ref={fixedMenuRef}
+                className={fixedHeader ? 'shadow-md w-full bg-white fixed z-30' : 'shadow-md w-full bg-white'}
+                ref={fixedHeaderRef}
             >
                 <div className='grid grid-cols-12 h-32 max-w-screen-xl mx-auto'>
                     <div className='col-span-3 flex items-center pl-4'>
@@ -44,11 +43,11 @@ export default function Layout() {
                     </div>
                     <div className='col-span-6 hidden lg:block'>
                         <Navegation />
-                    </div>
+                    </div>  
                     <div className='col-span-9 block lg:hidden lg:col-span-3'>
                         <div className='text-right flex justify-end items-center h-full'>
                             <button
-                                onClick={() => setIsActiveMenu(true)}
+                                onClick={() => setIsActiveHeaderPhone(true)}
                                 className='w-16 mr-5'
                             >
                                 <img loading='lazy' src="/logo-menu.svg" alt="Logo menu" />
@@ -56,7 +55,7 @@ export default function Layout() {
                             </button>
 
                             <Transition
-                                show={isActiveMenu}
+                                show={isActiveHeaderPhone}
                                 enter="transition-all duration-1000"
                                 enterFrom="opacity-0 translate-x-full"
                                 enterTo="opacity-100 translate-x-0"
@@ -65,9 +64,9 @@ export default function Layout() {
                                 leaveFrom="opacity-100 translate-x-0"
                                 leaveTo="opacity-0 translate-x-full"
                             >
-                                <div className={isActiveMenu ? 'absolute text-white shadow-md w-full sm:4/6 text-left' : 'absolute hidden'}>
+                                <div className={isActiveHeaderPhone ? 'absolute text-white shadow-md w-full sm:4/6 text-left' : 'absolute hidden'}>
                                         <button
-                                            onClick={() => setIsActiveMenu(false)}
+                                            onClick={() => setIsActiveHeaderPhone(false)}
                                             className={'bg-white w-full pb-5 pl-10'}
                                         >
                                             <img loading='lazy' className='invert w-10 hover:w-12 transition-all ease' src="/tache.svg" alt="Logo menu" />
@@ -75,8 +74,8 @@ export default function Layout() {
                                         </button>
                                   
                                         <Navegation
-                                            isActiveMenu={isActiveMenu}
-                                            setIsActiveMenu={setIsActiveMenu}
+                                            isActiveMenu={isActiveHeaderPhone}
+                                            setIsActiveMenu={setIsActiveHeaderPhone}
                                         />
                                 </div>   
                             </Transition>
@@ -86,8 +85,8 @@ export default function Layout() {
             </header>
 
             <div 
-                className={fixedMenu ? 'block' : 'hidden'}
-                style={{height: heightMenu} }
+                className={fixedHeader ? 'block' : 'hidden'}
+                style={{height: heightHeader} }
             ></div>
             <main>
                 
