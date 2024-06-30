@@ -6,7 +6,7 @@ type NavegacionProps = {
     setIsActiveMenu?: Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Navegacion({isActiveMenu, setIsActiveMenu} : NavegacionProps) {
+export default function Navegation({isActiveMenu, setIsActiveMenu} : NavegacionProps) {
   return (
     <nav className={isActiveMenu ? 'rounded-bl-lg p-5 pl-10 absolute bg-white text-black shadow-md w-full flex flex-col justify-evenly gap-y-5' : 'flex justify-evenly items-center h-full'}>
         <NavLink 
