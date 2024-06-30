@@ -10,7 +10,7 @@ export const engagementRings = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "4 a 12.",
         weight: 20,
         price: 1000
     },
@@ -25,7 +25,7 @@ export const engagementRings = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "4 a 12.",
         weight: 20,
         price: 1000
     },
@@ -40,7 +40,7 @@ export const engagementRings = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "4 a 12.",
         weight: 20,
         price: 1000
     }

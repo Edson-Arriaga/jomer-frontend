@@ -7,7 +7,6 @@ import rings from "./rings";
 
 export const getProducts = () => {
     const products = [...chains, ...cuffBracelets, ...pendants, ...rings, ...earings, ...engagementRings]
-    
     return products.map((product, i) => ({
         ...product,
         id: i

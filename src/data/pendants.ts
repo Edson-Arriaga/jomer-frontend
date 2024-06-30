@@ -10,7 +10,7 @@ export const pendants = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "Unitalla.",
         weight: 20,
         price: 1000
     },
@@ -25,7 +25,7 @@ export const pendants = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "Unitalla.",
         weight: 20,
         price: 1000
     },
@@ -40,7 +40,7 @@ export const pendants = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "Unitalla.",
         weight: 20,
         price: 1000
     }

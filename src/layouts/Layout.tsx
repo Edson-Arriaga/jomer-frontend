@@ -31,7 +31,7 @@ export default function Layout() {
     return (
         <>
             <header
-                className={fixedHeader ? 'shadow-md w-full bg-white fixed z-30' : 'shadow-md w-full bg-white'}
+                className={fixedHeader ? 'shadow-md w-full bg-white bg-opacity-95 fixed z-30' : 'shadow-md bg-white'}
                 ref={fixedHeaderRef}
             >
                 <div className='grid grid-cols-12 h-32 max-w-screen-xl mx-auto'>

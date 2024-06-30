@@ -10,7 +10,7 @@ export const rings = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "32 cm.",
         weight: 20,
         price: 1000
     },
@@ -25,7 +25,7 @@ export const rings = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "10 cm.",
         weight: 20,
         price: 1000
     },
@@ -40,7 +40,7 @@ export const rings = [
             photo4: "",
             photo5: ""
         },
-        measure: 34,
+        measure: "10 cm.",
         weight: 20,
         price: 1000
     }

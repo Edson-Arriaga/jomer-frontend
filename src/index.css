@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body{
+  background-color: white;
   font-family: "Sulphur Point", sans-serif;
   overflow-x: hidden;
 }
