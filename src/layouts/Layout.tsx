@@ -42,7 +42,10 @@ export default function Layout() {
                         <div className='uppercase font-black text-5xl pt-1'>jomer</div>
                     </div>
                     <div className='col-span-6 hidden lg:block'>
-                        <Navegation />
+                        <Navegation 
+                            isActiveHeaderPhone={isActiveHeaderPhone}
+                            setIsActiveHeaderPhone={setIsActiveHeaderPhone}
+                        />
                     </div>  
                     <div className='col-span-9 block lg:hidden lg:col-span-3'>
                         <div className='text-right flex justify-end items-center h-full'>
@@ -74,8 +77,8 @@ export default function Layout() {
                                         </button>
                                   
                                         <Navegation
-                                            isActiveMenu={isActiveHeaderPhone}
-                                            setIsActiveMenu={setIsActiveHeaderPhone}
+                                            isActiveHeaderPhone={isActiveHeaderPhone}
+                                            setIsActiveHeaderPhone={setIsActiveHeaderPhone}
                                         />
                                 </div>   
                             </Transition>
