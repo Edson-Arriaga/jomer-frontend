@@ -4,7 +4,7 @@ import { formatPrice } from "../utils"
 
 export default function Products() {
     const [products] = useState(getProducts())
-
+    
     return (
       <>
         <h1 
