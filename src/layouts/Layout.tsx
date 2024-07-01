@@ -1,89 +1,84 @@
 import { Outlet } from 'react-router-dom'
 import Navegation from '../components/Navegation'
-import { Transition } from '@headlessui/react'
 import { useState, useRef, useEffect } from 'react'
+import LinksSocialMedia from '../components/LinksSocialMedia';
+import Modal from '../components/Modal';
 
 export default function Layout() {
 
     const fixedHeaderRef = useRef<HTMLDivElement>(null);
-    const [isActiveHeaderPhone, setIsActiveHeaderPhone] = useState(false)
+    const [isActiveModal, setIsActiveModal] = useState(false)
     const [fixedHeader, setFixedHeader] = useState(false)
     const [heightHeader, setHeightHeader] = useState(0)
 
     useEffect(() => {
         if (fixedHeaderRef.current) {
-            // Get the height of the fixed header
+            // Get header height 
             setHeightHeader (fixedHeaderRef.current.offsetHeight);
         }
-
-        const handleScroll = () => {
+        
+        window.addEventListener('scroll', () => {
             if(window.scrollY > 250){
                 setFixedHeader(true)
-            } 
+            }
             if (window.scrollY === 0){
                 setFixedHeader(false)
             }
-        }
-        
-        window.addEventListener('scroll', handleScroll)
+        })
     }, [])
 
     return (
         <>
             <header
-                className={fixedHeader ? 'shadow-md w-full bg-white bg-opacity-95 fixed z-50' : 'shadow-md bg-white absolute z-50 w-full'}
+                className={fixedHeader 
+                    ? 'shadow-md bg-white z-40 w-full bg-opacity-95 fixed' 
+                    : 'shadow-md bg-white z-40 w-full absolute'
+                }
                 ref={fixedHeaderRef}
             >
-                <div className='grid grid-cols-12 h-32 max-w-screen-xl mx-auto'>
-                    <div className='col-span-3 flex items-center pl-4'>
+                <div className='grid grid-cols-2 h-32 max-w-screen-xl mx-auto lg:grid-cols-12'>
+                    {/* Hola  */}
+                    <div className='flex items-center pl-4 lg:col-span-3'>
                         <div className='w-16'>
-                            <img className='w-full min-w-16 invert' src="/logo.webp" alt="logotipo"/>
+                            <img
+                                src="/jomer-logo.webp" 
+                                alt="Jomer logo"
+                                className='w-full min-w-16 invert' 
+                            />
                         </div>
-                        <div className='uppercase font-black text-5xl pt-1'>jomer</div>
+                        <div className='uppercase font-black text-5xl pt-1'>
+                        jomer</div>
                     </div>
-                    <div className='col-span-6 hidden lg:block'>
-                        <Navegation />
-                    </div>  
-                    <div className='col-span-9 block lg:hidden lg:col-span-3'>
-                        <div className='text-right flex justify-end items-center h-full'>
-                            <button
-                                onClick={() => setIsActiveHeaderPhone(true)}
-                                className='w-12 mr-5'
-                            >
-                                <img loading='lazy' src="/logo-menu.svg" alt="Logo menu" />
-                                
-                            </button>
 
-                            <Transition
-                                show={isActiveHeaderPhone}
-                                enter="transition-all duration-1000"
-                                enterFrom="opacity-0 translate-x-full"
-                                enterTo="opacity-100 translate-x-0"
+                    <div className='hidden lg:block lg:col-span-6'>
+                        <Navegation 
+                            setIsActiveModal={setIsActiveModal}
+                        />
+                    </div>
 
-                                leave="transition-all duration-1000"
-                                leaveFrom="opacity-100 translate-x-0"
-                                leaveTo="opacity-0 translate-x-full"
-                            >
-                                <div className={isActiveHeaderPhone ? 'absolute text-white shadow-md w-full sm:4/6 text-left' : 'absolute hidden'}>
-                                        <button
-                                            onClick={() => setIsActiveHeaderPhone(false)}
-                                            className={'bg-white w-full pb-5 pl-10'}
-                                        >
-                                            <img loading='lazy' className='invert w-10 hover:w-12 transition-all ease' src="/tache.svg" alt="Logo menu" />
-                                            
-                                        </button>
-                                  
-                                        <Navegation
-                                            isActiveHeaderPhone={isActiveHeaderPhone}
-                                            setIsActiveHeaderPhone={setIsActiveHeaderPhone}
-                                        />
-                                </div>   
-                            </Transition>
-                        </div>
+                    <div className='hidden lg:block lg:col-span-3'>
+                        <LinksSocialMedia />
+                    </div>
+
+                    <div className='flex justify-end items-center lg:hidden'>
+                        <button
+                            onClick={() => setIsActiveModal(true)}
+                            className='w-12 h-12 mr-5'
+                        >
+                            <img src="/menu-icon.svg"
+                                alt="Menu icon" 
+                                loading='lazy'
+                            />
+                        </button>
                     </div>
                 </div>
             </header>
-            
+
+            <Modal 
+                isActiveModal={isActiveModal}
+                setIsActiveModal={setIsActiveModal}
+            />
+
             <div style={{height: heightHeader}}></div>
             <main>
                 <Outlet/>

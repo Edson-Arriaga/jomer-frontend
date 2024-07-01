@@ -2,35 +2,32 @@ import { Dispatch } from "react"
 import { NavLink } from "react-router-dom"
 
 type NavegacionProps = {
-    isActiveHeaderPhone?: boolean,
-    setIsActiveHeaderPhone?: Dispatch<React.SetStateAction<boolean>>
+    setIsActiveModal: Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Navegation({isActiveHeaderPhone, setIsActiveHeaderPhone} : NavegacionProps) {
-  
+export default function Navegation({setIsActiveModal} : NavegacionProps) {
+    
     return (
-    <nav 
-        className={isActiveHeaderPhone ? 'rounded-bl-lg p-5 pl-10 absolute bg-white text-black shadow-md w-full flex flex-col justify-evenly gap-y-5' : 'flex justify-evenly items-center h-full'}
-    >
+    <nav className="flex flex-col gap-5 h-30 my-8 text-2xl lg:my-0 lg:items-center lg:justify-evenly lg:flex-row lg:h-full">
         <NavLink 
             to="/"
-            className={({isActive}) => `text-2xl hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
-            onClick={() => setIsActiveHeaderPhone!(false)}
+            className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
+            onClick={() => setIsActiveModal(false)}
         >Inicio</NavLink>
         <NavLink 
             to="/productos"
-            className={({isActive}) => `text-2xl hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
-            onClick={() => setIsActiveHeaderPhone!(false)}
+            className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
+            onClick={() => setIsActiveModal(false)}
         >Productos</NavLink>
         <NavLink 
             to="/nosotros"
-            className={({isActive}) => `text-2xl hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
-            onClick={() => setIsActiveHeaderPhone!(false)}
+            className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
+            onClick={() => setIsActiveModal(false)}
         >Nosotros</NavLink>
         <NavLink 
             to="/contacto"
-            className={({isActive}) => `text-2xl hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
-            onClick={() => setIsActiveHeaderPhone!(false)}
+            className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
+            onClick={() => setIsActiveModal(false)}
         >Contacto</NavLink>
     </nav>
   )
