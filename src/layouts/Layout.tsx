@@ -37,7 +37,7 @@ export default function Layout() {
                 ref={fixedHeaderRef}
             >
                 <div className='grid grid-cols-2 h-32 max-w-screen-xl mx-auto lg:grid-cols-12'>
-                    {/* Hola  */}
+                    {/* Hola */}
                     <div className='flex items-center pl-4 lg:col-span-3'>
                         <div className='w-16'>
                             <img
