@@ -4,6 +4,7 @@ import Layout from "./layouts/Layout"
 import Products from "./views/Products"
 import AboutUs from "./views/AboutUs"
 import Contact from "./views/Contact"
+import WishList from "./views/WishList"
 
 export const router = createHashRouter([
     {
@@ -25,6 +26,10 @@ export const router = createHashRouter([
             {
                 path: 'contacto',
                 element: <Contact />
+            },
+            {
+                path: 'wish-list',
+                element: <WishList />
             }
         ]
     }

@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react'
 import Navegation from './Navegation'
-import LinksSocialMedia from './LinksSocialMedia'
+import IconLinks from './IconLinks'
 
 type ModalProps = {
     isActiveModal: boolean
@@ -34,7 +34,7 @@ export default function Modal({isActiveModal, setIsActiveModal} : ModalProps) {
                 <Navegation
                     setIsActiveModal={setIsActiveModal}
                 />
-                <LinksSocialMedia/>
+                <IconLinks/>
             </div>
         </Transition>
     )

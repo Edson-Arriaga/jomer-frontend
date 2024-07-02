@@ -1,9 +1,9 @@
 import { piece } from "../types"
 
-export const engagementRings : piece[] = [
+export const cuffBracelets : piece[] = [
     {
         id: 1,
-        name: "Anillo Mat. Esmeralda Verde",
+        name: "Esclava Esmeralda Verde",
         description: "loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlore",
         price: 1000,
         photos: {
@@ -13,10 +13,10 @@ export const engagementRings : piece[] = [
             photo4: "",
             photo5: ""
         },
-        category: "Engagement Rings",
+        category: "Cuff Bracelets",
         measure: "4 a 12.",
         weight: 20
     }
 ]
 
-export default engagementRings 
+export default cuffBracelets 

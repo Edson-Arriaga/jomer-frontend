@@ -8,7 +8,7 @@ type NavegacionProps = {
 export default function Navegation({setIsActiveModal} : NavegacionProps) {
     
     return (
-    <nav className="flex flex-col gap-5 h-30 my-8 text-2xl lg:my-0 lg:items-center lg:justify-evenly lg:flex-row lg:h-full">
+    <nav className="flex flex-col gap-10 h-30 my-8 text-2xl lg:my-0 lg:items-center lg:justify-evenly lg:flex-row lg:h-full">
         <NavLink 
             to="/"
             className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
@@ -18,7 +18,7 @@ export default function Navegation({setIsActiveModal} : NavegacionProps) {
             to="/productos"
             className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
             onClick={() => setIsActiveModal(false)}
-        >Productos</NavLink>
+        >Piezas</NavLink>
         <NavLink 
             to="/nosotros"
             className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
@@ -29,6 +29,7 @@ export default function Navegation({setIsActiveModal} : NavegacionProps) {
             className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
             onClick={() => setIsActiveModal(false)}
         >Contacto</NavLink>
+        
     </nav>
   )
 }

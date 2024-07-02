@@ -1,11 +1,11 @@
 import engagementRings from "./engagementRings";
 import chains from "./chains";
-import cuffBracelets from "./cuffsBracelets";
+import cuffBracelets from "./cuffBracelets";
 import earings from "./earings";
 import pendants from "./pendants";
 import rings from "./rings";
 
-export const getProducts = () => {
+export const getPieces = () => {
     const products = [...chains, ...cuffBracelets, ...pendants, ...rings, ...earings, ...engagementRings]
     return products.map((product, i) => ({
         ...product,
@@ -13,4 +13,4 @@ export const getProducts = () => {
     })) 
 }
 
-export default getProducts
+export default getPieces

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Navegation from '../components/Navegation'
 import { useState, useRef, useEffect } from 'react'
-import LinksSocialMedia from '../components/LinksSocialMedia';
+import IconLinks from '../components/IconLinks';
 import Modal from '../components/Modal';
 
 export default function Layout() {
@@ -37,7 +37,6 @@ export default function Layout() {
                 ref={fixedHeaderRef}
             >
                 <div className='grid grid-cols-2 h-32 max-w-screen-xl mx-auto lg:grid-cols-12'>
-                    {/* Hola */}
                     <div className='flex items-center pl-4 lg:col-span-3'>
                         <div className='w-16'>
                             <img
@@ -57,9 +56,12 @@ export default function Layout() {
                     </div>
 
                     <div className='hidden lg:block lg:col-span-3'>
-                        <LinksSocialMedia />
+                        <IconLinks
+                            setIsActiveModal={setIsActiveModal}
+                        />
                     </div>
 
+                    {/* --- show when width is less than 1024 px ----*/}
                     <div className='flex justify-end items-center lg:hidden'>
                         <button
                             onClick={() => setIsActiveModal(true)}
