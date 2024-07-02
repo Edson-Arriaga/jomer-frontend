@@ -15,10 +15,10 @@ export default function Navegation({setIsActiveModal} : NavegacionProps) {
             onClick={() => setIsActiveModal(false)}
         >Inicio</NavLink>
         <NavLink 
-            to="/productos"
+            to="/catalogo"
             className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}
             onClick={() => setIsActiveModal(false)}
-        >Piezas</NavLink>
+        >Catálogo</NavLink>
         <NavLink 
             to="/nosotros"
             className={({isActive}) => `hover:text-1.6 ease transition-all ${isActive && "font-black"}`}

@@ -34,7 +34,9 @@ export default function Modal({isActiveModal, setIsActiveModal} : ModalProps) {
                 <Navegation
                     setIsActiveModal={setIsActiveModal}
                 />
-                <IconLinks/>
+                <IconLinks
+                    setIsActiveModal={setIsActiveModal}
+                />
             </div>
         </Transition>
     )

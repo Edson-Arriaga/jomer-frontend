@@ -12,7 +12,7 @@ export default function IconLinks({setIsActiveModal} : IconLinksProps) {
             href="https://www.instagram.com/jomer.mx/" 
             target='_blank'
             className='w-11 h-11 hover:scale-105 ease transition-transform'
-            onChange={() => setIsActiveModal(false)}
+            onClick={() => setIsActiveModal(false)}
         >
             <img src="/instagram-icon.svg" alt="Instagram logo"/>
         </a>
@@ -20,13 +20,14 @@ export default function IconLinks({setIsActiveModal} : IconLinksProps) {
             href="https://www.facebook.com/Jomeroficial/"
             target='_blank'
             className='w-11 h-11 hover:scale-105 ease transition-transform mb-1'
+            onClick={() => setIsActiveModal(false)}
         >
             <img src="/facebook-icon.svg" alt="Instagram logo"/>
         </a>
         <Link
             to={'/wish-list'}
             className='w-11 h-11 hover:scale-105 ease transition-transform mb-1'
-
+            onClick={() => setIsActiveModal(false)}
         >
             <img src="/wishListEmpty-icon.svg" alt="Instagram logo"/>
         </Link>

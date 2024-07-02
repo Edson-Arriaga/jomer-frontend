@@ -31,8 +31,8 @@ export default function Layout() {
         <>
             <header
                 className={fixedHeader 
-                    ? 'shadow-md bg-white z-40 w-full bg-opacity-95 fixed' 
-                    : 'shadow-md bg-white z-40 w-full absolute'
+                    ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-95' 
+                    : 'shadow-md bg-white z-40 w-full fixed'
                 }
                 ref={fixedHeaderRef}
             >
