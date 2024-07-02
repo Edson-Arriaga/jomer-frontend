@@ -1,6 +1,6 @@
 export default function LinksSocialMedia() {
   return (
-    <div className="flex justify-center items-center lg:h-full">
+    <div className="flex justify-center items-center lg:h-full xl:ml-36">
         <a 
             href="https://www.instagram.com/jomer.mx/" 
             target='_blank'
