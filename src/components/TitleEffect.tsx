@@ -14,7 +14,7 @@ export default function TitleEffect({children} : {children: ReactNode}) {
                 opacity: [0,1],
                 easing: "easeInOutQuad",
                 duration: 2250,
-                delay: (el, i) => 60 * (i+1)
+                delay: (_el, i) => 60 * (i+1)
             })
         }
     }, []);
