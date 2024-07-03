@@ -7,11 +7,11 @@ type IconLinksProps = {
 
 export default function IconLinks({setIsActiveModal} : IconLinksProps) {
   return (
-    <div className="flex justify-center items-center gap-3 lg:justify-end lg:h-full lg:mr-8">
+    <div className="flex justify-center items-center gap-3 lg:justify-end lg:h-full lg:mr-10">
         <a 
             href="https://www.instagram.com/jomer.mx/" 
             target='_blank'
-            className='w-11 h-11 hover:scale-105 ease transition-transform'
+            className='w-9 h-9 hover:scale-105 ease transition-transform'
             onClick={() => setIsActiveModal(false)}
         >
             <img src="/instagram-icon.svg" alt="Instagram logo"/>
@@ -19,14 +19,14 @@ export default function IconLinks({setIsActiveModal} : IconLinksProps) {
         <a 
             href="https://www.facebook.com/Jomeroficial/"
             target='_blank'
-            className='w-11 h-11 hover:scale-105 ease transition-transform mb-1'
+            className='w-9 h-9 hover:scale-105 ease transition-transform mb-1'
             onClick={() => setIsActiveModal(false)}
         >
             <img src="/facebook-icon.svg" alt="Instagram logo"/>
         </a>
         <Link
             to={'/wish-list'}
-            className='w-11 h-11 hover:scale-105 ease transition-transform mb-1'
+            className='w-9 h-9 hover:scale-105 ease transition-transform mb-1'
             onClick={() => setIsActiveModal(false)}
         >
             <img src="/wishListEmpty-icon.svg" alt="Instagram logo"/>

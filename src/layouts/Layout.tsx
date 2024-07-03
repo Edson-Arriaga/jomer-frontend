@@ -31,12 +31,12 @@ export default function Layout() {
         <>
             <header
                 className={fixedHeader 
-                    ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-95' 
-                    : 'shadow-md bg-white z-40 w-full fixed'
+                    ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-24' 
+                    : 'shadow-md z-40 w-full absolute h-24'
                 }
                 ref={fixedHeaderRef}
             >
-                <div className='grid grid-cols-2 h-32 max-w-screen-xl mx-auto lg:grid-cols-12'>
+                <div className='grid grid-cols-2 max-w-screen-xl mx-auto lg:grid-cols-12 h-full'>
                     <div className='flex items-center pl-4 lg:col-span-3'>
                         <div className='w-16'>
                             <img

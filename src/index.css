@@ -10,3 +10,8 @@ body{
 img {
   width: 100%;
 }
+
+.ml3 {
+  font-weight: 900;
+  line-height: 1;
+}
