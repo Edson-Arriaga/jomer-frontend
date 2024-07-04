@@ -25,13 +25,13 @@ export default function Hero() {
         </SwiperSlide>
         <SwiperSlide>
           <div className='bg-hero-2 bg-cover text-white text-center h-72 md:h-80 lg:h-26rem bg-right'>
-            <h1 className='ml-3 text-4xl font-black pb-10 px-4 pt-16 md:pt-24 lg:p-32 lg:pb-20 lg:text-5xl'>Intentando lo imposible.</h1>
+            <h1 className='ml-3 text-4xl font-black pb-10 px-4 pt-16 md:pt-24 lg:p-32 lg:pb-20 md:text-5xl lg:text-6xl'>Intentando lo imposible.</h1>
             <button className=' border border-white p-3 hover:scale-105 ease transition-transform'>Sobre Nosotros</button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className='bg-hero-3 bg-cover text-white text-center h-72 md:h-80 lg:h-26rem bg-center'>
-            <h1 className='ml-3 text-4xl font-black pb-10 px-4 pt-16 md:pt-24 lg:pb-20 lg:p-32 lg:text-5xl'>Ponle tu brillo.</h1>
+            <h1 className='ml-3 text-4xl font-black pb-10 px-4 pt-16 md:pt-24 lg:pb-20 lg:p-32 md:text-5xl lg:text-6xl'>Ponle tu brillo.</h1>
             <button className='border border-white p-3 hover:scale-105 ease transition-transform'>Contáctanos</button>
           </div>
         </SwiperSlide>

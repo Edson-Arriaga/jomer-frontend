@@ -11,7 +11,13 @@ img {
   width: 100%;
 }
 
+/* Class for Title Effect */
 .ml3 {
   font-weight: 900;
   line-height: 1;
+}
+
+/* Class for no resixe textarea */
+.no-resize{
+  resize: none;
 }
