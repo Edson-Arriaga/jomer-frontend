@@ -30,7 +30,7 @@ export default function Contact() {
     <h1 className="text-center px-5 pt-10 text-4xl uppercase lg:p-10 lg:text-5xl">Contáctanos</h1>
      <form 
       className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-2 grid-rows-8 gap-5 p-10 pt-5 mb-20 rounded-2xl xs:grid-rows-7"
-      action="https://formsubmit.co/jomer.mx@outlook.com"
+      action="https://formsubmit.co/arriaga.eljc@gmail.com"
       method="POST"
       >
         <h1 className="col-span-full flex items-center text-xl"><>Ingresa tus datos:</></h1>
