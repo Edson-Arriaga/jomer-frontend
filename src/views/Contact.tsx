@@ -1,5 +1,4 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react"
-import emailjs from '@emailjs/browser';
+import { ChangeEvent, useState } from "react"
 
 type FormData = {
       name: string,
