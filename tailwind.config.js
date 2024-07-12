@@ -21,7 +21,8 @@ export default {
         'nosotros-1': 'url("/nosotros1.jpeg")'
       },
       height:{
-        '26rem' : '26rem'
+        '26rem' : '26rem',
+        'heroHeigth': 'calc(100vh - 96px)'
       }
     },
   },

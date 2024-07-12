@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import IconLinks from "./IconLinks";
 import Navegation from "./Navegation";
 
@@ -10,16 +11,10 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
     return (
         <>
            <div className='grid grid-cols-2 max-w-screen-xl mx-auto lg:grid-cols-12 h-full'>
-                <div className='flex items-center pl-4 lg:col-span-3'>
-                    <div className='w-16'>
-                        <img
-                            src="/images/logos/jomer-logo.webp" 
-                            alt="Jomer logo"
-                            className='w-full min-w-16 invert' 
-                        />
-                    </div>
-                    <div className='uppercase font-black text-5xl pt-1'>
-                    jomer</div>
+                <div className='flex items-center lg:col-span-3 pl-3 lg:pl-10'>
+                    <Link to={'/'}>
+                        <h1 className="uppercase font-black text-5xl tracking-widest mt-1">jomer</h1>
+                    </Link>
                 </div>
 
                 <div className='hidden lg:block lg:col-span-6'>
@@ -38,7 +33,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                 <div className='flex justify-end items-center lg:hidden'>
                     <button
                         onClick={() => setIsActiveModal(true)}
-                        className='w-12 h-12 mr-5'
+                        className='w-11 h-11 mr-5'
                     >
                         <img src="/images/icons/menu-icon.svg"
                             alt="Menu icon" 

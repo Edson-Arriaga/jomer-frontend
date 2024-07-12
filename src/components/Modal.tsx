@@ -26,8 +26,8 @@ export default function Modal({isActiveModal, setIsActiveModal} : ModalProps) {
                     <img 
                         src="/images/icons/cross-icon.svg" 
                         alt="Logo menu"
-                        loading='lazy' 
-                        className='invert w-10 hover:w-11 transition-all ease' 
+                        loading='eager' 
+                        className='invert w-10 hover:scale-105 transition-all ease' 
                     />
                 </button>
 

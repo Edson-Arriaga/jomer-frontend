@@ -4,7 +4,16 @@ import PieceHome from '../components/PieceHome';
 export function Home() {
   return (
     <>
-      <Hero />
+      <div className='relative'>
+        <img 
+          src="/images/logos/jomer-logo.webp"
+          alt="Jomer Logo"
+          className='absolute w-20 z-50 right-6 bottom-6' 
+          loading='eager'
+        />
+        <Hero />
+      </div>
+      
       <h1 className="text-center p-10 text-5xl uppercase">Nuestras piezas</h1>
       <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
         <PieceHome

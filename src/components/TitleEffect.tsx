@@ -20,10 +20,8 @@ export default function TitleEffect({children} : {children: ReactNode}) {
     }, []);
     
     return (
-    <div className='pb-10 px-4 pt-16 md:pt-24 lg:pb-20 lg:p-32'>
-        <h1 className='text-4xl ml3 text-white md:5xl lg:text-6xl'>
+        <h1 className='ml3 text-3xl text-white xs:text-4xl md:text-5xl font-black tracking-wider lg:text-6xl'>
             {children}
         </h1>
-    </div>
     );
 }
