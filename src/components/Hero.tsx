@@ -11,7 +11,7 @@ export default function Hero() {
           spaceBetween={30}
           effect={'fade'}
           autoplay={{
-            delay: 40000,
+            delay: 4000,
             disableOnInteraction: false,
           }}
           loop={true}
@@ -19,7 +19,7 @@ export default function Hero() {
           modules={[EffectFade, Navigation, Pagination, Autoplay]}
       >
         <SwiperSlide>
-          <div className='bg-hero-1 bg-cover text-white h-heroHeigth lg:bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
+          <div className='bg-hero-1 bg-cover text-white h-hero-sm lg:h-hero-lg lg:bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
             <TitleEffect>La Perfección En Cada Detalle.</TitleEffect>
               <Link 
                 to={'/catalogo'}
@@ -29,7 +29,7 @@ export default function Hero() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className='bg-hero-2 bg-cover text-white h-heroHeigth bg-right lg:bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
+          <div className='bg-hero-2 bg-cover text-white h-hero-sm lg:h-hero-lg bg-right lg:bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
             <h1 className='text-5xl text-white tracking-wider font-black lg:font-base lg:text-6xl'>Intentando Lo Imposible.</h1>
             <Link
               to={'/nosotros'} 
@@ -39,7 +39,7 @@ export default function Hero() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className='bg-hero-3 bg-cover text-white h-heroHeigth bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
+          <div className='bg-hero-3 bg-cover text-white h-hero-sm lg:h-hero-lg bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
             <h1 className='text-5xl text-white tracking-wider font-black lg:font-base lg:text-6xl'>Ponle Tu Brillo.</h1>
             <Link 
               to={'/contacto'} 
