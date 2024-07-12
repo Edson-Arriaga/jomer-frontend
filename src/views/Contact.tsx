@@ -1,30 +1,4 @@
-import { ChangeEvent, useState } from "react"
-
-type FormData = {
-      name: string,
-      lastName: string,
-      email: string,
-      subjet: string,
-      message: string
-}
-
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
-      name: '',
-      lastName: '',
-      email: '',
-      subjet: '',
-      message: ''
-  })
-
-  function handleChange (e : ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
-    const {name, value} = e.target 
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
-
   return (
     <>
     <h1 className="text-center px-5 pt-10 text-4xl uppercase lg:p-10 lg:text-5xl">Contáctanos</h1>
@@ -39,9 +13,7 @@ export default function Contact() {
             type="text"
             className="shadow-inner w-full p-2 rounded-md bg-gray-100"
             placeholder="Nombre"
-            onChange={handleChange}
             name="name"
-            value={formData.name}
             required
           />
         </div>
@@ -50,9 +22,7 @@ export default function Contact() {
             type="text" 
             className="shadow-inner w-full p-2 rounded-md bg-gray-100"
             placeholder="Apellido"
-            onChange={handleChange}
             name="lastName"
-            value={formData.lastName}
             required
           />
         </div>
@@ -61,9 +31,7 @@ export default function Contact() {
             type="email"
             className="shadow-inner w-full p-2 rounded-md bg-gray-100"
             placeholder="Correo"
-            onChange={handleChange}
             name="email"
-            value={formData.email}
             required
           />
         </div>
@@ -72,9 +40,7 @@ export default function Contact() {
             type="text"
             className="shadow-inner w-full p-2 rounded-md bg-gray-100"
             placeholder="Asunto"
-            onChange={handleChange}
             name="subjet"
-            value={formData.subjet}
             required
           />
         </div>
@@ -82,9 +48,7 @@ export default function Contact() {
           <textarea
             className="shadow-inner w-full p-2 rounded-md bg-gray-100 no-resize"
             placeholder="Mensaje"
-            onChange={handleChange}
             name="message"
-            value={formData.message}
             rows={3}
             required
           ></textarea>

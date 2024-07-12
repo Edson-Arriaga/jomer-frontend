@@ -14,7 +14,7 @@ export default function IconLinks({setIsActiveModal} : IconLinksProps) {
             className='w-9 h-9 hover:scale-105 ease transition-transform'
             onClick={() => setIsActiveModal(false)}
         >
-            <img src="/instagram-icon.svg" alt="Instagram logo"/>
+            <img src="/images/icons/instagram-icon.svg" alt="Instagram logo"/>
         </a>
         <a 
             href="https://www.facebook.com/Jomeroficial/"
@@ -22,14 +22,14 @@ export default function IconLinks({setIsActiveModal} : IconLinksProps) {
             className='w-9 h-9 hover:scale-105 ease transition-transform mb-1'
             onClick={() => setIsActiveModal(false)}
         >
-            <img src="/facebook-icon.svg" alt="Instagram logo"/>
+            <img src="/images/icons/facebook-icon.svg" alt="Instagram logo"/>
         </a>
         <Link
             to={'/wish-list'}
             className='w-9 h-9 hover:scale-105 ease transition-transform mb-1'
             onClick={() => setIsActiveModal(false)}
         >
-            <img src="/wishListEmpty-icon.svg" alt="Instagram logo"/>
+            <img src="/images/icons/wishListEmpty-icon.svg" alt="Instagram logo"/>
         </Link>
     </div>
   )

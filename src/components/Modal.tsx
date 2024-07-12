@@ -24,7 +24,7 @@ export default function Modal({isActiveModal, setIsActiveModal} : ModalProps) {
                     onClick={() => setIsActiveModal(false)}
                 >
                     <img 
-                        src="/cross-icon.svg" 
+                        src="/images/icons/cross-icon.svg" 
                         alt="Logo menu"
                         loading='lazy' 
                         className='invert w-10 hover:w-11 transition-all ease' 

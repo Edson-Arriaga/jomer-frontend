@@ -13,7 +13,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                 <div className='flex items-center pl-4 lg:col-span-3'>
                     <div className='w-16'>
                         <img
-                            src="/jomer-logo.webp" 
+                            src="/images/logos/jomer-logo.webp" 
                             alt="Jomer logo"
                             className='w-full min-w-16 invert' 
                         />
@@ -40,7 +40,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                         onClick={() => setIsActiveModal(true)}
                         className='w-12 h-12 mr-5'
                     >
-                        <img src="/menu-icon.svg"
+                        <img src="/images/icons/menu-icon.svg"
                             alt="Menu icon" 
                             loading='lazy'
                         />
