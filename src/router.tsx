@@ -5,6 +5,7 @@ import Catalog from "./views/Catalog"
 import AboutUs from "./views/AboutUs"
 import Contact from "./views/Contact"
 import WishList from "./views/WishList"
+import PieceDetails from "./views/PieceDetails"
 
 export const router = createHashRouter([
     {
@@ -30,6 +31,10 @@ export const router = createHashRouter([
             {
                 path: 'wish-list',
                 element: <WishList />
+            },
+            {
+                path: 'piece/:id',
+                element: <PieceDetails/>
             }
         ]
     }

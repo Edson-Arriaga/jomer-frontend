@@ -6,9 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      fontSize: {
-        "1.6": "1.6rem"
-      },
+      // fontSize: {
+      //   "1.6": "1.6rem"
+      // },
       screens: {
         'xs': '480px',
       },

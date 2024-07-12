@@ -33,7 +33,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                 <div className='flex justify-end items-center lg:hidden'>
                     <button
                         onClick={() => setIsActiveModal(true)}
-                        className='w-11 h-11 mr-5'
+                        className='w-11 h-11 mr-2'
                     >
                         <img src="/images/icons/menu-icon.svg"
                             alt="Menu icon" 
