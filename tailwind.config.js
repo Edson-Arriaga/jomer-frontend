@@ -22,7 +22,7 @@ export default {
       },
       height:{
         '26rem' : '26rem',
-        'hero-lg': 'calc(100vh - 96px)'
+        'hero-lg': 'calc(100svh - 96px)'
       }
     },
   },

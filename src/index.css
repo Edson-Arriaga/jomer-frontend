@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
-  height: -webkit-fill-available;
-}
-
 body{
   background-color: white;
   font-family: "Sulphur Point", sans-serif;
