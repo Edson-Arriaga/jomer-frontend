@@ -19,7 +19,7 @@ export default function CustomizationForm() {
 
             <select
                 className="shadow-inner w-full h-full rounded-md bg-gray-200 p-2"
-                name="Categoría"
+                name="categoría"
                 onChange={handleChange}
                 required
             >
@@ -100,19 +100,19 @@ export default function CustomizationForm() {
             <div className="xs:col-span-1 containerRadio justify-center font-black mt-5">
                 <h3 className="text-center uppercase mb-4">Color De Oro</h3>
                 <label>
-                    <input type="radio" name="colorDeOro" value="10k"/>
+                    <input type="radio" name="colorDeOro" value="Amarillo"/>
                     <span>Amarillo</span>
                 </label>
                 <label>
-                    <input type="radio" name="colorDeOro" value="12k"/>
+                    <input type="radio" name="colorDeOro" value="Blanco"/>
                     <span>Blanco</span>
                 </label>
                 <label>
-                    <input type="radio" name="colorDeOro" value="13k"/>
+                    <input type="radio" name="colorDeOro" value="Rosa"/>
                     <span>Rosa</span>
                 </label>
                 <label>
-                    <input type="radio" name="colorDeOro" value="14k"/>
+                    <input type="radio" name="colorDeOro" value="Tricolor"/>
                     <span>Tricolor</span>
                 </label>
             </div>
@@ -134,8 +134,8 @@ export default function CustomizationForm() {
                 required
             ></textarea>
 
-            <div className="h-full xs:col-span-2">
-                <label htmlFor="image" className="text-center uppercase mb-4 font-bold">Sube una imagen de la pieza que te gutaría recrear:</label>
+            <div className="h-full xs:col-span-2 mt-2">
+                <label htmlFor="image" className="text-center uppercase mb-4 font-bold">Sube una imagen de la pieza a recrear:</label>
                 <input 
                     type="file" 
                     id="image"

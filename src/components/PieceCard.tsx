@@ -15,12 +15,12 @@ export default function PieceCard({piece} : PieceCardProps) {
             key={piece.id}
             className="rounded-lg overflow-hidden ease transition-transform hover:shadow-md h-full flex flex-col"
         >
-            <div className="overflow-hidden">
+            <div className="overflow-hidden ">
                 <img
-                className="hover:scale-105 ease duration-200 cursor-pointer"
-                src={`${piece.photos.photo1}`}
-                alt={`Photo 1 ${piece.name}`}
-                onClick={() => navigate(`/piece/${piece.id}`)}
+                    className="hover:scale-105 ease duration-200 cursor-pointer"
+                    src={`${piece.photos.photo1}`}
+                    alt={`Photo 1 ${piece.name}`}
+                    onClick={() => navigate(`/piece/${piece.id}`)}
                 />
             </div>
 

@@ -6,9 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      // fontSize: {
-      //   "1.6": "1.6rem"
-      // },
       screens: {
         'xs': '480px',
       },
@@ -26,7 +23,7 @@ export default {
       },
       gridTemplateRows: {
         'form-lg': '60px 40px 250px 40px 90px 70px 40px',
-        'form-xs': '60px 40px 40px 220px 250px 40px 40px 90px 40px'
+        'form-xs': '60px 40px 40px 220px 240px 40px 40px 100px 40px'
       }
     },
   },

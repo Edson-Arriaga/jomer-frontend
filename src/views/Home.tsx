@@ -49,7 +49,7 @@ export function Home() {
         />
       </section>
 
-      <h1 className="text-center p-10 text-5xl capitalize">Crea tu propia pieza prsonalizada</h1>
+      <h1 className="text-center p-10 text-5xl capitalize animate-pulse">Crea tu pieza personalizada</h1>
       <section>
         <CustomizationForm/>
       </section>
