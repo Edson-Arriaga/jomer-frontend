@@ -20,3 +20,54 @@ img {
 .no-resize{
   resize: none;
 }
+
+/* Styles for input radios */
+
+.containerRadio label {
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+}
+
+.containerRadio  label input {
+  position: absolute;
+  left: -9999px;
+}
+
+.containerRadio label input:checked + span {
+  background-color: #e5e7eb;
+  color: black;
+}
+
+.containerRadio label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em #000000;
+}
+
+.containerRadio label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+  color: black;
+}
+
+.containerRadio label span:hover {
+  background-color: #f3f4f6;
+}
+
+.containerRadio label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #000000;
+}

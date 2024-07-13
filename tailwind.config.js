@@ -23,6 +23,10 @@ export default {
       height:{
         '26rem' : '26rem',
         'hero-lg': 'calc(100svh - 96px)'
+      },
+      gridTemplateRows: {
+        'form-lg': '60px 40px 250px 40px 90px 70px 40px',
+        'form-xs': '60px 40px 40px 220px 250px 40px 40px 90px 40px'
       }
     },
   },

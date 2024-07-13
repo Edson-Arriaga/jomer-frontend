@@ -7,7 +7,7 @@ export default function Contact() {
       action="https://formsubmit.co/db8e06899d780c750f034f6f69c58e8f"
       method="POST"
       >
-        <h1 className="col-span-full flex items-center text-xl"><>Ingresa tus datos:</></h1>
+        <h2 className="col-span-full flex items-center text-xl"><>Ingresa tus datos:</></h2>
         <div className="col-span-full xs:col-span-1">
           <input 
             type="text"

@@ -1,10 +1,11 @@
+import CustomizationForm from '../components/CustomizationForm';
 import Hero from '../components/Hero';
 import PieceHome from '../components/PieceHome';
 
 export function Home() {
   return (
     <>
-      <div className='relative'>
+      <section className='relative'>
         <img 
           src="/images/logos/jomer-logo.webp"
           alt="Jomer Logo"
@@ -12,9 +13,9 @@ export function Home() {
           loading='eager'
         />
         <Hero />
-      </div>
+      </section>
       
-      <h1 className="text-center p-10 text-5xl uppercase">Nuestras piezas</h1>
+      <h1 className="text-center p-10 text-5xl mb-8">Nuestras Piezas</h1>
       <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
         <PieceHome
           image='aretes.webp'
@@ -46,6 +47,11 @@ export function Home() {
           category='Anillos'
           rotate='rotate-6'
         />
+      </section>
+
+      <h1 className="text-center p-10 text-5xl capitalize">Crea tu propia pieza prsonalizada</h1>
+      <section>
+        <CustomizationForm/>
       </section>
     </>
   );
