@@ -1,38 +1,35 @@
-import { useEffect, useState } from "react"
-import piecesData from "../data/pieces.ts"
+import { useState } from "react"
+import pieces from "../data/pieces.ts"
 import PieceCard from "../components/PieceCard"
 
 export default function Products() {
-    const [pieces, setPieces] = useState(piecesData)
     const [category, setCategory] = useState('')
 
+    const piecesFiltered = () => {
+      switch(category) {
+        case 'chains' :
+          return pieces.filter(piece => piece.category === 'chains')
     
-      const piecesFiltered = () => {
-        switch(category) {
-          case 'chains' :
-            return pieces.filter(piece => piece.category === 'chains')
-     
-          case 'cuffBracelets' :
-            return pieces.filter(piece => piece.category === 'cuffBracelets')
-            
-          case 'earings' :
-            return pieces.filter(piece => piece.category === 'earings')
-            
-          case 'engagementRings' :
-            return pieces.filter(piece => piece.category === 'engagementRings')
-            
-          case 'pendants' :
-            return pieces.filter(piece => piece.category === 'pendants')
-            
-          case 'rings' :
-            return pieces.filter(piece => piece.category === 'rings')
+        case 'cuffBracelets' :
+          return pieces.filter(piece => piece.category === 'cuffBracelets')
           
-          default:
-            return pieces
-        }
+        case 'earings' :
+          return pieces.filter(piece => piece.category === 'earings')
+          
+        case 'engagementRings' :
+          return pieces.filter(piece => piece.category === 'engagementRings')
+          
+        case 'pendants' :
+          return pieces.filter(piece => piece.category === 'pendants')
+          
+        case 'rings' :
+          return pieces.filter(piece => piece.category === 'rings')
+        
+        default:
+          return pieces
       }
+    }
   
-
     return (
       <>
         <h1 className="text-center pt-12 text-5xl capitalize pb-5">Catálogo</h1>
