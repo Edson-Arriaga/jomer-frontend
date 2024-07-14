@@ -1,9 +1,11 @@
 import { useState } from "react"
 import pieces from "../data/pieces.ts"
 import PieceCard from "../components/PieceCard"
+import { useParams } from "react-router-dom"
 
 export default function Products() {
-    const [category, setCategory] = useState('')
+    const { filter } = useParams()
+    const [category, setCategory] = useState(filter)
 
     const piecesFiltered = () => {
       switch(category) {
@@ -24,8 +26,8 @@ export default function Products() {
           
         case 'rings' :
           return pieces.filter(piece => piece.category === 'rings')
-        
-        default:
+
+        default :
           return pieces
       }
     }
@@ -33,7 +35,7 @@ export default function Products() {
     return (
       <>
         <h1 className="text-center pt-12 text-5xl capitalize pb-5">Catálogo</h1>
-        <form className="mx-auto max-w-md">
+        <form className="mx-auto max-w-md w-10/12">
           <select
               className="shadow-inner w-full p-3 rounded-md bg-gray-100"
               name="medida"
@@ -51,7 +53,7 @@ export default function Products() {
               
           </select>
         </form>
-        <div className="max-w-screen-xl mx-auto w-full grid p-5 pt-10 gap-x-2 gap-y-12 grid-cols-2 px-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+        <div className="max-w-screen-xl mx-auto w-full grid p-5 pt-8 gap-x-2 gap-y-12 grid-cols-2 px-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
           {piecesFiltered().map(piece => (
             <PieceCard
               key={piece.id}

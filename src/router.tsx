@@ -17,7 +17,7 @@ export const router = createHashRouter([
                 element: <Home />,
             },
             {
-                path: 'catalogo',
+                path: 'catalogo/:filter',
                 element: <Catalog />
             },
             {
