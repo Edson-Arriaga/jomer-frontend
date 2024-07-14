@@ -5,12 +5,9 @@ import earings from "./earings";
 import pendants from "./pendants";
 import rings from "./rings";
 
-export const getPieces = () => {
-    const products = [...chains, ...cuffBracelets, ...pendants, ...rings, ...earings, ...engagementRings]
-    return products.map((product, i) => ({
-        ...product,
-        id: i
-    })) 
-}
+const pieces = [...chains, ...cuffBracelets, ...pendants, ...rings, ...earings, ...engagementRings].map((piece, i) => ({
+    ...piece,
+    id: i
+}))
 
-export default getPieces
+export default pieces

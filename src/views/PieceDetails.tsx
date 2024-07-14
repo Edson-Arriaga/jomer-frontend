@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import getPieces from "../data/pieces"
+import pieces from "../data/pieces"
 import { piece } from "../types"
 
 export default function PieceDetails() {
@@ -9,7 +9,7 @@ export default function PieceDetails() {
   let selectedPiece = {} as piece
 
   if(id != undefined){
-    selectedPiece = getPieces().filter(piece => piece.id === +id)[0]
+    selectedPiece = pieces.filter(piece => piece.id === +id)[0]
   } else {
     navigate('/')
   }
