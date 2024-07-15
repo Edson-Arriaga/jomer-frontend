@@ -16,7 +16,7 @@ type PieceHomeProps = {
                     {category}
                 </h1>
             </div>
-            <p className="text-center uppercase lg:hidden font-black text-2xl mt-2">{category}</p>
+            <p className="text-center uppercase lg:hidden font-black text-lg mt-2">{category}</p>
         </div>
       </>
     );

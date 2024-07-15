@@ -16,7 +16,7 @@ export function Home() {
         <Hero />
       </section>
       
-      <h1 className="text-center p-10 text-5xl mb-8">Nuestras Piezas</h1>
+      <h1 className="text-center p-10 text-5xl mb-5">Nuestras Piezas</h1>
       <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
         <Link to={'catalogo/chains'}>
           <PieceHome

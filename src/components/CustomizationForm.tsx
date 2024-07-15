@@ -16,7 +16,10 @@ export default function CustomizationForm() {
             method="POST"
             encType="multipart/form-data"
         >
-            <h2 className="xs:col-span-2 flex items-center text-xl font-bold"><>Ingresa las características de tu pieza deseada:</></h2>
+            <div className="xs:col-span-2">
+                <h2 className="flex items-center xs:text-xl font-bold"><>Ingresa las características de tu pieza deseada:</></h2>
+                <p>Crearemos la pieza <span className="text-red-500 uppercase font-bold text-[0.95rem]">ideal para ti </span>a corde a tus necesidades.</p>
+            </div>
 
             <select
                 className="shadow-inner w-full h-full rounded-md bg-gray-100 p-2"
@@ -83,19 +86,19 @@ export default function CustomizationForm() {
             <div className="containerRadio justify-center font-black mt-5 uppercase">
                 <h3 className="text-center uppercase mb-4">Kilataje</h3>
                 <label>
-                    <input type="radio" name="kilataje" value="10k"/>
+                    <input type="radio" name="kilataje" value="10K"/>
                     <span className="font-black">10k</span>
                 </label>
                 <label>
-                    <input type="radio" name="kilataje" value="12k"/>
+                    <input type="radio" name="kilataje" value="12K"/>
                     <span className="font-black">12k</span>
                 </label>
                 <label>
-                    <input type="radio" name="kilataje" value="13k"/>
+                    <input type="radio" name="kilataje" value="14K"/>
                     <span className="font-black">14k</span>
                 </label>
                 <label>
-                    <input type="radio" name="kilataje" value="14k"/>
+                    <input type="radio" name="kilataje" value="18K"/>
                     <span className="font-black">18k</span>
                 </label>
             </div>
@@ -177,7 +180,7 @@ export default function CustomizationForm() {
                     type="number"
                     className={budget ? "shadow-inner w-full p-2 rounded-md bg-gray-100 block" : "hidden"}
                     placeholder="Presupuesto"
-                    name="email"
+                    name="presupuesto"
                     required
                 />
             </div>
@@ -191,8 +194,10 @@ export default function CustomizationForm() {
                 </button>
             </div>
 
+
             <input type="hidden" name="_template" value="table"></input>
             <input type="hidden" name="_autoresponse" value="Tu mensaje ha sido enviado correctamente, pronto te atenderemos."></input>
+            <input type="hidden" name="_next" value="http://localhost:5173/#gracias"></input>
         </form>
     )
 }
