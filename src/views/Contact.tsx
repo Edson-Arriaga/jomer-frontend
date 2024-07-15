@@ -56,7 +56,7 @@ export default function Contact() {
         <div className="col-span-full flex justify-center">
           <button 
             type="submit"
-            className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-sm bg-gray-100"
+            className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-md bg-gray-100"
           >
             Enviar
           </button>

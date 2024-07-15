@@ -10,7 +10,7 @@ export function Home() {
         <img 
           src="/images/logos/jomer-logo.webp"
           alt="Jomer Logo"
-          className='absolute w-20 z-50 right-6 bottom-6' 
+          className='absolute w-20 z-10 right-6 bottom-6' 
           loading='eager'
         />
         <Hero />
@@ -66,7 +66,7 @@ export function Home() {
         </Link>
       </section>
 
-      <h1 className="text-center p-10 text-5xl capitalize animate-pulse">Crea tu pieza personalizada</h1>
+      <h1 className="text-center pb-5 px-6 pt-0 text-4xl sm:p-10 sm:text-5xl capitalize">Crea tu propia pieza personalizada</h1>
       <section>
         <CustomizationForm/>
       </section>

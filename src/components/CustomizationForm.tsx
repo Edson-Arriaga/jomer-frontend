@@ -3,8 +3,9 @@ import { ChangeEvent, useState } from "react"
 export default function CustomizationForm() {
     
     const [category, setCategory] = useState('')
+    const [budget, setbudget] = useState(false)
 
-    const handleChange = (e : ChangeEvent<HTMLSelectElement>) => {
+    const handleChangeCategory = (e : ChangeEvent<HTMLSelectElement>) => {
         setCategory(e.target.value)
     }
 
@@ -15,15 +16,16 @@ export default function CustomizationForm() {
             method="POST"
             encType="multipart/form-data"
         >
-            <h2 className="xs:col-span-2 flex items-center text-xl"><>Ingresa las características de tu pieza deseada:</></h2>
+            <h2 className="xs:col-span-2 flex items-center text-xl font-bold"><>Ingresa las características de tu pieza deseada:</></h2>
 
             <select
-                className="shadow-inner w-full h-full rounded-md bg-gray-200 p-2"
+                className="shadow-inner w-full h-full rounded-md bg-gray-100 p-2"
                 name="categoría"
-                onChange={handleChange}
+                onChange={handleChangeCategory}
+                defaultValue=""
                 required
             >
-                <option value="" disabled selected className='opacity-55'>-- Tipo de pieza --</option>
+                <option value="" disabled className='opacity-55'>-- Tipo de pieza --</option>
                 <option value="cadena">Cadena</option>
                 <option value="esclava">Esclava</option>
                 <option value="aretes">Aretes</option>
@@ -37,9 +39,10 @@ export default function CustomizationForm() {
                 <select
                     className="shadow-inner w-full p-3 rounded-md bg-gray-100"
                     name="medida"
+                    defaultValue=""
                     required
                 >
-                    <option value="" disabled selected className='opacity-55'>-- Medida --</option>
+                    <option value="" disabled className='opacity-55'>-- Medida --</option>
                     <option value="4">4</option>
                     <option value="4.5">4.5</option>
                     <option value="5">5</option>
@@ -70,50 +73,50 @@ export default function CustomizationForm() {
                         />
                         ) : (
                         <div className="shadow-inner w-full p-2 rounded-md bg-gray-100 h-full"> 
-                            <p className="text-gray-500"> Sin medida. </p>
+                            <p className="text-gray-400"> Sin medida. </p>
                         </div>
                     )}
                 </>
             )}
         
 
-            <div className="containerRadio justify-center font-black mt-5">
+            <div className="containerRadio justify-center font-black mt-5 uppercase">
                 <h3 className="text-center uppercase mb-4">Kilataje</h3>
                 <label>
                     <input type="radio" name="kilataje" value="10k"/>
-                    <span>10k</span>
+                    <span className="font-black">10k</span>
                 </label>
                 <label>
                     <input type="radio" name="kilataje" value="12k"/>
-                    <span>12k</span>
+                    <span className="font-black">12k</span>
                 </label>
                 <label>
                     <input type="radio" name="kilataje" value="13k"/>
-                    <span>14k</span>
+                    <span className="font-black">14k</span>
                 </label>
                 <label>
                     <input type="radio" name="kilataje" value="14k"/>
-                    <span>18k</span>
+                    <span className="font-black">18k</span>
                 </label>
             </div>
 
-            <div className="xs:col-span-1 containerRadio justify-center font-black mt-5">
+            <div className="xs:col-span-1 containerRadio justify-center font-black mt-5 uppercase">
                 <h3 className="text-center uppercase mb-4">Color De Oro</h3>
                 <label>
                     <input type="radio" name="colorDeOro" value="Amarillo"/>
-                    <span>Amarillo</span>
+                    <span className="font-black">Amarillo</span>
                 </label>
                 <label>
                     <input type="radio" name="colorDeOro" value="Blanco"/>
-                    <span>Blanco</span>
+                    <span className="font-black">Blanco</span>
                 </label>
                 <label>
                     <input type="radio" name="colorDeOro" value="Rosa"/>
-                    <span>Rosa</span>
+                    <span className="font-black">Rosa</span>
                 </label>
                 <label>
                     <input type="radio" name="colorDeOro" value="Tricolor"/>
-                    <span>Tricolor</span>
+                    <span className="font-black">Tricolor</span>
                 </label>
             </div>
 
@@ -125,7 +128,6 @@ export default function CustomizationForm() {
                 required
             />
 
-          
             <textarea
                 className="shadow-inner w-full p-2 rounded-md bg-gray-100 no-resize xs:col-span-2"
                 placeholder="Detalles adicionales de la pieza: "
@@ -134,13 +136,48 @@ export default function CustomizationForm() {
                 required
             ></textarea>
 
-            <div className="h-full xs:col-span-2 mt-2">
+            <div className="h-full xs:col-span-2 mt-2 flex flex-col justify-center items-center">
                 <label htmlFor="image" className="text-center uppercase mb-4 font-bold">Sube una imagen de la pieza a recrear:</label>
                 <input 
                     type="file" 
                     id="image"
                     name="imagen"
-                    accept="image/png, image/jpeg" 
+                    accept="image/png, image/jpeg"
+                    className="pl-14"
+                    required
+                />
+            </div>
+
+            <div className="xs:col-span-2 gap-10 redio">
+                <div className="containerRadio">
+                    <h3 className="text-center uppercase mb-4 mt-5 font-black">¿Tienes un presupuesto en mente?</h3>
+                    <label className="flex items-center">
+                        <input 
+                            type="radio"
+                            name="presupuesto"
+                            value="si"
+                            onChange={() => setbudget(true)}
+                        />
+                        <span className="font-black">Si</span>
+                        <p className="text-red-600 font-black text-sm pl-1">*Adaptaremos la pieza a tu presupuesto.</p>
+                    </label>
+                    <label className="flex items-center">
+                        <input 
+                            type="radio"
+                            name="presupuesto"
+                            value="no"
+                            onChange={() => setbudget(false)}
+                        />
+                        <span className="font-black">No</span>
+                        <p className="text-red-600 font-black text-sm">*Recrearemos la pieza lo más idéntica posible.</p>
+                    </label>
+                </div>
+                
+                <input 
+                    type="number"
+                    className={budget ? "shadow-inner w-full p-2 rounded-md bg-gray-100 block" : "hidden"}
+                    placeholder="Presupuesto"
+                    name="email"
                     required
                 />
             </div>
@@ -148,11 +185,12 @@ export default function CustomizationForm() {
             <div className="xs:col-span-2 flex justify-center">
                 <button 
                     type="submit"
-                    className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-sm bg-gray-100"
+                    className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-md bg-gray-100"
                 >
                 Enviar
                 </button>
             </div>
+
             <input type="hidden" name="_template" value="table"></input>
             <input type="hidden" name="_autoresponse" value="Tu mensaje ha sido enviado correctamente, pronto te atenderemos."></input>
         </form>
