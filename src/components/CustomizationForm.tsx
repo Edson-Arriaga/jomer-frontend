@@ -194,10 +194,8 @@ export default function CustomizationForm() {
                 </button>
             </div>
 
-
             <input type="hidden" name="_template" value="table"></input>
-            <input type="hidden" name="_autoresponse" value="Tu mensaje ha sido enviado correctamente, pronto te atenderemos."></input>
-            <input type="hidden" name="_next" value="http://localhost:5173/#gracias"></input>
+            <input type="hidden" name="_next" value="https://jomer.netlify.app/#gracias/customizationForm"></input>
         </form>
     )
 }

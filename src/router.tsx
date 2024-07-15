@@ -38,7 +38,7 @@ export const router = createHashRouter([
                 element: <PieceDetails/>
             },
             {
-                path: 'gracias',
+                path: 'gracias/:form',
                 element: <Thanks/>
             }
         ]
