@@ -22,7 +22,7 @@ export default function Hero() {
           <div className='bg-hero-1 bg-cover text-white h-hero-lg lg:bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10'>
             <TitleEffect>La Perfección En Cada Detalle.</TitleEffect>
               <Link 
-                to={'/catalogo'}
+                to={'/catalogo/all'}
                 className='border border-white px-5 py-2 hover:scale-105 ease transition-transform rounded-lg text-2xl lg:text-3xl font-black animate-pulse'>
                 Ver Catálogo
               </Link>

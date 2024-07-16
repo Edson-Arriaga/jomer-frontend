@@ -14,8 +14,10 @@ export default {
         'hero-2': 'url("/images/hero/hero-2.webp")',
         'hero-3': 'url("/images/hero/hero-3.webp")',
         'cadenas': 'url("/images/homeImages/cadenas.webp")',
-        'aretes': 'url("/images/homeImages/aretes.webp")',
-        'nosotros-1': 'url("/nosotros1.jpeg")'
+        'earings': 'url("/images/homeImages/earings.webp")',
+        'about-us-1': 'url("/images/aboutUs/about-us-1.webp")',
+        'about-us-2': 'url("/images/aboutUs/about-us-2.webp")',
+        'about-us-phone': 'url("/images/aboutUs/about-us-phone.webp")',
       },
       height:{
         '26rem' : '26rem',
