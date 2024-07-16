@@ -24,7 +24,7 @@ export default function AboutUs() {
               </div>
             </>
           ) : (
-            <div className="w-full h-96 bg-about-us-phone bg-fixed bg-cover bg-center"></div>
+            <div className="w-full h-screen-50 bg-about-us-phone bg-fixed bg-cover bg-center"></div>
           )}
           <div className="flex flex-col justify-center items-center p-10 py-16 sm:p-20 text-xl text-center gap-10">
             <h2 className="text-5xl after:w-32 after:bg-black font-black after:h-[0.1rem] after:block after: after:mx-auto">JOMER</h2>
