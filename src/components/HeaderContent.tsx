@@ -11,9 +11,11 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
     return (
         <>
            <div className='grid grid-cols-2 max-w-screen-xl mx-auto lg:grid-cols-12 h-full'>
-                <div className='flex items-center lg:col-span-3 pl-3 lg:pl-10'>
+                <div className='lg:col-span-3'>
                     <Link to={'/'}>
-                        <h1 className="uppercase font-black text-5xl tracking-widest mt-1">jomer</h1>
+                        <div className="absolute inset-0 -top-16 w-56 left-1 lg:left-3">
+                            <img src="/images/logos/horizontal-black-logo.png" alt="" />
+                        </div>
                     </Link>
                 </div>
 
@@ -33,7 +35,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                 <div className='flex justify-end items-center lg:hidden'>
                     <button
                         onClick={() => setIsActiveModal(true)}
-                        className='w-11 h-11 mr-2'
+                        className='w-11 h-11 mr-5'
                     >
                         <img src="/images/icons/menu-icon.svg"
                             alt="Menu icon" 

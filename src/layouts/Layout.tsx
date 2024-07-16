@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import Modal from '../components/Modal';
 import { Transition } from '@headlessui/react';
@@ -6,7 +6,7 @@ import HeaderContent from '../components/HeaderContent';
 
 export default function Layout() {
 
-    const fixedHeaderRef = useRef<HTMLDivElement>(null);
+    const fixedHeaderRef = useRef<HTMLDivElement>(null)
     const [isActiveModal, setIsActiveModal] = useState(false)
     const [fixedHeader, setFixedHeader] = useState(false)
     const [heightHeader, setHeightHeader] = useState(0)
@@ -18,7 +18,7 @@ export default function Layout() {
         }
         
         window.addEventListener('scroll', () => {
-            if(window.scrollY > 250){
+            if(window.scrollY > 600){
                 setFixedHeader(true)
             }
             if (window.scrollY === 0){
@@ -70,6 +70,23 @@ export default function Layout() {
             <main>
                 <Outlet/>
             </main>
+
+            <footer className='bg-gray-100 w-full shadow-inner grid grid-cols-1 gap-10 py-10 md:grid-cols-3 md:p-0 md:h-44'>
+                <div className='flex items-center justify-center'>
+                    <img 
+                        src="/images/logos/complete-black-logo.png" 
+                        alt="Logo menu"
+                        className='w-20'
+                    />
+                </div>
+                <div className='flex flex-col justify-center items-center gap-5 text-center'>
+                    <Link to={'/'}>Preguntas frecuentes</Link>
+                    <Link to={'/'}>Terminos y condiciones</Link>
+                </div>
+                <div className='flex flex-col justify-center items-center gap-5'>
+                    <p className='text-sm'>Desarrollada por: <span className='text-blue-400 font-bold'>Arleon Success</span></p>
+                </div>
+            </footer>
         </>
     )
 }

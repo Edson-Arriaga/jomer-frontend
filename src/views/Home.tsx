@@ -2,17 +2,29 @@ import { Link } from 'react-router-dom';
 import CustomizationForm from '../components/CustomizationForm';
 import Hero from '../components/Hero';
 import PieceHome from '../components/PieceHome';
+import ScrollToTop from '../components/ScrollToTop';
 
 export function Home() {
+
+  const screen = window.innerWidth 
+
   return (
     <>
+      <ScrollToTop/>
       <section className='relative'>
-        <img 
-          src="/images/logos/jomer-logo.webp"
-          alt="Jomer Logo"
-          className='absolute w-20 z-10 right-6 bottom-6' 
-          loading='eager'
-        />
+        {screen > 1024 ? (
+          <img 
+            src="/images/logos/vertical-white-logo.png"
+            alt="Jomer Logo"
+            className='absolute w-96 z-10 -right-20 bottom-14' 
+          />
+        ) : (
+          <img 
+            src="/images/logos/complete-white-logo.png"
+            alt="Jomer Logo"
+            className='absolute w-24 z-10 right-6 bottom-6' 
+          />
+        )}
         <Hero />
       </section>
       

@@ -37,6 +37,12 @@ export default function Modal({isActiveModal, setIsActiveModal} : ModalProps) {
                 <IconLinks
                     setIsActiveModal={setIsActiveModal}
                 />
+
+                <img 
+                    src="/images/logos/vertical-black-logo.png"
+                    alt="Jomer Logo"
+                    className='absolute w-64 z-10 -right-16 top-[7.2rem]' 
+                />
             </div>
         </Transition>
     )

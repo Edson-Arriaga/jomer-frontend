@@ -2,6 +2,7 @@ import { useState } from "react"
 import pieces from "../data/pieces.ts"
 import PieceCard from "../components/PieceCard"
 import { useParams } from "react-router-dom"
+import ScrollToTop from "../components/ScrollToTop.tsx"
 
 export default function Products() {
     const { filter } = useParams()
@@ -34,7 +35,8 @@ export default function Products() {
   
     return (
       <>
-        <h1 className="text-center pt-12 text-5xl capitalize pb-5">Catálogo</h1>
+        <ScrollToTop/>
+        <h1 className="text-center pt-10 text-5xl capitalize pb-5">Catálogo</h1>
         <form className="mx-auto max-w-md w-10/12">
           <select
               className="shadow-inner w-full p-3 rounded-md bg-gray-100"
