@@ -25,8 +25,8 @@ export default function PieceCard({piece} : PieceCardProps) {
             </div>
 
             <div className="text-center flex flex-col pt-5 flex-grow">
-                <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.4rem] px-2">{piece.name}</h1>
-                <p className="text-red-700 text-xl lg:text-3xl mt-2 font-black sm:mt-5 mb-1">{formatPrice(piece.price)}</p>
+                <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.4rem] px-2 uppercase">{piece.name}</h1>
+                <p className="text-red-700 text-xl lg:text-3xl mt-2 font-black sm:mt-4 mb-1">{formatPrice(piece.price)}</p>
                 <p className="text-md sm:text-lg">Medida: <span className="font-black">{piece.measure}</span></p>
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
             </div>
