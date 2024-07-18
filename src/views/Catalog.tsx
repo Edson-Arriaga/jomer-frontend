@@ -41,10 +41,11 @@ export default function Products() {
           <select
               className="shadow-inner w-full p-3 rounded-md bg-gray-100"
               name="medida"
+              defaultValue={''}
               onChange={(e) => setCategory(e.target.value)}
               required
           >
-              <option value="" disabled selected className='opacity-55'>-- Filtrar Por --</option>
+              <option value="" disabled className='opacity-55'>-- Filtrar Por --</option>
               <option value="chains">Cadenas</option>
               <option value="cuffBracelets">Esclavas</option>
               <option value="earings">Aretes</option>

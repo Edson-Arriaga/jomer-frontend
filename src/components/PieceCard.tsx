@@ -9,7 +9,7 @@ type PieceCardProps = {
 export default function PieceCard({piece} : PieceCardProps) {
   
     const navigate = useNavigate();
-  
+    document.cookie = 'will-break=true; SameSite=None; Secure'; 
     return (
         <div 
             key={piece.id}
