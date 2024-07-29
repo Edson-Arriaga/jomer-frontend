@@ -5,7 +5,6 @@
 body, html{
   background-color: white;
   font-family: "Sulphur Point", sans-serif;
-  /* font-family: "Rethink Sans", sans-serif; */
   overflow-x: hidden;
 }
 
@@ -24,6 +23,29 @@ img {
 }
 
 /* Styles for input radios */
+
+.containerRadioCustomization {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 480px) {
+  .containerRadioCustomization {
+    display: block;
+  }
+}
+
+.containerRadioAddProduct {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 480px) {
+  .containerRadioAddProduct {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
 
 .containerRadio label {
   display: flex;

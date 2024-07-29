@@ -1,19 +1,6 @@
 import { piece } from "../types"
 
 export const earings : piece[] = [
-    // {
-    //     name: "Pendiente Clavo",
-    //     description: "Pendientes de aro Juste un Clou, oro rosa de 18 quilates. Ancho: 1,8 mm. Diámetro interior: 12,75 mm.",
-    //     price: 31500,
-    //     photos: {
-    //         photo1: "",
-    //         photo2: "",
-    //         photo3: "",
-    //     },
-    //     category: "pendants",
-    //     measure: "Unitalla.",
-    //     weight: "----"
-    // },
     {
         name: "Broqueles Barril",
         description: "Broqueles Circulares 10k Oro Amarillo con Swarovsky",

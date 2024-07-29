@@ -7,7 +7,6 @@ type HeaderPrps = {
 }
 
 export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
-
     return (
         <>
            <div className='grid grid-cols-2 max-w-screen-xl mx-auto lg:grid-cols-12 h-full'>

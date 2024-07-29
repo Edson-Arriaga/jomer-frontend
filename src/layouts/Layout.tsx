@@ -32,7 +32,7 @@ export default function Layout() {
             <header
                     className={fixedHeader
                         ? 'hidden' 
-                        : 'shadow-md z-40 w-full absolute h-24'
+                        : 'shadow-md z-40 w-full absolute h-24 overflow-hidden'
                     }
                     ref={fixedHeaderRef}
                 >
@@ -51,7 +51,7 @@ export default function Layout() {
             >
                 <header
                     className={fixedHeader
-                        ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-24' 
+                        ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-24 overflow-hidden' 
                         : 'hidden'
                     }
                     ref={fixedHeaderRef}

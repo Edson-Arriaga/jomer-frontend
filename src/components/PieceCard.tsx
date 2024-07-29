@@ -9,16 +9,15 @@ type PieceCardProps = {
 export default function PieceCard({piece} : PieceCardProps) {
   
     const navigate = useNavigate();
-    document.cookie = 'will-break=true; SameSite=None; Secure'; 
     return (
         <div 
             key={piece.id}
             className="rounded-lg overflow-hidden ease transition-transform hover:shadow-md h-full flex flex-col"
         >
-            <div className="overflow-hidden ">
+            <div className="overflow-hidden">
                 <img
                     className="hover:scale-105 ease duration-200 cursor-pointer"
-                    src={`${piece.photos.photo1}`}
+                    src={`https://firebasestorage.googleapis.com/v0/b/jomer-ba42e.appspot.com/o/about-us-2.webp?alt=media&token=5fe56cfc-14cb-44ca-916d-35a05131e32b`}
                     alt={`Photo 1 ${piece.name}`}
                     onClick={() => navigate(`/piece/${piece.id}`)}
                 />

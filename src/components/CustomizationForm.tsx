@@ -32,11 +32,10 @@ export default function CustomizationForm() {
                 <option value="cadena">Cadena</option>
                 <option value="esclava">Esclava</option>
                 <option value="aretes">Aretes</option>
-                <option value="anilloDeMatrimonio">Anillo de matrimonio</option>
+                <option value="anilloDeMatrimonio">Anillo/Argolla de Matrimonio</option>
                 <option value="dije">Dije</option>
                 <option value="anillo">Anillo</option>
             </select>
-
 
             {category === 'anillo' || category === 'anilloDeMatrimonio' ? (
                 <select
@@ -83,41 +82,41 @@ export default function CustomizationForm() {
             )}
         
 
-            <div className="containerRadio justify-center font-black mt-5 uppercase">
-                <h3 className="text-center uppercase mb-4">Kilataje</h3>
-                <label>
+            <div className="containerRadio containerRadioCustomization font-black mt-5 uppercase">
+                <h3 className="text-center uppercase mb-4 col-span-2 text-lg">Kilataje</h3>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="10K"/>
                     <span className="font-black">10k</span>
                 </label>
-                <label>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="12K"/>
                     <span className="font-black">12k</span>
                 </label>
-                <label>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="14K"/>
                     <span className="font-black">14k</span>
                 </label>
-                <label>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="18K"/>
                     <span className="font-black">18k</span>
                 </label>
             </div>
 
-            <div className="xs:col-span-1 containerRadio justify-center font-black mt-5 uppercase">
-                <h3 className="text-center uppercase mb-4">Color De Oro</h3>
-                <label>
+            <div className="xs:col-span-1 containerRadio containerRadioCustomization justify-center font-black mt-5 uppercase">
+                <h3 className="text-center uppercase mb-4 col-span-2 text-lg">Color De Oro</h3>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Amarillo"/>
                     <span className="font-black">Amarillo</span>
                 </label>
-                <label>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Blanco"/>
-                    <span className="font-black">Blanco</span>
+                    <span className="font-black">Blanco<p className="text-white">....</p></span>
                 </label>
-                <label>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Rosa"/>
-                    <span className="font-black">Rosa</span>
+                    <span className="font-black">Rosa<p className="text-white">...........</p></span>
                 </label>
-                <label>
+                <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Tricolor"/>
                     <span className="font-black">Tricolor</span>
                 </label>
@@ -153,8 +152,8 @@ export default function CustomizationForm() {
 
             <div className="xs:col-span-2 gap-10 redio">
                 <div className="containerRadio">
-                    <h3 className="text-center uppercase mb-4 mt-5 font-black">¿Tienes un presupuesto en mente?</h3>
-                    <label className="flex items-center">
+                    <h3 className="text-center uppercase mb-4 mt-5 font-black col-span-2">¿Tienes un presupuesto en mente?</h3>
+                    <label className="flex items-center col-span-2">
                         <input 
                             type="radio"
                             name="presupuesto"
@@ -164,7 +163,7 @@ export default function CustomizationForm() {
                         <span className="font-black">Si</span>
                         <p className="text-red-600 font-black text-sm pl-1">*Adaptaremos la pieza a tu presupuesto.</p>
                     </label>
-                    <label className="flex items-center">
+                    <label className="flex items-center col-span-2">
                         <input 
                             type="radio"
                             name="presupuesto"
@@ -178,7 +177,7 @@ export default function CustomizationForm() {
                 
                 <input 
                     type="number"
-                    className={budget ? "shadow-inner w-full p-2 rounded-md bg-gray-100 block" : "hidden"}
+                    className={budget ? "shadow-inner w-full p-2 rounded-md bg-gray-100 block mt-4" : "hidden"}
                     placeholder="Presupuesto"
                     name="presupuesto"
                     required
