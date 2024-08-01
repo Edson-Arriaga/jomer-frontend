@@ -7,7 +7,7 @@ import Contact from "./views/Contact"
 import WishList from "./views/WishList"
 import PieceDetails from "./views/PieceDetails"
 import Thanks from "./views/Thanks"
-import AddProduct from "./views/AddProduct"
+import AddPiece from "./views/AddPiece"
 
 export default function Router(){
     return (
@@ -21,7 +21,7 @@ export default function Router(){
                     <Route path="/wish-list" element={<WishList />}/>
                     <Route path="/piece/:id" element={<PieceDetails />}/>
                     <Route path="/gracias/:form" element={<Thanks />}/>
-                    <Route path="/agregar-producto" element={<AddProduct />}/>
+                    <Route path="/agregar-producto" element={<AddPiece />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

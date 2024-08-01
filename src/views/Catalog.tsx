@@ -2,7 +2,7 @@ import { useState } from "react"
 import pieces from "../data/pieces.ts"
 import PieceCard from "../components/PieceCard"
 import { useParams } from "react-router-dom"
-import ScrollToTop from "../components/ScrollToTop.tsx"
+import ScrollToTop from "../components/helpers/ScrollToTop.tsx"
 
 export default function Products() {
     const { filter } = useParams()

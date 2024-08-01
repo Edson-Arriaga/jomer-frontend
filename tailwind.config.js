@@ -23,10 +23,6 @@ export default {
         '26rem' : '26rem',
         'hero-lg': 'calc(100svh - 96px)',
         'screen-50': 'calc(100svh - 50svh)'
-      },
-      gridTemplateRows: {
-        'form-lg': '60px 40px 250px 40px 90px 100px 190px 40px',
-        'form-xs': '100px 40px 40px 150px 180px 40px 90px 130px 220px 40px '
       }
     },
   },

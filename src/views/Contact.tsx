@@ -1,4 +1,4 @@
-import ScrollToTop from "../components/ScrollToTop";
+import ScrollToTop from "../components/helpers/ScrollToTop";
 
 export default function Contact() {
   return (

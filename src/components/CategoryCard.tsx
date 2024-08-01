@@ -4,7 +4,7 @@ type PieceHomeProps = {
     rotate: string
   }
   
-  export default function PieceHome({ image, category, rotate }: PieceHomeProps) {
+  export default function CategoryCard({ image, category, rotate }: PieceHomeProps) {
     const isEngagementRings = () => category === "Anillos de compromiso";
   
     return (
