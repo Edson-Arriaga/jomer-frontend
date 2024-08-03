@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { getPieces } from "../../api/PieceAPI";
 import { useQuery } from "@tanstack/react-query";
 import { formatPrice } from "../../utils/formatPrice";
@@ -71,7 +71,10 @@ export default function AdminDashboard() {
                                     </div>
                                 </td>
                                 <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">
-                                    <Link to="actualizar-pieza" className="font-medium text-blue-600 hover:underline">Actualizar</Link>
+                                    <Link
+                                        className="font-medium text-blue-600 hover:underline"
+                                        to={`actualizar-pieza/${piece._id}`}
+                                    >Actualizar</Link>
                                     <Link to="#" className="font-medium text-red-600 hover:underline">Eliminar</Link>
                                 </td>
                             </tr>

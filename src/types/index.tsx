@@ -15,4 +15,4 @@ export const pieceSchema = z.object({
 export const piecesSchema = z.array(pieceSchema)
 
 export type Piece = z.infer<typeof pieceSchema>
-export type PieceForm = Pick<Piece, 'name' | 'description' | 'price' | 'category' | 'measure' | 'measure2' | 'weight' | 'caratage'>
+export type PieceFormData = Pick<Piece, 'name' | 'description' | 'price' | 'category' | 'measure' | 'measure2' | 'weight' | 'caratage'>

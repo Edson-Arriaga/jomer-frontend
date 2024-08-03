@@ -30,7 +30,7 @@ export default function AppLayout() {
             <header
                     className={fixedHeader
                         ? 'hidden' 
-                        : 'shadow-md z-40 w-full absolute h-24 overflow-hidden'
+                        : 'shadow-md z-40 w-full absolute h-20 overflow-hidden'
                     }
                     ref={fixedHeaderRef}
                 >
@@ -49,7 +49,7 @@ export default function AppLayout() {
             >
                 <header
                     className={fixedHeader
-                        ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-24 overflow-hidden' 
+                        ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-20 overflow-hidden' 
                         : 'hidden'
                     }
                     ref={fixedHeaderRef}
@@ -65,7 +65,7 @@ export default function AppLayout() {
                 setIsActiveModal={setIsActiveModal}
             />
 
-            <div style={{height: '96px'}}></div>
+            <div style={{height: '80px'}}></div>
             <main>
                 <Outlet/>
             </main>

@@ -31,7 +31,7 @@ export default function Router(){
                     <Route path="/admin" element={<AdminDashboard />}/>
                     <Route path="/admin/login" element={<AdminLogin />}/>
                     <Route path="/admin/agregar-pieza" element={<AddPiece />}/>
-                    <Route path="/admin/actualizar-pieza" element={<UpdatePiece />}/>
+                    <Route path="/admin/actualizar-pieza/:pieceId" element={<UpdatePiece />}/>
                 </Route>
 
 

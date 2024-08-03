@@ -21,9 +21,7 @@ export default {
       },
       height:{
         '26rem' : '26rem',
-        'hero-lg': 'calc(100svh - 96px)',
-        'contain-footer-lg': 'calc(100svh - 176px)',
-        'contain-footer-xs': 'calc(100svh - 328px)',
+        'hero-lg': 'calc(100svh - 80px)',
         'screen-50': 'calc(100svh - 50svh)'
       }
     },

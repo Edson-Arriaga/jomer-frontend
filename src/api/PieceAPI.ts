@@ -1,7 +1,7 @@
 import axios, { isAxiosError } from "axios"
-import { Piece, PieceForm, pieceSchema, piecesSchema } from "../types"
+import { Piece, PieceFormData, pieceSchema, piecesSchema } from "../types"
 
-export async function addPiece(formDataWithFiles : PieceForm) {
+export async function addPiece(formDataWithFiles : PieceFormData) {
     const token = localStorage.getItem('AUTH_TOKEN_JOMER')
     if(!formDataWithFiles.measure) formDataWithFiles.measure = 0
     
@@ -47,4 +47,17 @@ export async function getPieceById(pieceId: Piece['_id']){
         }
     }
 }
+
+export async function updatePiece({formDataWithFiles, pieceId} : {formDataWithFiles : PieceFormData, pieceId: Piece['_id']}){
+    try {
+        const {data} = await axios.put<string>(`${import.meta.env.VITE_BACKEND_URL}/api/pieces/${pieceId}`, formDataWithFiles)
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response){
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+
 

@@ -24,9 +24,10 @@ export default function Products() {
     if (data) return (
         <>
             <h1 className="text-center pt-10 text-5xl capitalize pb-5">Catálogo</h1>
-            <form className="mx-auto max-w-md w-10/12">
-                <select
-                    className="shadow-inner w-full p-3 rounded-md bg-gray-100"
+
+            <div className="flex">
+                {/* <select
+                    className="shadow-inner w-full p-3 rounded-md bg-gray-100 mx-auto"
                     name="medida"
                     defaultValue={''}
                     onChange={(e) => setCategory(e.target.value)}
@@ -39,17 +40,17 @@ export default function Products() {
                     <option value="pendants">Dijes</option>
                     <option value="rings">Anillos</option>
                     <option value="all">Todas las piezas</option>
-                    
-                </select>
-            </form>
-            <div className="max-w-screen-xl mx-auto w-full grid p-5 pt-8 gap-x-2 gap-y-12 grid-cols-2 px-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
-                {data.map(piece => (
-                    <PieceCard
-                        key={piece._id}
-                        piece={piece}
-                    />
-                ))}
-            </div> 
+                
+                </select> */}
+                <div className="max-w-screen-xl mx-auto w-full grid p-5 pt-8 gap-x-2 gap-y-12 grid-cols-2 px-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+                    {data.map(piece => (
+                        <PieceCard
+                            key={piece._id}
+                            piece={piece}
+                        />
+                    ))}
+                </div>
+            </div>
         </>
     )
 }
