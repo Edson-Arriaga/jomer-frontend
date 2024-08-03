@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from "react"
 import { useForm } from "react-hook-form"
-import ScrollToTop from "../../components/helpers/ScrollToTop"
 import { PieceForm } from "../../types"
 import ErrorMessage from "../../components/helpers/ErrorMessage"
 import { toast } from "react-toastify"

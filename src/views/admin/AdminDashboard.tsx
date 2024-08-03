@@ -8,7 +8,6 @@ export default function AdminDashboard() {
     const token = localStorage.getItem('AUTH_TOKEN_JOMER')
     if(!token) return <Navigate to={'/admin/login'}/>
 
-    const navigate = useNavigate()
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pieces'],
         queryFn: getPieces,
@@ -72,7 +71,7 @@ export default function AdminDashboard() {
                                     </div>
                                 </td>
                                 <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">
-                                    <Link to="#" className="font-medium text-blue-600 hover:underline">Actualizar</Link>
+                                    <Link to="actualizar-pieza" className="font-medium text-blue-600 hover:underline">Actualizar</Link>
                                     <Link to="#" className="font-medium text-red-600 hover:underline">Eliminar</Link>
                                 </td>
                             </tr>

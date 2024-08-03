@@ -11,6 +11,7 @@ import AddPiece from "./views/admin/AddPiece"
 import AdminLogin from "./views/admin/AdminLogin"
 import AdminLayout from "./layouts/AdminLayout"
 import AdminDashboard from "./views/admin/AdminDashboard"
+import UpdatePiece from "./views/admin/UpdatePiece"
 
 export default function Router(){
     return (
@@ -30,6 +31,7 @@ export default function Router(){
                     <Route path="/admin" element={<AdminDashboard />}/>
                     <Route path="/admin/login" element={<AdminLogin />}/>
                     <Route path="/admin/agregar-pieza" element={<AddPiece />}/>
+                    <Route path="/admin/actualizar-pieza" element={<UpdatePiece />}/>
                 </Route>
 
 
