@@ -1,25 +1,26 @@
 import { useNavigate } from "react-router-dom"
-import { piece } from "../types"
-import { formatPrice } from "../utils"
+import { Piece } from "../types"
+import { formatPrice } from "../utils/formatPrice"
 
 type PieceCardProps = {
-    piece: piece
+    piece: Piece
 }
 
 export default function PieceCard({piece} : PieceCardProps) {
   
     const navigate = useNavigate();
+    
     return (
         <div 
-            key={piece.id}
+            key={piece._id}
             className="rounded-lg overflow-hidden ease transition-transform hover:shadow-md h-full flex flex-col"
         >
             <div className="overflow-hidden">
                 <img
                     className="hover:scale-105 ease duration-200 cursor-pointer"
-                    src={`https://firebasestorage.googleapis.com/v0/b/jomer-ba42e.appspot.com/o/about-us-2.webp?alt=media&token=5fe56cfc-14cb-44ca-916d-35a05131e32b`}
+                    src={piece.photos[0]}
                     alt={`Photo 1 ${piece.name}`}
-                    onClick={() => navigate(`/piece/${piece.id}`)}
+                    onClick={() => navigate(`/piece/${piece._id}`)}
                 />
             </div>
 
@@ -31,7 +32,7 @@ export default function PieceCard({piece} : PieceCardProps) {
             </div>
             <button
                 className="px-5 py-4 w-full bg-gray-100 hover:bg-gray-200 uppercase font-black mt-5 text-sm"
-                onClick={() => navigate(`/piece/${piece.id}`)}
+                onClick={() => navigate(`/piece/${piece._id}`)}
             >
                 Ver Detalles
             </button>

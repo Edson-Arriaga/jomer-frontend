@@ -1,25 +1,30 @@
-import { useNavigate, useParams } from "react-router-dom"
-import pieces from "../data/pieces"
-import { piece } from "../types"
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getPieceById } from "../api/PieceAPI";
 
 export default function PieceDetails() {
-  const navigate = useNavigate()
+    const params = useParams();
+    const pieceId = params.pieceId!
 
-  const { id } = useParams()
-  let selectedPiece = {} as piece
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['piece', pieceId],
+        queryFn: () => getPieceById(pieceId),
+        retry: 1
+    })
 
-  if(id != undefined){
-    selectedPiece = pieces.filter(piece => piece.id === +id)[0]
-  } else {
-    navigate('/')
-  }
-  
-  return (
-    <div className="mt-10">
-      <h1 className="text-center font-bold text-4xl">{selectedPiece.name}</h1>
-      <div className="mx-auto max-w-48">
-        <img src={selectedPiece.photos.photo1} alt="" />
-      </div>
-    </div>
-  )
+    if(isError) return <Navigate to={'/404'}/>
+    if(isLoading) return (
+        <div className="w-full h-32 flex justify-center items-center">
+            <p className="text-2xl animate-pulse uppercase">Cargando...</p>
+        </div>
+    )
+
+    if (data) return (
+        <div className="mt-10">
+            <h1 className="text-center font-bold text-4xl">{data.name}</h1>
+            <div className="mx-auto max-w-48">
+                <img src={data.photos[0]} alt="" />
+            </div>
+        </div>
+    );
 }

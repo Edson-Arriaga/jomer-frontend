@@ -2,13 +2,13 @@ type PieceHomeProps = {
     image: string,
     category: string,
     rotate: string
-  }
+}
   
-  export default function CategoryCard({ image, category, rotate }: PieceHomeProps) {
+export default function CategoryCard({ image, category, rotate }: PieceHomeProps) {
     const isEngagementRings = () => category === "Anillos de compromiso";
-  
+
     return (
-      <>
+    <>
         <div className={`${rotate} relative hover:scale-110 transition-transform ease-in-out cursor-pointer`}>
             <img src={`/images/homeImages/${image}`} alt={`${image}`} className="rounded-lg"/>
             <div className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 ease-linear transition-opacity lg:hover:backdrop-blur-sm rounded-lg'>
@@ -18,7 +18,7 @@ type PieceHomeProps = {
             </div>
             <p className="text-center uppercase lg:hidden font-black text-lg mt-2">{category}</p>
         </div>
-      </>
+    </>
     );
-  }
+}
   

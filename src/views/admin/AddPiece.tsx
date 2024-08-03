@@ -1,33 +1,42 @@
 import { ChangeEvent, useState } from "react"
 import { useForm } from "react-hook-form"
-import ScrollToTop from "../components/helpers/ScrollToTop"
-import { PieceForm } from "../types"
-import ErrorMessage from "../components/helpers/ErrorMessage"
+import ScrollToTop from "../../components/helpers/ScrollToTop"
+import { PieceForm } from "../../types"
+import ErrorMessage from "../../components/helpers/ErrorMessage"
 import { toast } from "react-toastify"
 import { useMutation } from "@tanstack/react-query"
-import { addPiece } from "../api/PieceAPI"
+import { addPiece } from "../../api/PieceAPI"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 
 export default function AddPiece() {
+    const token = localStorage.getItem('AUTH_TOKEN_JOMER')
+    if(!token) return <Navigate to={'/admin/login'}/>
+
+    const navigate = useNavigate()
     const [category, setCategory] = useState('')
     const [photos, setPhotos] = useState<FileList | null>(null);
 
-    const handleChangeCategory = (e : ChangeEvent<HTMLSelectElement>) => {
-        setCategory(e.target.value)
-    }
-
     const initialValues = {} as PieceForm
-
-    const {register, handleSubmit, formState: {errors}} = useForm({defaultValues: initialValues}) 
     
+    const {register, handleSubmit, reset, formState: {errors}, resetField} = useForm({defaultValues: initialValues}) 
+
     const { mutate } = useMutation({
         mutationFn: (formDataWithFiles : PieceForm) => addPiece(formDataWithFiles),
         onError: (error) => {
             toast.error(error.message)
+            navigate('/admin/login')
         },
         onSuccess: (data) => {
             toast.success(data)
+            reset()
         }
     })
+
+    const handleChangeCategory = (e : ChangeEvent<HTMLSelectElement>) => {
+        resetField('measure')
+        resetField('measure2')
+        setCategory(e.target.value)
+    }
 
     const handleAddPiece = (formData : PieceForm) => {
         if(photos !== null && photos.length <= 5){
@@ -40,11 +49,19 @@ export default function AddPiece() {
 
     return (
         <>
-            <ScrollToTop />
             <h1 className="text-center pt-10 text-5xl capitalize pb-5">Agregar pieza nueva</h1>
-        
+
+            <div className="flex justify-center mb-5">
+                <Link
+                    to={'/admin'}
+                    className="shadow hover:shadow-inner hover:bg-gray-700 ease transition-colors py-2 px-4 rounded-md bg-black text-white uppercase"
+                >
+                    Regresar al panel de administración
+                </Link>
+            </div>
+
             <form
-                className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-20 rounded-2xl xs:grid-cols-2"
+                className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-2xl xs:grid-cols-2"
                 onSubmit={handleSubmit(handleAddPiece)}
                 encType="multipart/form-data"
                 noValidate
@@ -57,7 +74,7 @@ export default function AddPiece() {
                         className="shadow-inner w-full p-2 rounded-md bg-gray-100"
                         placeholder="Nombre"
                         {...register("name", {
-                            required: "El NOMBRE es obligatorio.",
+                            required: "El NOMBRE es obligatorio."
                         })}
                     />
                     {errors.name && (
@@ -71,7 +88,8 @@ export default function AddPiece() {
                         className="shadow-inner w-full p-2 rounded-md bg-gray-100"
                         placeholder="Precio"
                         {...register("price", {
-                            required: "El PRECIO es obligatorio."
+                            required: "El PRECIO es obligatorio.",
+                            valueAsNumber: true
                         })}
                     />
                     {errors.price && (
@@ -108,7 +126,8 @@ export default function AddPiece() {
                         className="shadow-inner w-full p-2 rounded-md bg-gray-100"
                         placeholder="Peso"
                         {...register("weight", {
-                            required: "El PESO es obligatorio."
+                            required: "El PESO es obligatorio.",
+                            valueAsNumber: true
                         })}
                     />
                     {errors.weight && (
@@ -123,7 +142,8 @@ export default function AddPiece() {
                                 className="shadow-inner w-full h-10 p-3 rounded-md bg-gray-100"
                                 defaultValue=""
                                 {...register("measure", {
-                                    required: "La MEDIDA es obligatoria."
+                                    required: "La MEDIDA es obligatoria.",
+                                    valueAsNumber: true
                                 })}
                             >
                                 <option value="" disabled className='opacity-55'>{category === 'weddingRing' ? 'Med. 1' : '-- Medida --'}</option>
@@ -151,7 +171,8 @@ export default function AddPiece() {
                                     className="shadow-inner w-full p-3 h-10 rounded-md bg-gray-100"
                                     defaultValue=""
                                     {...register("measure2", {
-                                        required: "La MEDIDA 2 es obligatoria."
+                                        required: "La MEDIDA 2 es obligatoria.",
+                                        valueAsNumber: true
                                     })}
                                 >
                                     <option value="" disabled className='opacity-55'>Med. 2</option>
@@ -185,6 +206,7 @@ export default function AddPiece() {
                                         {...register("measure", {
                                             required: "La MEDIDA es obligatoria.",
                                             min: {value: 1, message: "La MEDIDA debe ser mayor a 0"},
+                                            valueAsNumber: true,
                                         })}
                                     />
                                 ) : (

@@ -5,20 +5,15 @@ import { Transition } from '@headlessui/react';
 import HeaderContent from '../components/HeaderContent';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from '../components/helpers/ScrollToTop';
 
-export default function Layout() {
+export default function AppLayout() {
 
     const fixedHeaderRef = useRef<HTMLDivElement>(null)
     const [isActiveModal, setIsActiveModal] = useState(false)
     const [fixedHeader, setFixedHeader] = useState(false)
-    const [heightHeader, setHeightHeader] = useState(0)
 
     useEffect(() => {
-        if (fixedHeaderRef.current) {
-            // Get header height 
-            setHeightHeader (fixedHeaderRef.current.offsetHeight);
-        }
-        
         window.addEventListener('scroll', () => {
             if(window.scrollY > 600){
                 setFixedHeader(true)
@@ -31,6 +26,7 @@ export default function Layout() {
 
     return (
         <>
+            <ScrollToTop/>
             <header
                     className={fixedHeader
                         ? 'hidden' 
@@ -63,12 +59,13 @@ export default function Layout() {
                     />
                 </header>
             </Transition>
+
             <Modal 
                 isActiveModal={isActiveModal}
                 setIsActiveModal={setIsActiveModal}
             />
 
-            <div style={{height: heightHeader}}></div>
+            <div style={{height: '96px'}}></div>
             <main>
                 <Outlet/>
             </main>
@@ -98,7 +95,6 @@ export default function Layout() {
                 closeOnClick={false}
                 rtl={false}
                 pauseOnFocusLoss
-                draggable={false}
                 pauseOnHover={false}
                 theme="dark"
             />

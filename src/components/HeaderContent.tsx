@@ -11,9 +11,9 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
         <>
            <div className='grid grid-cols-2 max-w-screen-xl mx-auto lg:grid-cols-12 h-full'>
                 <div className='lg:col-span-3'>
-                    <Link to={'/'}>
-                        <div className="absolute inset-0 -top-16 w-56 left-1 lg:left-3">
-                            <img src="/images/logos/horizontal-black-logo.png" alt="" />
+                    <Link className="overflow-hidden" to={'/'}>
+                        <div className="absolute -top-16 w-56 left-1 lg:left-3 h-1">
+                            <img src="/images/logos/horizontal-black-logo.png" alt="jomer-horizontal-black-logo" />
                         </div>
                     </Link>
                 </div>
