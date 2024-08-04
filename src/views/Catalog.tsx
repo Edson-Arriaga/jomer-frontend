@@ -1,12 +1,11 @@
-import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import PieceCard from "../components/PieceCard"
-import { Navigate, useParams } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { getPieces } from "../api/PieceAPI.ts"
 
 export default function Products() {
-    const { filter } = useParams()
-    const [category, setCategory] = useState(filter)
+    // const { filter } = useParams()
+    // const [category, setCategory] = useState(filter)
   
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pieces'],
