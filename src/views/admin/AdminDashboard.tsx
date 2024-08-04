@@ -23,7 +23,7 @@ export default function AdminDashboard() {
     
     if (data) return (
         <>
-            <h1 className="text-center pt-10 text-5xl capitalize pb-5">Panel de Administración</h1>
+            <h1 className="text-center pt-10 text-5xl uppercase pb-5">Panel de Administración</h1>
             <div className="flex justify-center mb-5">
                 <Link
                     to={'/admin/agregar-pieza'}

@@ -12,6 +12,7 @@ export const pieceSchema = z.object({
     caratage: z.string(),
     photos: z.array(z.string())
 })
+
 export const piecesSchema = z.array(pieceSchema)
 
 export type Piece = z.infer<typeof pieceSchema>

@@ -29,8 +29,8 @@ export default function AppLayout() {
             <ScrollToTop/>
             <header
                     className={fixedHeader
-                        ? 'hidden' 
-                        : 'shadow-md z-40 w-full absolute h-20 overflow-hidden'
+                        ? 'hidden'
+                        : 'shadow-md z-40 w-full absolute h-[5.5rem] overflow-hidden bg-white'
                     }
                     ref={fixedHeaderRef}
                 >
@@ -49,7 +49,7 @@ export default function AppLayout() {
             >
                 <header
                     className={fixedHeader
-                        ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-20 overflow-hidden' 
+                        ? 'shadow-md bg-white z-40 w-full fixed bg-opacity-90 h-[5.5rem] overflow-hidden' 
                         : 'hidden'
                     }
                     ref={fixedHeaderRef}
@@ -65,7 +65,7 @@ export default function AppLayout() {
                 setIsActiveModal={setIsActiveModal}
             />
 
-            <div style={{height: '80px'}}></div>
+            <div style={{height: '88px'}}></div>
             <main>
                 <Outlet/>
             </main>

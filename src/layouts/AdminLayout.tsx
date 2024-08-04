@@ -12,7 +12,7 @@ export default function AdminLayout() {
     return (
         <>
             <ScrollToTop/>
-            <header className={'shadow-md w-full h-24 relative overflow-hidden'}>
+            <header className={'shadow-md w-full h-[5.5rem] relative overflow-hidden bg-white'}>
                 <HeaderContent setIsActiveModal={setIsActiveModal}/>
             </header>
     

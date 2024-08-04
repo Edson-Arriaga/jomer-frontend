@@ -48,9 +48,26 @@ export async function getPieceById(pieceId: Piece['_id']){
     }
 }
 
-export async function updatePiece({formDataWithFiles, pieceId} : {formDataWithFiles : PieceFormData, pieceId: Piece['_id']}){
+export type updatePieceProps = {
+    formDataWithFiles : PieceFormData, 
+    pieceId: Piece['_id'],
+    photoSelected: string
+}
+
+export async function updatePiece({formDataWithFiles, pieceId, photoSelected} : updatePieceProps){
     try {
-        const {data} = await axios.put<string>(`${import.meta.env.VITE_BACKEND_URL}/api/pieces/${pieceId}`, formDataWithFiles)
+        const token = localStorage.getItem('AUTH_TOKEN_JOMER')
+        if(!formDataWithFiles.measure) formDataWithFiles.measure = 0
+
+        const {data} = await axios.put<string>(`${import.meta.env.VITE_BACKEND_URL}/api/pieces/${pieceId}`,
+            {...formDataWithFiles, photoSelected},
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                }
+            }
+        )
         return data
     } catch (error) {
         if(isAxiosError(error) && error.response){

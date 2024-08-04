@@ -42,19 +42,19 @@ export default function AddPiece() {
     
     return (
         <>
-            <h1 className="text-center pt-10 text-5xl capitalize pb-5">Agregar pieza nueva</h1>
+            <h1 className="text-center pt-10 text-5xl uppercase pb-5">Agregar pieza nueva</h1>
 
             <div className="flex justify-center mb-5">
                 <Link
                     to={'/admin'}
-                    className="shadow hover:shadow-inner hover:bg-gray-700 ease transition-colors py-2 px-4 rounded-md bg-black text-white uppercase"
+                    className="shadow hover:shadow-inner hover:bg-gray-100 ease transition-colors py-2 px-4 rounded-xl bg-white text-balck uppercase"
                 >
                     Regresar al panel de administración
                 </Link>
             </div>
 
             <form
-                className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-2xl xs:grid-cols-2"
+                className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-sm xs:grid-cols-2 bg-white"
                 onSubmit={handleSubmit(handleAddPiece)}
                 encType="multipart/form-data"
                 noValidate

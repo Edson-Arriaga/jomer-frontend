@@ -21,7 +21,7 @@ export default {
       },
       height:{
         '26rem' : '26rem',
-        'hero-lg': 'calc(100svh - 80px)',
+        'hero-lg': 'calc(100svh - 88px)',
         'screen-50': 'calc(100svh - 50svh)'
       }
     },

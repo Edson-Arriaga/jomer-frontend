@@ -27,7 +27,8 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                     className="shadow-inner w-full p-2 rounded-md bg-gray-100"
                     placeholder="Nombre"
                     {...register("name", {
-                        required: "El NOMBRE es obligatorio."
+                        required: "El NOMBRE es obligatorio.",
+                        maxLength: {value: 25, message: "Máximo 25 caracteres."}
                     })}
                 />
                 {errors.name && (
