@@ -24,7 +24,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
             <div>
                 <input
                     type="text"
-                    className="shadow-inner w-full p-2 rounded-md bg-gray-100"
+                    className="shadow-inner w-full p-2 rounded-md bg-gray-100 border-l-4 border-black"
                     placeholder="Nombre"
                     {...register("name", {
                         required: "El NOMBRE es obligatorio.",
@@ -39,7 +39,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
             <div>
                 <input
                     type="number"
-                    className="shadow-inner w-full p-2 rounded-md bg-gray-100"
+                    className="shadow-inner w-full p-2 rounded-md bg-gray-100 border-l-4 border-black"
                     placeholder="Precio"
                     {...register("price", {
                         required: "El PRECIO es obligatorio.",
@@ -53,7 +53,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
 
             <div className="xs:col-span-2">
                 <select
-                    className="shadow-inner w-full rounded-md bg-gray-100 p-2 py-3"
+                    className="shadow-inner w-full rounded-md bg-gray-100 p-2 py-3 border-l-4 border-black"
                     defaultValue=""
                     {...register("category", {
                         required: "La CATEGORÍA es obligatoria.",
@@ -77,7 +77,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
             <div>
                 <input
                     type="number"
-                    className="shadow-inner w-full p-2 rounded-md bg-gray-100"
+                    className="shadow-inner w-full p-2 rounded-md bg-gray-100 border-l-4 border-black"
                     placeholder="Peso"
                     {...register("weight", {
                         required: "El PESO es obligatorio.",
@@ -93,7 +93,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                 {category === 'ring' || category === 'engagementRing' || category === 'weddingRing' ? (
                     <div className="flex gap-2">
                         <select
-                            className="shadow-inner w-full h-10 p-3 rounded-md bg-gray-100"
+                            className="shadow-inner w-full h-10 p-3 rounded-md bg-gray-100 border-l-4 border-black"
                             defaultValue=""
                             {...register("measure", {
                                 required: "La MEDIDA es obligatoria.",
@@ -122,7 +122,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                 
                         {category === 'weddingRing' && (
                             <select
-                                className="shadow-inner w-full p-3 h-10 rounded-md bg-gray-100"
+                                className="shadow-inner w-full p-3 h-10 rounded-md bg-gray-100 border-l-4 border-black"
                                 defaultValue=""
                                 {...register("measure2", {
                                     required: "La MEDIDA 2 es obligatoria.",
@@ -155,7 +155,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                         {category === 'cuffBracelet' || category === 'chain' || category === 'pendant'? (
                                 <input
                                     type="number"
-                                    className="shadow-inner w-full p-2 h-10 rounded-md bg-gray-100"
+                                    className="shadow-inner w-full p-2 h-10 rounded-md bg-gray-100 border-l-4 border-black"
                                     placeholder="Medida en cm. Ej. 23, 30, 21."
                                     {...register("measure", {
                                         required: "La MEDIDA es obligatoria.",
@@ -222,7 +222,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
 
             <div className="xs:col-span-2">
                 <textarea
-                    className="shadow-inner w-full p-2 rounded-md bg-gray-100 no-resize"
+                    className="shadow-inner w-full p-2 rounded-md bg-gray-100 border-l-4 border-black no-resize"
                     placeholder="Descripción"
                     rows={3}
                     {...register("description", {

@@ -6,8 +6,8 @@ export default function AboutUs() {
 
     return (
         <>
-            <h1 className="text-center p-10 text-5xl">Nosotros</h1>
-            <section className="grid grid-cols-1 lg:grid-cols-2 bg-stone-300">
+            <h1 className="text-center p-10 text-5xl uppercase">Nosotros</h1>
+            <section className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-300">
                 <div className="flex flex-col justify-center items-center p-10 py-16 sm:p-20 text-xl text-center gap-10">
                     <h2 className="text-5xl after:w-32 after:bg-black font-black after:h-[0.1rem] after:block after: after:mx-auto">JOMER</h2>
                     <p className="text-lg">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta neque sequi vero eos quidem similique facere cumque saepe aliquam, quasi adipisci ab enim earum eveniet sunt asperiores, velit, voluptatem ipsa?</p>

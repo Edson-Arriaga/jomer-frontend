@@ -1,17 +1,13 @@
-import { ChangeEvent, useState } from "react"
+import { useState } from "react"
 
 export default function CustomizationForm() {
     
     const [category, setCategory] = useState('')
     const [budget, setbudget] = useState(false)
 
-    const handleChangeCategory = (e : ChangeEvent<HTMLSelectElement>) => {
-        setCategory(e.target.value)
-    }
-
     return (
         <form
-            className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-20 rounded-2xl xs:grid-cols-2"
+            className="mx-2 sm:mx-auto sm:w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-20 rounded-xl xs:grid-cols-2 bg-white border border-y-[1.5rem] border-y-black"
             action="https://formsubmit.co/db8e06899d780c750f034f6f69c58e8f"
             method="POST"
             encType="multipart/form-data"
@@ -22,64 +18,94 @@ export default function CustomizationForm() {
             </div>
 
             <select
-                className="shadow-inner w-full h-full rounded-md bg-gray-100 p-2"
-                name="categoría"
-                onChange={handleChangeCategory}
+                className="shadow-inner w-full rounded-md bg-gray-100 p-2 py-3 border-l-4 border-black"
+                onChange={e => setCategory(e.target.value)}
                 defaultValue=""
-                required
             >
                 <option value="" disabled className='opacity-55'>-- Tipo de pieza --</option>
                 <option value="cadena">Cadena</option>
                 <option value="esclava">Esclava</option>
                 <option value="aretes">Aretes</option>
-                <option value="anilloDeMatrimonio">Anillo/Argolla de Matrimonio</option>
+                <option value="anilloDeMatrimonio">Anillo de Matrimonio</option>
+                <option value="argollasDeMatrimonio">Argollas de matrimonio</option>
                 <option value="dije">Dije</option>
                 <option value="anillo">Anillo</option>
             </select>
 
-            {category === 'anillo' || category === 'anilloDeMatrimonio' ? (
-                <select
-                    className="shadow-inner w-full p-3 rounded-md bg-gray-100"
-                    name="medida"
-                    defaultValue=""
-                    required
-                >
-                    <option value="" disabled className='opacity-55'>-- Medida --</option>
-                    <option value="4">4</option>
-                    <option value="4.5">4.5</option>
-                    <option value="5">5</option>
-                    <option value="5.5">5.5</option>
-                    <option value="6">6</option>
-                    <option value="6.5">6.5</option>
-                    <option value="7">7</option>
-                    <option value="7.5">7.5</option>
-                    <option value="8">8</option>
-                    <option value="8.5">8.5</option>
-                    <option value="9">9</option>
-                    <option value="9.5">9.5</option>
-                    <option value="10">10</option>
-                    <option value="10.5">10.5</option>
-                    <option value="11">11</option>
-                    <option value="11.5">11.5</option>
-                    <option value="12">12</option>
-                </select>
-            ) : (
-                <>
-                    {category === 'esclava' || category === 'cadena' ? (
-                        <input 
-                            type="number"
-                            className="shadow-inner w-full p-2 rounded-md bg-gray-100"
-                            placeholder="Medida en cm. Ej. 23, 30, 21."
+            {category === 'anillo' || category === 'anilloDeMatrimonio' || category === 'argollasDeMatrimonio' ? (
+                    <div className="flex gap-2">
+                        <select
+                            className="shadow-inner w-full h-10 p-3 rounded-md bg-gray-100 border-l-4 border-black"
+                            defaultValue=""
                             name="medida"
-                            required
-                        />
-                        ) : (
-                        <div className="shadow-inner w-full p-2 rounded-md bg-gray-100 h-full"> 
-                            <p className="text-gray-400"> Sin medida. </p>
-                        </div>
-                    )}
-                </>
-            )}
+                        >
+                            <option value="" disabled className='opacity-55'>{category === 'argollasDeMatrimonio' ? 'Med. 1' : '-- Medida --'}</option>
+                            <option value="4">4</option>
+                            <option value="4.5">4.5</option>
+                            <option value="5">5</option>
+                            <option value="5.5">5.5</option>
+                            <option value="6">6</option>
+                            <option value="6.5">6.5</option>
+                            <option value="7">7</option>
+                            <option value="7.5">7.5</option>
+                            <option value="8">8</option>
+                            <option value="8.5">8.5</option>
+                            <option value="9">9</option>
+                            <option value="9.5">9.5</option>
+                            <option value="10">10</option>
+                            <option value="10.5">10.5</option>
+                            <option value="11">11</option>
+                            <option value="11.5">11.5</option>
+                            <option value="12">12</option>
+                        </select>
+                
+                        {category === 'argollasDeMatrimonio' && (
+                            <select
+                                className="shadow-inner w-full p-3 h-10 rounded-md bg-gray-100 border-l-4 border-black"
+                                defaultValue=""
+                                name="medida2"
+                            >
+                                <option value="" disabled className='opacity-55'>Med. 2</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                            </select>
+                        )}
+                    </div>
+                ) : (
+                    <>
+                        {category === 'esclava' || category === 'cadena' || category === 'dije'? (
+                                <input
+                                    type="number"
+                                    className="shadow-inner w-full p-2 h-10 rounded-md bg-gray-100 border-l-4 border-black"
+                                    placeholder="Medida en cm. Ej. 23, 30, 21."
+                                    name="medida"
+                                />
+                            ) : (
+                                <input
+                                    type="text"
+                                    className="shadow-inner w-full p-2 h-10 rounded-md bg-gray-100"
+                                    placeholder={category === '' ? 'Medida' : 'Unitalla'}
+                                    name="medida"
+                                    disabled
+                                />
+                        )}
+                    </>
+                )} 
         
 
             <div className="containerRadio containerRadioCustomization font-black mt-5 uppercase">
@@ -124,14 +150,14 @@ export default function CustomizationForm() {
 
             <input 
                 type="email"
-                className="shadow-inner w-full p-2 rounded-md bg-gray-100 xs:col-span-2"
+                className="shadow-inner w-full p-2 rounded-md bg-gray-100 xs:col-span-2 border-l-4 border-black"
                 placeholder="Email"
                 name="email"
                 required
             />
 
             <textarea
-                className="shadow-inner w-full p-2 rounded-md bg-gray-100 no-resize xs:col-span-2"
+                className="shadow-inner w-full p-2 rounded-md bg-gray-100 no-resize xs:col-span-2 border-l-4 border-black"
                 placeholder="Detalles adicionales de la pieza: "
                 name="detalles"
                 rows={3}
@@ -177,7 +203,7 @@ export default function CustomizationForm() {
                 
                 <input 
                     type="number"
-                    className={budget ? "shadow-inner w-full p-2 rounded-md bg-gray-100 block mt-4" : "hidden"}
+                    className={budget ? "shadow-inner w-full p-2 border-l-4 border-black rounded-md bg-gray-100 block mt-4" : "hidden"}
                     placeholder="Presupuesto"
                     name="presupuesto"
                     required
@@ -187,7 +213,7 @@ export default function CustomizationForm() {
             <div className="xs:col-span-2 flex justify-center">
                 <button 
                     type="submit"
-                    className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-md bg-gray-100"
+                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors py-2 px-8 rounded-xl bg-black text-balck uppercase text-white"
                 >
                 Enviar
                 </button>

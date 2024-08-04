@@ -1,7 +1,7 @@
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { addPiece } from "../../api/PieceAPI"
 import { PieceFormData } from "../../types"
 import { toast } from "react-toastify"
@@ -11,6 +11,9 @@ export default function AddPiece() {
     const token = localStorage.getItem('AUTH_TOKEN_JOMER')
     if(!token) return <Navigate to={'/admin/login'}/>
 
+    const params = useParams()
+    const pieceId = params.pieceId!
+
     const initialValues = {} as PieceFormData
     const navigate = useNavigate()
 
@@ -19,13 +22,16 @@ export default function AddPiece() {
     
     const {register, handleSubmit, reset, formState: {errors}, resetField} = useForm({defaultValues: initialValues}) 
 
+    const queryClient = useQueryClient()
     const { mutate } = useMutation({
         mutationFn: (formDataWithFiles : PieceFormData) => addPiece(formDataWithFiles),
         onError: (error) => {
             toast.error(error.message)
-            navigate('/admin/login')
         },
         onSuccess: (data) => {
+            queryClient.invalidateQueries({queryKey: ['pieces']})
+            queryClient.invalidateQueries({queryKey: ['piece', pieceId]})
+            navigate('/admin')
             toast.success(data)
             reset()
         }
@@ -47,19 +53,19 @@ export default function AddPiece() {
             <div className="flex justify-center mb-5">
                 <Link
                     to={'/admin'}
-                    className="shadow hover:shadow-inner hover:bg-gray-100 ease transition-colors py-2 px-4 rounded-xl bg-white text-balck uppercase"
+                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors py-2 px-4 rounded-xl bg-black text-balck uppercase text-white"
                 >
                     Regresar al panel de administración
                 </Link>
             </div>
 
             <form
-                className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-sm xs:grid-cols-2 bg-white"
+                className="mx-2 sm:mx-auto sm:w-full max-w-screen-sm shadow-xl grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-lg xs:grid-cols-2 bg-white border-y-[1.5rem] border-black"
                 onSubmit={handleSubmit(handleAddPiece)}
                 encType="multipart/form-data"
                 noValidate
             >
-                <h2 className="flex items-center text-[1.15rem] font-bold xs:col-span-2"><>Ingresa las características de tu pieza deseada:</></h2>
+                <h2 className="flex items-center text-[1.15rem] font-bold xs:col-span-2"><>Ingresa las características de la pieza nueva:</></h2>
 
                 <InputFieldsPieceForm 
                     register={register}
@@ -83,7 +89,7 @@ export default function AddPiece() {
                 <div className="xs:col-span-2 flex justify-center mt-5">
                     <button 
                         type="submit"
-                        className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-md bg-gray-100"
+                        className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors py-2 px-4 rounded-xl bg-black text-balck uppercase text-white"
                     >
                     Agregar Pieza
                     </button>

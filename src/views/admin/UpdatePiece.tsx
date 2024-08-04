@@ -51,10 +51,10 @@ export default function UpdatePiece() {
         mutationFn: ({formDataWithFiles, pieceId, photoSelected} : updatePieceProps) => updatePiece({formDataWithFiles, pieceId, photoSelected}),
         onError: (error) => {
             toast.error(error.message)
-            navigate('/admin/login')
         },
         onSuccess: (data) => {
             queryClient.invalidateQueries({queryKey: ['pieces']})
+            queryClient.invalidateQueries({queryKey: ['piece', pieceId]})
             toast.success(data)
             navigate('/admin')
             reset()
@@ -84,14 +84,14 @@ export default function UpdatePiece() {
             <div className="flex justify-center mb-5">
                 <Link
                     to={'/admin'}
-                    className="shadow hover:shadow-inner hover:bg-gray-100 ease transition-colors py-2 px-4 rounded-sm bg-white text-balck uppercase"
+                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors py-2 px-4 rounded-xl bg-black text-balck uppercase text-white"
                 >
                     Regresar al panel de administración
                 </Link>
             </div>
 
             <form
-                className="mx-auto w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-xl xs:grid-cols-2 bg-white"
+                className="mx-2 sm:mx-auto sm:w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-10 rounded-xl xs:grid-cols-2 bg-white border-y-[1.5rem] border-black"
                 onSubmit={handleSubmit(handleUpdatePiece)}
                 encType="multipart/form-data"
                 noValidate
@@ -106,10 +106,10 @@ export default function UpdatePiece() {
                     setCategory={setCategory}
                 />
                 
-                <div className="flex mx-auto col-span-2 justify-center gap-4 px-10 flex-wrap">
+                <div className="flex mx-auto xs:col-span-2 justify-center gap-4 px-10 flex-wrap">
                     {data.photos.map(photo => (
                         <div key={photo} className="w-32 cursor-pointer" onClick={() => setPhotoSelected(photo)}>
-                            <img className={photo === photoSelected ? `scale-105 rounded-lg outline outline-4 outline-blue-300` : `hover:scale-105 rounded-lg transition-transform`} src={photo} />
+                            <img className={photo === photoSelected ? `scale-105 rounded-lg outline outline-4 outline-blue-300` : `hover:scale-105 rounded-lg transition-transform`} src={`${photo}?t=${new Date().getTime()}`} />
                         </div>
                     ))}
                 </div>
@@ -126,13 +126,13 @@ export default function UpdatePiece() {
                         />
                     </div>
                 ) : (
-                    <p className="col-span-2 text-center">Selecciona la foto que deseas actualizar</p>
+                    <p className="xs:col-span-2 text-center">Selecciona la foto que deseas actualizar</p>
                 )}
         
                 <div className="xs:col-span-2 flex justify-center mt-5">
                     <button 
                         type="submit"
-                        className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-md bg-gray-100"
+                        className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors py-2 px-4 rounded-xl bg-black text-balck uppercase text-white"
                     >
                     Actualizar Pieza
                     </button>

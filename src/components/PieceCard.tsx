@@ -13,12 +13,12 @@ export default function PieceCard({piece} : PieceCardProps) {
     return (
         <div 
             key={piece._id}
-            className="rounded-lg overflow-hidden ease transition-transform hover:shadow-md h-full flex flex-col"
+            className="rounded-lg overflow-hidden ease transition-transform hover:shadow-md h-full flex flex-col bg-white"
         >
             <div className="overflow-hidden">
                 <img
                     className="hover:scale-105 ease duration-200 cursor-pointer"
-                    src={piece.photos[0]}
+                    src={`${piece.photos[0]}?t=${new Date().getTime()}`}
                     alt={`Photo 1 ${piece.name}`}
                     onClick={() => navigate(`/piece/${piece._id}`)}
                 />
@@ -31,7 +31,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
             </div>
             <button
-                className="px-5 py-4 w-full bg-gray-100 hover:bg-gray-200 uppercase font-black mt-5 text-sm"
+                className="px-5 py-4 w-full bg-gray-200 hover:bg-gray-200 uppercase font-black mt-5 text-sm"
                 onClick={() => navigate(`/piece/${piece._id}`)}
             >
                 Ver Detalles

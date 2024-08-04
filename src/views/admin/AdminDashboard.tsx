@@ -11,7 +11,8 @@ export default function AdminDashboard() {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pieces'],
         queryFn: getPieces,
-        retry: 2
+        retry: 2,
+        refetchOnWindowFocus: true
     })
 
     if(isError) return <Navigate to={'/404'}/>
@@ -67,7 +68,7 @@ export default function AdminDashboard() {
                                 </td>
                                 <td className="py-2 text-gray-900 text-center flex justify-center">
                                     <div className="flex w-16 rounded-xl overflow-hidden">
-                                        <img src={piece.photos[0]} alt=""/>
+                                        <img src={`${piece.photos[0]}?t=${new Date().getTime()}`} alt=""/>
                                     </div>
                                 </td>
                                 <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">

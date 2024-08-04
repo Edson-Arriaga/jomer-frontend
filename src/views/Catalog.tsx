@@ -23,7 +23,7 @@ export default function Products() {
 
     if (data) return (
         <>
-            <h1 className="text-center pt-10 text-5xl capitalize pb-5">Catálogo</h1>
+            <h1 className="text-center pt-10 text-5xl uppercase pb-6">Catálogo</h1>
 
             <div className="flex">
                 {/* <select
@@ -42,7 +42,7 @@ export default function Products() {
                     <option value="all">Todas las piezas</option>
                 
                 </select> */}
-                <div className="max-w-screen-xl mx-auto w-full grid p-5 pt-8 gap-x-2 gap-y-12 grid-cols-2 px-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+                <div className="max-w-screen-xl mx-auto w-full grid p-5 pt-2 gap-x-2 gap-y-12 grid-cols-2 px-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
                     {data.map(piece => (
                         <PieceCard
                             key={piece._id}
