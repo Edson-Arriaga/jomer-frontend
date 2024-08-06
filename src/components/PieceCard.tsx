@@ -18,7 +18,7 @@ export default function PieceCard({piece} : PieceCardProps) {
             <div className="overflow-hidden">
                 <img
                     className="hover:scale-105 ease duration-200 cursor-pointer"
-                    src={`${piece.photos[0]}?t=${new Date().getTime()}`}
+                    src={piece.photos[0]}
                     alt={`Photo 1 ${piece.name}`}
                     onClick={() => navigate(`/piece/${piece._id}`)}
                 />

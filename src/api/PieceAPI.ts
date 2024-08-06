@@ -76,5 +76,20 @@ export async function updatePiece({formDataWithFiles, pieceId, photoSelected} : 
     }
 }
 
+export async function deletePiece({pieceId} : {pieceId : Piece['_id']}) {
+    try {
+        const token = localStorage.getItem('AUTH_TOKEN_JOMER')
+
+        const url = `${import.meta.env.VITE_BACKEND_URL}/api/pieces/${pieceId}`
+        const {data} = await axios.delete<string>(url, {
+            headers: {'Authorization': `Bearer ${token}`}
+        })
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response){
+            throw new Error(error.response.data.error)
+        }
+    }
+}
 
 

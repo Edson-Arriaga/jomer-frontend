@@ -1,13 +1,19 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { getPieces } from "../../api/PieceAPI";
 import { useQuery } from "@tanstack/react-query";
 import { formatPrice } from "../../utils/formatPrice";
 import { categoryTranslations } from "../../locales/es";
+import DeleteModal from "../../components/DeleteModal";
 
 export default function AdminDashboard() {
     const token = localStorage.getItem('AUTH_TOKEN_JOMER')
     if(!token) return <Navigate to={'/admin/login'}/>
 
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
+    console.log(queryParams)
+    const activedeleteModal = queryParams.get('deleteModal')
+    
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pieces'],
         queryFn: getPieces,
@@ -76,13 +82,18 @@ export default function AdminDashboard() {
                                         className="font-medium text-blue-600 hover:underline"
                                         to={`actualizar-pieza/${piece._id}`}
                                     >Actualizar</Link>
-                                    <Link to="#" className="font-medium text-red-600 hover:underline">Eliminar</Link>
+                                    <Link
+                                        className="font-medium text-red-600 hover:underline"
+                                        to={location.pathname + `?deleteModal=${piece._id}`}
+                                        >Eliminar</Link>
                                 </td>
                             </tr>
                         ))}                 
                     </tbody>
                 </table>
             </div>
+                        
+            {activedeleteModal && <DeleteModal pieceId={activedeleteModal}/>}      
         </>
     )
 }
