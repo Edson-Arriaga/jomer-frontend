@@ -13,12 +13,12 @@ export default function Products() {
         retry: 2
     })
 
-    if(isError) return <Navigate to={'/404'}/>
     if(isLoading) return (
         <div className="w-full h-32 flex justify-center items-center">
             <p className="text-2xl animate-pulse">Cargando...</p>
         </div>
     )
+    if(isError) return <Navigate to={'/404'}/>
 
     if (data) return (
         <>
