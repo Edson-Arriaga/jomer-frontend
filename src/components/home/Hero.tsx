@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle";
 import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
-import TitleEffect from "./helpers/TitleEffect";
+import TitleEffect from "../helpers/TitleEffect";
 import { Link } from "react-router-dom";
 
 export default function Hero() {
