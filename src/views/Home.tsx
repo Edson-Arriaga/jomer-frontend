@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import CustomizationForm from '../components/CustomizationForm';
-import Hero from '../components/Hero';
-import CategoryCard from '../components/CategoryCard';
+import CustomizationForm from '../components/home/CustomizationForm';
+import Hero from '../components/home/Hero';
+import CategoryCard from '../components/home/CategoryCard';
 import useScreenSize from '../hooks/useScreenSize';
 
 export function Home() {

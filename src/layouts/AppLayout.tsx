@@ -1,8 +1,8 @@
 import { Link, Outlet } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
-import MenuModal from '../components/MenuModal';
+import MenuModal from '../components/appLayout/MenuModal';
 import { Transition } from '@headlessui/react';
-import HeaderContent from '../components/HeaderContent';
+import HeaderContent from '../components/appLayout/HeaderContent';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from '../components/helpers/ScrollToTop';

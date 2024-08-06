@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react'
 import Navegation from './Navegation'
-import IconLinks from './IconLinks'
+import IconLinks from './appLayout/IconLinks'
 
 type ModalProps = {
     isActiveModal: boolean
