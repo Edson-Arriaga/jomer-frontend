@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
-import Modal from '../components/Modal';
+import MenuModal from '../components/MenuModal';
 import { Transition } from '@headlessui/react';
 import HeaderContent from '../components/HeaderContent';
 import { ToastContainer } from 'react-toastify';
@@ -60,7 +60,7 @@ export default function AppLayout() {
                 </header>
             </Transition>
 
-            <Modal 
+            <MenuModal 
                 isActiveModal={isActiveModal}
                 setIsActiveModal={setIsActiveModal}
             />

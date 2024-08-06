@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import ScrollToTop from "../components/helpers/ScrollToTop";
 import HeaderContent from "../components/HeaderContent";
-import Modal from "../components/Modal";
+import MenuModal from "../components/MenuModal";
 import { useState } from "react";
 
 export default function AdminLayout() {
@@ -16,7 +16,7 @@ export default function AdminLayout() {
                 <HeaderContent setIsActiveModal={setIsActiveModal}/>
             </header>
     
-            <Modal
+            <MenuModal
                 isActiveModal={isActiveModal}
                 setIsActiveModal={setIsActiveModal}
             />

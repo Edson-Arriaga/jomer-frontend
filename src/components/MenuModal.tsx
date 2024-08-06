@@ -7,7 +7,7 @@ type ModalProps = {
     setIsActiveModal : React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Modal({isActiveModal, setIsActiveModal} : ModalProps) {
+export default function MenuModal({isActiveModal, setIsActiveModal} : ModalProps) {
     return (
         <Transition
             show={isActiveModal}
