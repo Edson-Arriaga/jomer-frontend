@@ -1,15 +1,15 @@
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
-import { useState } from "react"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { addPiece } from "../../api/PieceAPI"
 import { PieceFormData } from "../../types"
 import { toast } from "react-toastify"
 import InputFieldsPieceForm from "../../components/InputFieldsPieceForm"
+import useAuth from "../../hooks/useAuth"
 
 export default function AddPiece() {
-    const token = localStorage.getItem('AUTH_TOKEN_JOMER')
-    if(!token) return <Navigate to={'/admin/login'}/>
+    const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
 
     const params = useParams()
     const pieceId = params.pieceId!
@@ -45,6 +45,19 @@ export default function AddPiece() {
             toast.error("Ingresa de 1 a 5 fotos.")
         }
     }
+
+    useEffect(() => {
+        if(isErrorAuth){
+            toast.error(errorAuth?.message);
+            navigate('/admin/login');
+        }
+    }, [isErrorAuth, errorAuth]);
+
+    if (isLoadingAuth) return (
+        <div className="w-full h-32 flex justify-center items-center">
+            <p className="text-2xl animate-pulse">Cargando...</p>
+        </div>
+    )
     
     return (
         <>

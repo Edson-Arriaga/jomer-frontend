@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom"
 import ErrorMessage from "../../components/helpers/ErrorMessage"
 
 export default function AdminLogin() {
-
     const navigate = useNavigate()
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
+    
     const { mutate } = useMutation({
         mutationFn: () => login(password),
         onError: (error) => {

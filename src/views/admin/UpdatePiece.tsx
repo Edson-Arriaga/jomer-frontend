@@ -6,10 +6,11 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { PieceFormData } from "../../types"
 import { toast } from "react-toastify"
+import useAuth from "../../hooks/useAuth"
 
 export default function UpdatePiece() {
-    const token = localStorage.getItem('AUTH_TOKEN_JOMER')
-    if(!token) return <Navigate to={'/admin/login'}/>
+
+    const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
 
     const navigate = useNavigate()
     const [category, setCategory] = useState('')
@@ -71,7 +72,15 @@ export default function UpdatePiece() {
     }
 
     if(isError) return <Navigate to={'/404'}/>
-    if(isLoading) return (
+
+    useEffect(() => {
+        if(isErrorAuth){
+            toast.error(errorAuth?.message);
+            navigate('/admin/login');
+        }
+    }, [isErrorAuth, errorAuth]);
+
+    if(isLoading || isLoadingAuth) return (
         <div className="w-full h-32 flex justify-center items-center">
             <p className="text-2xl animate-pulse uppercase">Cargando...</p>
         </div>

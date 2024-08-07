@@ -1,17 +1,18 @@
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { getPieces } from "../../api/PieceAPI";
 import { useQuery } from "@tanstack/react-query";
 import { formatPrice } from "../../utils/formatPrice";
 import { categoryTranslations } from "../../locales/es";
 import DeleteModal from "../../components/DeleteModal";
+import useAuth from "../../hooks/useAuth";
+import { useEffect } from "react";
 
 export default function AdminDashboard() {
-    const token = localStorage.getItem('AUTH_TOKEN_JOMER')
-    if(!token) return <Navigate to={'/admin/login'}/>
+    const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
 
+    const navigate = useNavigate()
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
-    console.log(queryParams)
     const activedeleteModal = queryParams.get('deleteModal')
     
     const { data, isLoading, isError } = useQuery({
@@ -21,8 +22,20 @@ export default function AdminDashboard() {
         refetchOnWindowFocus: true
     })
 
+    const handleClick = () => {
+        navigate('/')
+        localStorage.removeItem('AUTH_TOKEN_JOMER')
+    }
+
     if(isError) return <Navigate to={'/404'}/>
-    if(isLoading) return (
+    
+    useEffect(() => {
+        if(isErrorAuth){
+            navigate('/admin/login')
+        }
+    }, [isErrorAuth, errorAuth])
+
+    if(isLoading || isLoadingAuth) return (
         <div className="w-full h-32 flex justify-center items-center">
             <p className="text-2xl animate-pulse">Cargando...</p>
         </div>
@@ -39,7 +52,7 @@ export default function AdminDashboard() {
                     Agregar Pieza
                 </Link>
             </div>
-            <div className="relative overflow-x-auto shadow-lg sm:rounded-md max-w-screen-lg mx-10 xl:mx-auto mb-20">
+            <div className="relative overflow-x-auto shadow-lg sm:rounded-md max-w-screen-lg mx-10 xl:mx-auto mb-8">
                 <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
                     <thead className="text-xs uppercase bg-gray-50 dark:bg-black text-white">
                         <tr className="text-sm">
@@ -91,6 +104,15 @@ export default function AdminDashboard() {
                         ))}                 
                     </tbody>
                 </table>
+            </div>
+
+            <div className="flex justify-center mb-10">
+                <button
+                    className="shadow hover:shadow-inner hover:bg-red-800 ease transition-colors p-2 rounded-md bg-red-600 text-white uppercase"
+                    onClick={handleClick}
+                >
+                    Cerrar Sesión
+                </button>
             </div>
                         
             {activedeleteModal && <DeleteModal pieceId={activedeleteModal}/>}      
