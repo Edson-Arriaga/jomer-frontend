@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { addPiece } from "../../api/PieceAPI"
-import { PieceFormData } from "../../types"
+import { PieceFormData, PieceFormDataWithFiles } from "../../types"
 import { toast } from "react-toastify"
 import InputFieldsPieceForm from "../../components/InputFieldsPieceForm"
 import useAuth from "../../hooks/useAuth"
@@ -24,7 +24,7 @@ export default function AddPiece() {
 
     const queryClient = useQueryClient()
     const { mutate } = useMutation({
-        mutationFn: (formDataWithFiles : PieceFormData) => addPiece(formDataWithFiles),
+        mutationFn: (formDataWithFiles : PieceFormDataWithFiles) => addPiece(formDataWithFiles),
         onError: (error) => {
             toast.error(error.message)
         },
@@ -39,7 +39,7 @@ export default function AddPiece() {
 
     const handleAddPiece = (formData : PieceFormData) => {
         if(photos !== null && photos.length <= 5){
-            const formDataWithFiles = {...formData, photos}
+            const formDataWithFiles : PieceFormDataWithFiles = {...formData, photos}
             mutate(formDataWithFiles)
         }else{
             toast.error("Ingresa de 1 a 5 fotos.")
@@ -48,10 +48,10 @@ export default function AddPiece() {
 
     useEffect(() => {
         if(isErrorAuth){
-            toast.error(errorAuth?.message);
-            navigate('/admin/login');
+            toast.error(errorAuth?.message)
+            navigate('/admin/login')
         }
-    }, [isErrorAuth, errorAuth]);
+    }, [isErrorAuth, errorAuth])
 
     if (isLoadingAuth) return (
         <div className="w-full h-32 flex justify-center items-center">
@@ -92,10 +92,11 @@ export default function AddPiece() {
                     <label htmlFor="images" className="text-center uppercase mb-4 font-bold">Sube al menos una foto de la pieza:</label>
                     <input 
                         type="file" 
+                        name="photos"
                         accept="image/jpeg, image/jpg"
                         className="pl-14 pt-3 pb-1"
                         onChange={e => setPhotos(e.target.files)}
-                        multiple  
+                        multiple
                     />
                 </div>
         

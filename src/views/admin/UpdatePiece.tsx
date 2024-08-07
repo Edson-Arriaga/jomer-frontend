@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { getPieceById, updatePiece, updatePieceProps } from "../../api/PieceAPI"
 import InputFieldsPieceForm from "../../components/InputFieldsPieceForm"
@@ -71,14 +71,14 @@ export default function UpdatePiece() {
         }
     }
 
-    if(isError) return <Navigate to={'/404'}/>
+    if(isError) navigate('/404')
 
     useEffect(() => {
         if(isErrorAuth){
-            toast.error(errorAuth?.message);
-            navigate('/admin/login');
+            toast.error(errorAuth?.message)
+            navigate('/admin/login')
         }
-    }, [isErrorAuth, errorAuth]);
+    }, [isErrorAuth, errorAuth])
 
     if(isLoading || isLoadingAuth) return (
         <div className="w-full h-32 flex justify-center items-center">

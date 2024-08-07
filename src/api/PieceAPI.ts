@@ -1,10 +1,9 @@
 import { isAxiosError } from "axios"
-import { Piece, PieceFormData, pieceSchema, piecesSchema } from "../types"
+import { Piece, PieceFormData, PieceFormDataWithFiles, pieceSchema, piecesSchema } from "../types"
 import api from "../lib/axios"
 
-export async function addPiece(formDataWithFiles : PieceFormData) {
+export async function addPiece(formDataWithFiles : PieceFormDataWithFiles) {
     if(!formDataWithFiles.measure) formDataWithFiles.measure = 0
-    
     try {
         const { data } = await api.post<string>(`/pieces`, formDataWithFiles)
         return data

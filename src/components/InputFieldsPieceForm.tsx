@@ -43,7 +43,8 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                     placeholder="Precio"
                     {...register("price", {
                         required: "El PRECIO es obligatorio.",
-                        valueAsNumber: true
+                        valueAsNumber: true,
+                        min: {value: 0, message: 'Ingresa un precio mayor a 0.'}
                     })}
                 />
                 {errors.price && (
@@ -81,6 +82,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                     placeholder="Peso"
                     {...register("weight", {
                         required: "El PESO es obligatorio.",
+                        min: {value: 0, message: 'Ingresa un precio mayor a 0.'},
                         valueAsNumber: true
                     })}
                 />
@@ -159,7 +161,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                                     placeholder="Medida en cm. Ej. 23, 30, 21."
                                     {...register("measure", {
                                         required: "La MEDIDA es obligatoria.",
-                                        min: {value: 1, message: "La MEDIDA debe ser mayor a 0"},
+                                        min: {value: 0, message: "La MEDIDA debe ser mayor a 0"},
                                         valueAsNumber: true,
                                     })}
                                 />
