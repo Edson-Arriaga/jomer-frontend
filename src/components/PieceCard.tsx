@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom"
 import { Piece } from "../types"
 import { formatPrice } from "../utils/formatPrice"
 import { useState } from "react"
-import Loading from "./helpers/Loading"
 import { SwiperSlide, Swiper } from "swiper/react"
 import "swiper/css/bundle";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import LoadingPhoto from "./helpers/LoadingPhoto"
 
 type PieceCardProps = {
     piece: Piece
@@ -23,7 +23,7 @@ export default function PieceCard({piece} : PieceCardProps) {
         >
             <div>
                 <Swiper
-                        loop={true}   
+                        loop={piece.photos.length > 1}   
                         pagination={{
                             clickable: true,
                         }}
@@ -37,8 +37,8 @@ export default function PieceCard({piece} : PieceCardProps) {
                         className="mySwiper"
                 >
                     {piece.photos.map((imageURL, i) => (
-                        <SwiperSlide className="overflow-hidden">
-                            {isLoading && <Loading img="12" contHeight="52" />}
+                        <SwiperSlide key={i} className="overflow-hidden">
+                            {isLoading && <LoadingPhoto/>}
                             <img
                                 className="hover:scale-105 ease duration-200 cursor-pointer"
                                 src={imageURL}

@@ -115,6 +115,8 @@ img {
   transition: 0.4s ease-in-out all;
 }
 
+/* Styles for swiper */
+
 .swiper-button-prev:after, .swiper-button-next:after{
   color: white;
   transform: scale(0.5);
@@ -131,4 +133,13 @@ img {
 
 .swiper-pagination-bullet{
   background-color: white;
+}
+
+/* Styles for tailwind animation */
+
+@layer utilities {
+  .spin-slow {
+    @apply animate-spin;
+    animation-duration: 2.5s; /* Cambia la duración de la animación a 2 segundos */
+  }
 }

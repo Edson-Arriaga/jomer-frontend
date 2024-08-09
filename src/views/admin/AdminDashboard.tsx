@@ -7,6 +7,7 @@ import DeleteModal from "../../components/DeleteModal";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import Loading from "../../components/helpers/Loading";
+import LoadingPhoto from "../../components/helpers/LoadingPhoto";
 
 export default function AdminDashboard() {
     const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
@@ -35,7 +36,7 @@ export default function AdminDashboard() {
         }
     }, [isErrorAuth, errorAuth])
     
-    if(isLoading || isLoadingAuth) return <Loading img="20" contHeight="52" mt="10"/>
+    if(isLoading || isLoadingAuth) return (<Loading />)
     if(isError) return <Navigate to={'/404'}/>
     
     if (data) return (
@@ -85,7 +86,7 @@ export default function AdminDashboard() {
                                 <td className="py-2 text-gray-900 text-center flex justify-center">
 
                                     <div className="w-16 rounded-xl overflow-hidden">
-                                        { isLoadingImage &&  <Loading img={'10'} contHeight={'full'}/>}
+                                        { isLoadingImage && <LoadingPhoto />}
                                         <img 
                                             src={`${piece.photos[0]}?t=${new Date().getTime()}`} 
                                             alt={`Main photo of ${piece.name}`}
