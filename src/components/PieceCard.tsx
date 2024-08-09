@@ -4,6 +4,9 @@ import { formatPrice } from "../utils/formatPrice"
 import { useState } from "react"
 import Loading from "./helpers/Loading"
 import useScreenSize from "../hooks/useScreenSize"
+import { SwiperSlide, Swiper } from "swiper/react"
+import "swiper/css/bundle";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 type PieceCardProps = {
     piece: Piece
@@ -20,16 +23,39 @@ export default function PieceCard({piece} : PieceCardProps) {
             key={piece._id}
             className="rounded-lg overflow-hidden ease shadow-md hover:bg-gray-100 h-full flex flex-col bg-white transition-colors"
         >
-            <div className="overflow-hidden">
-                {isLoading && <Loading img={'14'} contHeight={width >= 640 ? '52' : '24'}/>}
-                <img
-                    className="hover:scale-105 ease duration-200 cursor-pointer"
-                    src={piece.photos[0]}
-                    alt={`Photo 1 ${piece.name}`}
-                    onClick={() => navigate(`/piece/${piece._id}`)}
-                    onLoad={() => setIsLoading(false)}
-                />
+            <div>
+                <Swiper
+                        loop={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={{
+                            enabled: true
+                        }}
+                        modules={[Pagination, Navigation, Autoplay]}
+                        autoplay={{
+                            delay: Math.random() > 0.5 ? 3000 : 3500
+                        }}
+                        className="mySwiper"
+                >
+                    {piece.photos.map((imageURL, i) => (
+                        <SwiperSlide className="overflow-hidden">
+                            {isLoading && <Loading img={'14'} contHeight={width >= 640 ? '52' : '24'}/>}
+                            <img
+                                className="hover:scale-105 ease duration-200 cursor-pointer"
+                                src={imageURL}
+                                alt={`Photo ${i} ${piece.name}`}
+                                onClick={() => navigate(`/piece/${piece._id}`)}
+                                onLoad={() => setIsLoading(false)}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
+                
+            
+                
+            
 
             <div className="text-center flex flex-col pt-5 flex-grow">
                 <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.4rem] px-2 uppercase">{piece.name}</h1>

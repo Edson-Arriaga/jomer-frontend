@@ -114,3 +114,21 @@ img {
   color: white;
   transition: 0.4s ease-in-out all;
 }
+
+.swiper-button-prev:after, .swiper-button-next:after{
+  color: white;
+  transform: scale(0.5);
+  opacity: 0.6;
+  font-size: 3.5rem;
+  font-weight: 900;
+}
+
+@media (min-width: 640px) {
+  .swiper-button-prev:after, .swiper-button-next:after{
+      transform: scale(0.65);
+  }
+}
+
+.swiper-pagination-bullet{
+  background-color: white;
+}
