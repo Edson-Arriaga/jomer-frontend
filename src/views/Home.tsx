@@ -28,14 +28,14 @@ export function Home() {
             
             <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-14">Nuestras Piezas</h1>
             <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
-                <Link to={'catalogo/chains'}>
+                <Link to={'catalogo/chain'}>
                 <CategoryCard
                     image='earings.webp'
                     category='Cadenas'
                     rotate='rotate-12'
                 />
                 </Link>
-                <Link to={'catalogo/cuffBracelets'}>
+                <Link to={'catalogo/cuffBracelet'}>
                 <CategoryCard
                     image='earings.webp'
                     category='Esclavas'
@@ -51,15 +51,15 @@ export function Home() {
                 />
                 </Link>
                 
-                <Link to={'catalogo/engagementRings'}>
+                <Link to={'catalogo/marriage'}>
                 <CategoryCard
                     image='earings.webp'
-                    category='Anillos de compromiso'
+                    category='Matrimonio'
                     rotate='rotate-12'
                 />
                 </Link>
                 
-                <Link to={'catalogo/pendants'}>
+                <Link to={'catalogo/pendant'}>
                 <CategoryCard
                     image='earings.webp'
                     category='Dijes'
@@ -67,7 +67,7 @@ export function Home() {
                 />
                 </Link>
                 
-                <Link to={'catalogo/rings'}>
+                <Link to={'catalogo/ring'}>
                 <CategoryCard
                     image='earings.webp'
                     category='Anillos'

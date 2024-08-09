@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { PieceFormData } from "../../types"
 import { toast } from "react-toastify"
 import useAuth from "../../hooks/useAuth"
+import Loading from "../../components/helpers/Loading"
 
 export default function UpdatePiece() {
 
@@ -80,11 +81,7 @@ export default function UpdatePiece() {
         }
     }, [isErrorAuth, errorAuth])
 
-    if(isLoading || isLoadingAuth) return (
-        <div className="w-full h-32 flex justify-center items-center">
-            <p className="text-2xl animate-pulse uppercase">Cargando...</p>
-        </div>
-    )
+    if(isLoading || isLoadingAuth) return <div className="pt-10"><Loading img={'20'} contHeight={'54'}/></div>
 
     if (data) return (
         <>

@@ -5,7 +5,8 @@ import { formatPrice } from "../../utils/formatPrice";
 import { categoryTranslations } from "../../locales/es";
 import DeleteModal from "../../components/DeleteModal";
 import useAuth from "../../hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Loading from "../../components/helpers/Loading";
 
 export default function AdminDashboard() {
     const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
@@ -14,6 +15,7 @@ export default function AdminDashboard() {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
     const activedeleteModal = queryParams.get('deleteModal')
+    const [isLoadingImage, setIsLoadingImage] = useState(true)
     
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pieces'],
@@ -27,19 +29,14 @@ export default function AdminDashboard() {
         localStorage.removeItem('AUTH_TOKEN_JOMER')
     }
 
-    if(isError) return <Navigate to={'/404'}/>
-    
     useEffect(() => {
         if(isErrorAuth){
             navigate('/admin/login')
         }
     }, [isErrorAuth, errorAuth])
-
-    if(isLoading || isLoadingAuth) return (
-        <div className="w-full h-32 flex justify-center items-center">
-            <p className="text-2xl animate-pulse">Cargando...</p>
-        </div>
-    )
+    
+    if(isLoading || isLoadingAuth) return <div className="pt-10"><Loading img={'20'} contHeight={'54'}/></div>
+    if(isError) return <Navigate to={'/404'}/>
     
     if (data) return (
         <>
@@ -86,8 +83,14 @@ export default function AdminDashboard() {
                                     {formatPrice(piece.price)}
                                 </td>
                                 <td className="py-2 text-gray-900 text-center flex justify-center">
-                                    <div className="flex w-16 rounded-xl overflow-hidden">
-                                        <img src={`${piece.photos[0]}?t=${new Date().getTime()}`} alt=""/>
+
+                                    <div className="w-16 rounded-xl overflow-hidden">
+                                        { isLoadingImage &&  <Loading img={'10'} contHeight={'full'}/>}
+                                        <img 
+                                            src={`${piece.photos[0]}?t=${new Date().getTime()}`} 
+                                            alt={`Main photo of ${piece.name}`}
+                                            onLoad={() => setIsLoadingImage(false)}
+                                        />
                                     </div>
                                 </td>
                                 <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">

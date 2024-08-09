@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { Piece } from "../types"
 import { formatPrice } from "../utils/formatPrice"
+import { useState } from "react"
+import Loading from "./helpers/Loading"
+import useScreenSize from "../hooks/useScreenSize"
 
 type PieceCardProps = {
     piece: Piece
@@ -9,18 +12,22 @@ type PieceCardProps = {
 export default function PieceCard({piece} : PieceCardProps) {
   
     const navigate = useNavigate();
-    
+    const [isLoading, setIsLoading] = useState(true)
+    const {width} = useScreenSize()
+
     return (
         <div 
             key={piece._id}
-            className="rounded-lg overflow-hidden ease transition-transform hover:shadow-md h-full flex flex-col bg-white"
+            className="rounded-lg overflow-hidden ease shadow-md hover:bg-gray-100 h-full flex flex-col bg-white transition-colors"
         >
             <div className="overflow-hidden">
+                {isLoading && <Loading img={'14'} contHeight={width >= 640 ? '52' : '24'}/>}
                 <img
                     className="hover:scale-105 ease duration-200 cursor-pointer"
                     src={piece.photos[0]}
                     alt={`Photo 1 ${piece.name}`}
                     onClick={() => navigate(`/piece/${piece._id}`)}
+                    onLoad={() => setIsLoading(false)}
                 />
             </div>
 
@@ -31,7 +38,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
             </div>
             <button
-                className="px-5 py-4 w-full bg-gray-200 hover:bg-gray-200 uppercase font-black mt-5 text-sm"
+                className="px-5 py-4 w-full bg-black hover:bg-gray-900 uppercase font-black mt-5 text-sm text-white"
                 onClick={() => navigate(`/piece/${piece._id}`)}
             >
                 Ver Detalles

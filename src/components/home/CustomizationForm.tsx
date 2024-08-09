@@ -136,11 +136,11 @@ export default function CustomizationForm() {
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Blanco"/>
-                    <span className="font-black">Blanco<p className="text-white">....</p></span>
+                    <span className="font-black">Blanco<p className="text-transparent">....</p></span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Rosa"/>
-                    <span className="font-black">Rosa<p className="text-white">...........</p></span>
+                    <span className="font-black">Rosa<p className="text-transparent">...........</p></span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Tricolor"/>

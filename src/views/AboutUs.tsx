@@ -15,7 +15,7 @@ export default function AboutUs() {
                 {width > 1024 ? (
                     <>
                     <div className="flex justify-center">
-                        <div className="w-full h-hero-lg bg-about-us-1 bg-fixed bg-cover"/>
+                        <div className="w-full h-hero-lg bg-about-us-1 bg-fixed bg-cover bg"/>
                     </div>
                     <div className="flex justify-center">
                         <div className="w-full h-hero-lg bg-about-us-2 bg-fixed bg-contain"/>
