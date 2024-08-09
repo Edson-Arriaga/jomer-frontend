@@ -29,7 +29,7 @@ export default function Products() {
         setCategory(e.target.value)
     }
 
-    if (isLoading) return <Loading img="20" contHeight="52"/>
+    if (isLoading) return <Loading img="20" contHeight="52" mt="10"/>
     if (isError) return <Navigate to={'/404'}/>
 
     return (
@@ -43,7 +43,7 @@ export default function Products() {
                         onClick={() => setIsFilterActive(isFilterActive => isFilterActive ? false : true)}
                     >
                         <div className="w-5 h-5 rounded-full animate-pulse mr-2 mb-[0.1rem]">
-                            <img src="/images/logos/white-logo.png" alt="complete-white-logo" />
+                            <img src="/images/logos/white-logo.webp" alt="complete-white-logo" />
                         </div>
                         <p className="text-white font-bold uppercase">Filtrar Por</p>
                     </div>

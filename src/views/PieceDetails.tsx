@@ -13,7 +13,7 @@ export default function PieceDetails() {
         retry: 1
     })
 
-    if(isLoading) return <Loading img="20" contHeight="52"/>
+    if(isLoading) return <Loading img="20" contHeight="52" mt="10"/>
     if(isError) return <Navigate to={'/404'}/>
 
     if (data) return (

@@ -73,7 +73,7 @@ export default function AppLayout() {
             <footer className='bg-white w-full grid grid-cols-1 gap-10 py-10 md:grid-cols-3 md:p-0 md:h-44'>
                 <div className='flex items-center justify-center'>
                     <img 
-                        src="/images/logos/complete-black-logo.png" 
+                        src="/images/logos/complete-black-logo.webp" 
                         alt="Logo menu"
                         className='w-20'
                     />

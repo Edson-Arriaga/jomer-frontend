@@ -81,7 +81,7 @@ export default function UpdatePiece() {
         }
     }, [isErrorAuth, errorAuth])
 
-    if(isLoading || isLoadingAuth) return <Loading img="20" contHeight="52"/>
+    if(isLoading || isLoadingAuth) return <Loading img="20" contHeight="52" mt="10"/>
 
     if (data) return (
         <>

@@ -39,7 +39,7 @@ export default function MenuModal({isActiveModal, setIsActiveModal} : ModalProps
                 />
 
                 <img 
-                    src="/images/logos/vertical-black-logo.png"
+                    src="/images/logos/vertical-black-logo.webp"
                     alt="Jomer Logo"
                     className='absolute w-64 z-10 -right-16 top-[7.2rem]' 
                 />

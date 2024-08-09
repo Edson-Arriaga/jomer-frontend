@@ -3,7 +3,6 @@ import { Piece } from "../types"
 import { formatPrice } from "../utils/formatPrice"
 import { useState } from "react"
 import Loading from "./helpers/Loading"
-import useScreenSize from "../hooks/useScreenSize"
 import { SwiperSlide, Swiper } from "swiper/react"
 import "swiper/css/bundle";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -16,7 +15,6 @@ export default function PieceCard({piece} : PieceCardProps) {
   
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true)
-    const {width} = useScreenSize()
 
     return (
         <div 
@@ -25,12 +23,12 @@ export default function PieceCard({piece} : PieceCardProps) {
         >
             <div>
                 <Swiper
-                        loop={true}
+                        loop={true}   
                         pagination={{
                             clickable: true,
                         }}
                         navigation={{
-                            enabled: true
+                            enabled: true,
                         }}
                         modules={[Pagination, Navigation, Autoplay]}
                         autoplay={{
@@ -40,7 +38,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                 >
                     {piece.photos.map((imageURL, i) => (
                         <SwiperSlide className="overflow-hidden">
-                            {isLoading && <Loading img={'14'} contHeight={width >= 640 ? '52' : '24'}/>}
+                            {isLoading && <Loading img="12" contHeight="52" />}
                             <img
                                 className="hover:scale-105 ease duration-200 cursor-pointer"
                                 src={imageURL}
@@ -52,10 +50,6 @@ export default function PieceCard({piece} : PieceCardProps) {
                     ))}
                 </Swiper>
             </div>
-                
-            
-                
-            
 
             <div className="text-center flex flex-col pt-5 flex-grow">
                 <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.4rem] px-2 uppercase">{piece.name}</h1>

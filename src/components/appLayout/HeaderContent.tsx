@@ -13,7 +13,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                 <div className='lg:col-span-3'>
                     <Link className="overflow-hidden" to={'/'}>
                         <div className="absolute -top-[4.3rem] w-56 left-1 lg:left-3">
-                            <img src="/images/logos/horizontal-black-logo.png" alt="jomer-horizontal-black-logo" />
+                            <img src="/images/logos/horizontal-black-logo.webp" alt="jomer-horizontal-black-logo" />
                         </div>
                     </Link>
                 </div>

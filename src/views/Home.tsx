@@ -12,13 +12,13 @@ export function Home() {
             <section className='relative'>
                 {width > 1024 ? (
                 <img 
-                    src="/images/logos/vertical-white-logo.png"
+                    src="/images/logos/vertical-white-logo.webp"
                     alt="Jomer Logo"
                     className='absolute w-96 z-10 -right-20 bottom-14' 
                 />
                 ) : (
                 <img 
-                    src="/images/logos/complete-white-logo.png"
+                    src="/images/logos/complete-white-logo.webp"
                     alt="Jomer Logo"
                     className='absolute w-24 z-10 right-6 bottom-6' 
                 />
