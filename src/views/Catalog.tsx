@@ -29,7 +29,7 @@ export default function Products() {
         setCategory(e.target.value)
     }
 
-    if (isLoading) return <Loading img={'20'} contHeight={'52'}/>
+    if (isLoading) return <Loading img="20" contHeight="52"/>
     if (isError) return <Navigate to={'/404'}/>
 
     return (

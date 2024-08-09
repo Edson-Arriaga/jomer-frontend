@@ -35,7 +35,7 @@ export default function AdminDashboard() {
         }
     }, [isErrorAuth, errorAuth])
     
-    if(isLoading || isLoadingAuth) return <div className="pt-10"><Loading img={'20'} contHeight={'54'}/></div>
+    if(isLoading || isLoadingAuth) return <Loading img={'20'} contHeight={'52'}/>
     if(isError) return <Navigate to={'/404'}/>
     
     if (data) return (
