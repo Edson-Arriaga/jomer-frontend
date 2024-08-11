@@ -65,7 +65,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                     <option value="chain">Cadena</option>
                     <option value="cuffBracelet">Esclava</option>
                     <option value="earings">Aretes</option>
-                    <option value="engagementRing">Anillo de matrimonio</option>
+                    <option value="engagementRing">Anillo de Compromiso</option>
                     <option value="weddingRing">Argollas de matrimonio</option>
                     <option value="pendant">Dije</option>
                     <option value="ring">Anillo</option>
@@ -161,8 +161,8 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                                     placeholder="Medida en cm. Ej. 23, 30, 21."
                                     {...register("measure", {
                                         required: "La MEDIDA es obligatoria.",
-                                        min: {value: 0, message: "La MEDIDA debe ser mayor a 0"},
-                                        valueAsNumber: true,
+                                        min: {value: 1, message: "La MEDIDA debe ser mayor a 0"},
+                                        valueAsNumber: true
                                     })}
                                 />
                             ) : (

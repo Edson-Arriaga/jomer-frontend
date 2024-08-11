@@ -26,13 +26,13 @@ export default function CustomizationForm() {
                 <option value="cadena">Cadena</option>
                 <option value="esclava">Esclava</option>
                 <option value="aretes">Aretes</option>
-                <option value="anilloDeMatrimonio">Anillo de Matrimonio</option>
+                <option value="anilloDeCompromiso">Anillo de Compromiso</option>
                 <option value="argollasDeMatrimonio">Argollas de matrimonio</option>
                 <option value="dije">Dije</option>
                 <option value="anillo">Anillo</option>
             </select>
 
-            {category === 'anillo' || category === 'anilloDeMatrimonio' || category === 'argollasDeMatrimonio' ? (
+            {category === 'anillo' || category === 'anilloDeCompromiso' || category === 'argollasDeMatrimonio' ? (
                     <div className="flex gap-2">
                         <select
                             className="shadow-inner w-full h-10 p-3 rounded-md bg-gray-100 border-l-4 border-black"
@@ -112,19 +112,19 @@ export default function CustomizationForm() {
                 <h3 className="text-center uppercase mb-4 col-span-2 text-lg">Kilataje</h3>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="10K"/>
-                    <span className="font-black">10k</span>
+                    <span className="font-black before:bg-amber-100">10k</span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="12K"/>
-                    <span className="font-black">12k</span>
+                    <span className="font-black before:bg-amber-200">12k</span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="14K"/>
-                    <span className="font-black">14k</span>
+                    <span className="font-black before:bg-amber-300">14k</span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="kilataje" value="18K"/>
-                    <span className="font-black">18k</span>
+                    <span className="font-black before:bg-amber-400">18k</span>
                 </label>
             </div>
 
@@ -132,7 +132,7 @@ export default function CustomizationForm() {
                 <h3 className="text-center uppercase mb-4 col-span-2 text-lg">Color De Oro</h3>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Amarillo"/>
-                    <span className="font-black">Amarillo</span>
+                    <span className="font-black before:bg-amber-200">Amarillo</span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Blanco"/>
@@ -140,11 +140,11 @@ export default function CustomizationForm() {
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Rosa"/>
-                    <span className="font-black">Rosa<p className="text-transparent">...........</p></span>
+                    <span className="font-black before:bg-rose-300">Rosa<p className="text-transparent">...........</p></span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
                     <input type="radio" name="colorDeOro" value="Tricolor"/>
-                    <span className="font-black">Tricolor</span>
+                    <span className="font-black before:bg-triColor">Tricolor</span>
                 </label>
             </div>
 

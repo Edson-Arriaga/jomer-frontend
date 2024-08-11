@@ -52,13 +52,17 @@ export default function PieceCard({piece} : PieceCardProps) {
             </div>
 
             <div className="text-center flex flex-col pt-5 flex-grow">
-                <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.4rem] px-2 uppercase">{piece.name}</h1>
-                <p className="text-red-700 text-xl lg:text-3xl mt-2 font-black sm:mt-4 mb-1">{formatPrice(piece.price)}</p>
-                <p className="text-md sm:text-lg">Medida: <span className="font-black">{piece.measure}</span></p>
+                <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.3rem] px-2 uppercase">{piece.name}</h1>
+                <p className="text-red-700 text-xl lg:text-[1.7rem] mt-2 font-black sm:mt-2 mb-2">{formatPrice(piece.price)}</p>
+                {piece.category == 'weddingRing'
+                    ? (<p className="text-md sm:text-lg">Medidas: <span className="font-black">{piece.measure} Y {piece.measure2}</span></p>)
+                    : (<p className="text-md sm:text-lg">Medida: <span className="font-black">{piece.measure === 0 ? 'Unitalla' : `${piece.measure} ${["chain", "cuffBracelet", "pendant"].includes(piece.category) ? ' cm.' : ''}`} </span></p>)
+                }
+                <p className="text-md sm:text-lg">Kilataje  : <span className="font-black">{piece.caratage} </span></p>
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
             </div>
             <button
-                className="px-5 py-4 w-full bg-black hover:bg-gray-900 uppercase font-black mt-5 text-sm text-white"
+                className="px-5 py-2 w-full bg-black hover:bg-gray-900 uppercase font-black mt-5 text-sm text-white"
                 onClick={() => navigate(`/piece/${piece._id}`)}
             >
                 Ver Detalles

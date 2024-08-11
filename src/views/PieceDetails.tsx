@@ -13,29 +13,12 @@ export default function PieceDetails() {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['piece', pieceId],
         queryFn: () => getPieceById(pieceId),
-        retry: 1,
-        enabled: false
+        retry: 1
     })
 
-    const [photoSelected, setPhotoSelected] = useState('')
+    console.log(data)
 
-    // const data = {
-    //     name: "Cadena CArtier 14K",
-    //     description: "Cadena CArtier 14K Cadena CArtier 14KCadena CArtier 14KCadena CArtier 14KCadena CArtier 14K",
-    //     price: 10,
-    //     category: "chain",
-    //     measure: 23,
-    //     measure2: 4.5,
-    //     weight: 20,
-    //     caratage: "24K",
-    //     photos: [
-    //         "/images/homeImages/earings.webp",
-    //         "/images/logos/black-logo.webp",
-    //         "/images/logos/horizontal-black-logo.webp",
-    //         "/images/logos/vertical-black-logo.webp",
-    //         "/images/homeImages/earings.webp"
-    //     ]
-    // }
+    const [photoSelected, setPhotoSelected] = useState('')
 
     if(isLoading) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
@@ -52,41 +35,41 @@ export default function PieceDetails() {
                         className="cursor-pointer opacity-80 hover:opacity-100 hover:scale-105 lg:-translate-x-5"
                         onClick={() => setPhotoSelected(photo)}
                     >
-                        <img src={photo} alt={`photo ${i + 1} of ${data.name}`} />
+                        <img className="w-20" src={photo} alt={`photo ${i + 1} of ${data.name}`} />
                     </div>
                 ))}
             </div>
            
             <div className="lg:col-span-6 flex flex-col gap-5">
-                <h1 className="font-bold text-3xl uppercase">{data.name}</h1>
+                <h1 className="font-bold text-3xl uppercase tracking-wide">{data.name}</h1>
                 <p>{data.description}</p>
                 <p className="text-red-700 text-4xl">{formatPrice(data.price)}</p>
                 
-                <table className="text-sm text-left rtl:text-right w-full max-w-md mx-auto rounded-sm flex-grow">
-                    <tr className="uppercase bg-gray-200 text-center border border-white">
-                        <th className="px-6 py-3 font-black text-white bg-black uppercase">Kilataje</th>
-                        <td className="font-black">{data.caratage}</td>
+                <table className="text-sm text-left w-full mx-auto rounded-sm flex-grow shadow-inner">
+                    <tr className="bg-gray-100 border-b border-black shadow-inner">
+                        <th className="px-6 py-4 font-extrabold tracking-wider">Kilataje</th>
+                        <td className="px-6 py-4 font-extrabold">{data.caratage}</td>
                     </tr>
-                    <tr className="uppercase bg-gray-200 text-center border border-white">
-                        <th className="px-6 py-3 font-black text-white bg-black uppercase">Medida</th>
-                        <td className="font-black">{data.measure}</td>
+                    <tr className="bg-gray-100  border-b border-black shadow-inner">
+                        <th className="px-6 py-4 font-extrabold tracking-wider">{data.category === 'weddingRing' ? 'Med. Argolla 1' : 'Medida'}</th>
+                        <td className="px-6 py-4 font-extrabold">{data.measure} {['chain', 'cuffBracelet', 'pendant'].includes(data.category) && ' cm.'}</td>
                     </tr>
-                    {data.measure2 && (
-                        <tr className="uppercase bg-gray-200 text-center border border-white">
-                            <th className="px-6 py-3 font-black text-white bg-black uppercase">Medida</th>
-                            <td className="font-black">{data.measure2}</td>
+                    {data.category === 'weddingRing' && (
+                        <tr className="bg-gray-100  border-b border-black shadow-inner">
+                            <th className="px-6 py-4 font-extrabold tracking-wider">Med. Argolla 2</th>
+                            <td className="px-6 py-4 font-extrabold">{data.measure2}</td>
                         </tr>
-                    )}   
-                    <tr className="uppercase bg-gray-200 text-center border border-white">
-                        <th className="px-6 py-3 font-black text-white bg-black uppercase">Peso</th>
-                        <td className="px-3 font-black lowercase">{data.weight} g.</td>
+                    )}
+                    <tr className="bg-gray-100 border-b border-black shadow-inner">
+                        <th className="px-6 py-4 font-extrabold tracking-wider">Peso</th>
+                        <td className="px-6 py-4 font-extrabold lowercase">{data.weight} g.</td>
                     </tr>
-                    <tr className="uppercase bg-gray-200 text-center">
-                        <th className="px-6 py-3 font-black text-white bg-black uppercase">Categoría</th>
-                        <td className="px-3 font-black">{categoryTranslations[data.category]}</td>
+                    <tr className="bg-gray-100 shadow-inner">
+                        <th className="px-6 py-4 font-extrabold tracking-wider">Categoría</th>
+                        <td className="px-6 py-4 font-extrabold">{categoryTranslations[data.category]}</td>
                     </tr>
-                
                 </table>
+
             </div>
         </div>
     );
