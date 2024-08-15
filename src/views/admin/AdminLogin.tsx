@@ -32,9 +32,9 @@ export default function AdminLogin() {
     
     return (
         <>
-            <h1 className="text-center px-5 pt-10 text-4xl lg:p-10 lg:text-5xl">Iniciar Sesión (Admin)</h1>
+            <h1 className="text-center px-5 pt-10 text-4xl pb-10 lg:px-10 lg:text-5xl">Iniciar Sesión (Admin)</h1>
             <form
-                className="mx-auto w-full max-w-screen-xs shadow-lg grid gap-5 p-10 pt-10 mb-12 rounded-2xl"
+                className="mx-3 sm:mx-auto sm:w-full sm:max-w-screen-xs shadow-lg grid gap-5 p-10 pt-10 mb-12 rounded-2xl bg-white"
                 onSubmit={handleSubmit}
                 noValidate
             >
@@ -54,7 +54,7 @@ export default function AdminLogin() {
                 <div className="col-span-full flex justify-center">
                     <button
                         type="submit"
-                        className="shadow hover:shadow-inner hover:bg-gray-200 ease transition-all duration-200 w-1/2 p-2 rounded-md bg-gray-100"
+                        className="shadow hover:shadow-inner hover:bg-gray-700 ease transition-colors p-2 rounded-md bg-black text-white uppercase"
                     >
                         Iniciar Sesión
                     </button>

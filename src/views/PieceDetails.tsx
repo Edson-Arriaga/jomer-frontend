@@ -2,7 +2,6 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getPieceById } from "../api/PieceAPI";
 import Loading from "../components/helpers/Loading";
-import { formatPrice } from "../utils/formatPrice";
 import { categoryTranslations } from "../locales/es";
 import { useState } from "react";
 
@@ -31,7 +30,8 @@ export default function PieceDetails() {
 
             <div className="flex justify-center mx-auto items-center gap-3 lg:gap-5 lg:w-auto lg:flex-col lg:col-span-1">
                 {data.photos.map((photo, i) => (
-                    <div 
+                    <div
+                        key={data.photos[i]}
                         className="cursor-pointer opacity-80 hover:opacity-100 hover:scale-105 lg:-translate-x-5"
                         onClick={() => setPhotoSelected(photo)}
                     >
@@ -43,7 +43,10 @@ export default function PieceDetails() {
             <div className="lg:col-span-6 flex flex-col gap-5">
                 <h1 className="font-bold text-3xl uppercase tracking-wide">{data.name}</h1>
                 <p>{data.description}</p>
-                <p className="text-red-700 text-4xl">{formatPrice(data.price)}</p>
+                {data.availability === true
+                    ?   <p className="text-green-700 border bg-green-50 border-green-700 p-3 rounded-xl text-sm mt-5 font-black text-center">Disponible</p>
+                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 p-3 rounded-xl text-sm mt-5 font-black text-center">No Disponible</p>
+                }
                 
                 <table className="text-sm text-left w-full mx-auto rounded-sm flex-grow shadow-inner">
                     <tr className="bg-gray-100 border-b border-black shadow-inner">
@@ -69,8 +72,7 @@ export default function PieceDetails() {
                         <td className="px-6 py-4 font-extrabold">{categoryTranslations[data.category]}</td>
                     </tr>
                 </table>
-
             </div>
         </div>
-    );
+    )
 }

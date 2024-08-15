@@ -4,6 +4,12 @@ import api from "../lib/axios"
 
 export async function addPiece(formDataWithFiles : PieceFormDataWithFiles) {
     if(!formDataWithFiles.measure) formDataWithFiles.measure = 0
+    if(formDataWithFiles.availability === "true"){
+        formDataWithFiles.availability = true
+    } else{
+        formDataWithFiles.availability = false
+    }
+     
     try {
         const { data } = await api.post<string>(`/pieces`, formDataWithFiles)
         return data
@@ -51,6 +57,11 @@ export type updatePieceProps = {
 export async function updatePiece({formDataWithFiles, pieceId, photoSelected} : updatePieceProps){
     try {
         if(!formDataWithFiles.measure) formDataWithFiles.measure = 0
+        if(formDataWithFiles.availability === "true"){
+            formDataWithFiles.availability = true
+        } else{
+            formDataWithFiles.availability = false
+        }
 
         const {data} = await api.put<string>(`/pieces/${pieceId}`, {...formDataWithFiles, photoSelected})
         return data
@@ -72,4 +83,14 @@ export async function deletePiece({pieceId} : {pieceId : Piece['_id']}) {
     }
 }
 
+export async function changeAvailability (pieceId : Piece['_id']) {
+    try {
+        const {data} = await api.patch<string>(`/pieces/${pieceId}/change-availability`)
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response){
+            throw new Error(error.response.data.error)
+        }
+    }
+}
 

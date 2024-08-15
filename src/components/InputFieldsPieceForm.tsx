@@ -28,7 +28,7 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
                     placeholder="Nombre"
                     {...register("name", {
                         required: "El NOMBRE es obligatorio.",
-                        maxLength: {value: 25, message: "Máximo 25 caracteres."}
+                        maxLength: {value: 35, message: "Máximo 35 caracteres."}
                     })}
                 />
                 {errors.name && (
@@ -37,18 +37,32 @@ export default function InputFieldsPieceForm({register, errors, resetField, cate
             </div>
 
             <div>
-                <input
-                    type="number"
-                    className="shadow-inner w-full p-2 rounded-md bg-gray-100 border-l-4 border-black"
-                    placeholder="Precio"
-                    {...register("price", {
-                        required: "El PRECIO es obligatorio.",
-                        valueAsNumber: true,
-                        min: {value: 0, message: 'Ingresa un precio mayor a 0.'}
-                    })}
-                />
-                {errors.price && (
-                    <ErrorMessage>{errors.price.message}</ErrorMessage>
+                <div className="containerRadio gap-2 font-black uppercase flex items-center justify-center">
+                    <h3 className="text-center uppercase">Disponible: </h3>
+                    <label className="flex justify-center">
+                        <input 
+                            type="radio"
+                            value="true"
+                            {...register("availability", {
+                                required: "La disponibilidad es obligatoria.",
+                            })}
+                        />
+                        <span className="font-black">Si</span>
+                    </label> 
+
+                    <label>
+                    <input
+                        type="radio"
+                        value="false"
+                        {...register("availability", {
+                            required: "La disponibilidad es obligatoria."
+                        })}
+                    />
+                        <span className="font-black">No</span>
+                    </label>
+                </div>
+                {errors.availability && (
+                    <ErrorMessage>{errors.availability.message}</ErrorMessage>
                 )}
             </div>
 

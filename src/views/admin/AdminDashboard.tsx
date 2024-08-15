@@ -1,13 +1,13 @@
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { getPieces } from "../../api/PieceAPI";
-import { useQuery } from "@tanstack/react-query";
-import { formatPrice } from "../../utils/formatPrice";
+import { changeAvailability, getPieces } from "../../api/PieceAPI";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { categoryTranslations } from "../../locales/es";
 import DeleteModal from "../../components/DeleteModal";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import Loading from "../../components/helpers/Loading";
 import LoadingPhoto from "../../components/helpers/LoadingPhoto";
+import { toast } from "react-toastify";
 
 export default function AdminDashboard() {
     const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
@@ -25,6 +25,18 @@ export default function AdminDashboard() {
         refetchOnWindowFocus: true
     })
 
+    const queryClient = useQueryClient()
+    const { mutate } = useMutation({
+        mutationFn: changeAvailability,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            toast.success(data)
+            queryClient.invalidateQueries({queryKey: ['pieces']})
+        }
+    })
+
     const handleClick = () => {
         navigate('/')
         localStorage.removeItem('AUTH_TOKEN_JOMER')
@@ -36,7 +48,7 @@ export default function AdminDashboard() {
         }
     }, [isErrorAuth, errorAuth])
     
-    if(isLoading || isLoadingAuth) return (<Loading />)
+    if(isLoading || isLoadingAuth) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
     
     if (data) return (
@@ -50,23 +62,23 @@ export default function AdminDashboard() {
                     Agregar Pieza
                 </Link>
             </div>
-            <div className="relative overflow-x-auto shadow-lg sm:rounded-md max-w-screen-lg mx-10 xl:mx-auto mb-8">
+            <div className="overflow-x-auto shadow-lg sm:rounded-md mx-10 xl:max-w-screen-lg xl:w-full xl:mx-auto mb-8">
                 <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
                     <thead className="text-xs uppercase bg-gray-50 dark:bg-black text-white">
                         <tr className="text-sm">
-                            <th scope="col" className="px-6 py-3">
+                            <th className="px-6 py-3">
                                 Nombre del producto
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th className="px-6 py-3">
                                 Categoría
                             </th>
-                            <th scope="col" className="px-6 py-3">
-                                Precio
+                            <th className="px-6 py-3 text-center">
+                                Dsiponibilidad
                             </th>
-                            <th scope="col" className="px-6 py-3 text-center">
+                            <th className="px-6 py-3 text-center">
                                 Foto
                             </th>
-                            <th scope="col" className="px-6 py-3 text-center">
+                            <th className="px-6 py-3 text-center">
                                 Acciones
                             </th>
                         </tr>
@@ -74,14 +86,25 @@ export default function AdminDashboard() {
                     <tbody>
                         {data.map(piece => (
                             <tr key={piece._id} className="odd:bg-gray-300 even:bg-gray-200 border-b text-[1.15rem]">
-                                <th scope="row" className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase">
+                                <th
+                                    className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase overflow-hidden text-ellipsis max-w-64"
+                                >
                                     {piece.name}
                                 </th>
-                                <td className="px-6 py-4 text-gray-900">
+                                <td className="px-6 py-4 text-gray-900 whitespace-nowrap">
                                     {categoryTranslations[piece.category]}
                                 </td>
                                 <td className="px-6 py-4 text-gray-900">
-                                    {formatPrice(piece.price)}
+                                    {piece.availability === true 
+                                        ?  <button
+                                                className="text-green-700 w-full bg-green-50 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
+                                                onClick={() => mutate(piece._id)}    
+                                            >Disponible</button>
+                                        :  <button
+                                                className="text-red-700 w-full bg-red-50 b px-3 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
+                                                onClick={() => mutate(piece._id)}   
+                                            >No Disponible</button>
+                                    }
                                 </td>
                                 <td className="py-2 text-gray-900 text-center flex justify-center">
 

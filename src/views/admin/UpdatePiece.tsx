@@ -35,7 +35,7 @@ export default function UpdatePiece() {
             const initialValues: PieceFormData = {
                 name: data.name,
                 description: data.description,
-                price: data.price,
+                availability: data.availability.toString(),
                 category: data.category,
                 measure: data.measure,
                 measure2: data.measure2,

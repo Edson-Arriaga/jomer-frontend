@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import { Piece } from "../types"
-import { formatPrice } from "../utils/formatPrice"
 import { useState } from "react"
 import { SwiperSlide, Swiper } from "swiper/react"
 import "swiper/css/bundle";
@@ -19,7 +18,8 @@ export default function PieceCard({piece} : PieceCardProps) {
     return (
         <div 
             key={piece._id}
-            className="rounded-lg overflow-hidden ease shadow-md hover:bg-gray-100 h-full flex flex-col bg-white transition-colors"
+            className="rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col transition-colors hover:shadow-md cursor-pointer"
+            
         >
             <div>
                 <Swiper
@@ -51,22 +51,27 @@ export default function PieceCard({piece} : PieceCardProps) {
                 </Swiper>
             </div>
 
-            <div className="text-center flex flex-col pt-5 flex-grow">
-                <h1 className="font-bold text-[1.1rem] sm:text-xl sm:font md:text-xl lg:text-[1.3rem] px-2 uppercase">{piece.name}</h1>
-                <p className="text-red-700 text-xl lg:text-[1.7rem] mt-2 font-black sm:mt-2 mb-2">{formatPrice(piece.price)}</p>
+            <div
+                className=" flex flex-col pt-6 justify-center items-center px-3 pb-4"
+                onClick={() => navigate(`/piece/${piece._id}`)}
+            >
+                <h1 className="text-center font-bold text-[1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
                 {piece.category == 'weddingRing'
-                    ? (<p className="text-md sm:text-lg">Medidas: <span className="font-black">{piece.measure} Y {piece.measure2}</span></p>)
-                    : (<p className="text-md sm:text-lg">Medida: <span className="font-black">{piece.measure === 0 ? 'Unitalla' : `${piece.measure} ${["chain", "cuffBracelet", "pendant"].includes(piece.category) ? ' cm.' : ''}`} </span></p>)
+                    ? <p className="text-md sm:text-lg mt-5">Medidas: {''} 
+                        <span className="font-black">{piece.measure} Y {piece.measure2}</span>
+                      </p>
+                    : <p className="text-md sm:text-lg mt-5">Medida: {''} 
+                        <span className="font-black">{piece.measure === 0 ? 'Unitalla' : `${piece.measure} ${["chain", "cuffBracelet", "pendant"].includes(piece.category) ? ' cm.' : ''}`} </span>
+                      </p>
                 }
                 <p className="text-md sm:text-lg">Kilataje  : <span className="font-black">{piece.caratage} </span></p>
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
+                {piece.availability === true
+                    ?   <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
+                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">No Disponible</p>
+                }
+            
             </div>
-            <button
-                className="px-5 py-2 w-full bg-black hover:bg-gray-900 uppercase font-black mt-5 text-sm text-white"
-                onClick={() => navigate(`/piece/${piece._id}`)}
-            >
-                Ver Detalles
-            </button>
         </div>
     )
 }
