@@ -32,7 +32,7 @@ export default function PieceDetails() {
                 {data.photos.map((photo, i) => (
                     <div
                         key={data.photos[i]}
-                        className="cursor-pointer opacity-80 hover:opacity-100 hover:scale-105 lg:-translate-x-5"
+                        className={photo === photoSelected ? "cursor-pointer opacity-100 scale-110 lg:-translate-x-5": "cursor-pointer opacity-80 hover:scale-105 lg:-translate-x-5"}
                         onClick={() => setPhotoSelected(photo)}
                     >
                         <img className="w-20" src={photo} alt={`photo ${i + 1} of ${data.name}`} />
@@ -55,7 +55,7 @@ export default function PieceDetails() {
                     </tr>
                     <tr className="bg-gray-100  border-b border-black shadow-inner">
                         <th className="px-6 py-4 font-extrabold tracking-wider">{data.category === 'weddingRing' ? 'Med. Argolla 1' : 'Medida'}</th>
-                        <td className="px-6 py-4 font-extrabold">{data.measure} {['chain', 'cuffBracelet', 'pendant'].includes(data.category) && ' cm.'}</td>
+                        <td className="px-6 py-4 font-extrabold">{data.measure === 0 ? 'Unitalla' : `${data.measure} ${["chain", "cuffBracelet", "pendant"].includes(data.category) ? ' cm.' : ''}`}</td>
                     </tr>
                     {data.category === 'weddingRing' && (
                         <tr className="bg-gray-100  border-b border-black shadow-inner">

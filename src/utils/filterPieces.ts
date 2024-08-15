@@ -1,6 +1,6 @@
 import { Piece } from "../types";
 
-export const filterPieces = (data : Piece[] | undefined, category : string | undefined, caratage : string) : Piece[] => {
+export const filterPieces = (data : Piece[] | undefined, category : string | undefined, caratage : string, availability: string) : Piece[] => {
     let pieces : Piece[] = []
     if(!data) return []
     
@@ -14,6 +14,10 @@ export const filterPieces = (data : Piece[] | undefined, category : string | und
 
     if(caratage){
         pieces = pieces.filter(piece => piece.caratage === caratage) 
+    }
+
+    if(availability){
+        pieces = pieces.filter(piece => piece.availability.toString() === availability)
     }
     
     return pieces

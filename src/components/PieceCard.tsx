@@ -18,8 +18,7 @@ export default function PieceCard({piece} : PieceCardProps) {
     return (
         <div 
             key={piece._id}
-            className="rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col transition-colors hover:shadow-md cursor-pointer"
-            
+            className="rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col hover:shadow-md cursor-pointer hover:scale-[1.015] transition-all"
         >
             <div>
                 <Swiper
@@ -40,7 +39,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                         <SwiperSlide key={i} className="overflow-hidden">
                             {isLoading && <LoadingPhoto/>}
                             <img
-                                className="hover:scale-105 ease duration-200 cursor-pointer"
+                                className="hover:scale-105 ease duration-200"
                                 src={imageURL}
                                 alt={`Photo ${i} ${piece.name}`}
                                 onClick={() => navigate(`/piece/${piece._id}`)}
@@ -55,7 +54,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                 className=" flex flex-col pt-6 justify-center items-center px-3 pb-4"
                 onClick={() => navigate(`/piece/${piece._id}`)}
             >
-                <h1 className="text-center font-bold text-[1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
+                <h1 className="text-center font-bold text-[1.1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
                 {piece.category == 'weddingRing'
                     ? <p className="text-md sm:text-lg mt-5">Medidas: {''} 
                         <span className="font-black">{piece.measure} Y {piece.measure2}</span>

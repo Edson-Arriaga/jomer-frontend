@@ -6,11 +6,13 @@ import { ChangeEvent, useMemo, useState } from "react"
 import { filterPieces } from "../utils/filterPieces.ts"
 import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
+import { Transition } from "@headlessui/react"
 
 export default function Products() {
     const { filter } = useParams()
     const [category, setCategory] = useState(filter)
     const [caratage, setCaratage] = useState('')
+    const [availability, setAvailability] = useState('')
     const [isFilterActive, setIsFilterActive] = useState(false)
     
     const navigate = useNavigate()
@@ -22,11 +24,18 @@ export default function Products() {
         retry: 2
     })
 
-    const filteredPieces = useMemo(() => filterPieces(data, category, caratage), [data, category, caratage])
+    const filteredPieces = useMemo(() => filterPieces(data, category, caratage, availability), [data, category, caratage, availability])
 
     const handleChange = (e : ChangeEvent<HTMLSelectElement>) => {
         navigate(`/catalogo/${e.target.value}`)
         setCategory(e.target.value)
+    }
+
+    const handleClickFilter = () => {
+        setIsFilterActive(prev => !prev)
+        setAvailability('')
+        setCaratage('')
+        setCategory('all')
     }
 
     if (isLoading) return <Loading />
@@ -40,19 +49,27 @@ export default function Products() {
                 <div className="col-span-1">
                     <div 
                         className="max-w-sm mx-auto w-32 bg-black p-2 rounded-md flex items-center justify-center cursor-pointer lg:mx-0 lg:top-32 lg:inset-0 lg:h-10 lg:w-44 lg:rounded-r-lg lg:fixed lg:pl-12"
-                        onClick={() => setIsFilterActive(isFilterActive => isFilterActive ? false : true)}
+                        onClick={() => handleClickFilter()}
                     >
                         <div className="w-5 h-5 rounded-full animate-pulse mr-2 mb-[0.1rem]">
                             <img src="/images/logos/white-logo.webp" alt="complete-white-logo" />
                         </div>
                         <p className="text-white font-bold uppercase">Filtrar Por</p>
                     </div>
-                        
-                    { isFilterActive && (
-                        <section className="lg:absolute flex flex-col">
+                    
+           
+                        <Transition
+                            show={isFilterActive}
+                            enter="duration-500"
+                            enterFrom="opacity-0 -translate-x-44"
+                            enterTo="opacity-100"
+                            leave="duration-500"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0 -translate-x-44"
+                        >
+                        <section className="flex flex-col space-y-6 lg:fixed justify-start mt-5 lg:mt-0 lg:w-40">
                             <select
-                                className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg mt-3 lg:fixed lg:hover:w-60 lg:transition-all"
-                                name="medida"
+                                className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg mt-3 lg:hover:w-60 lg:transition-all"
                                 defaultValue={''}
                                 onChange={handleChange}
                             >
@@ -66,8 +83,7 @@ export default function Products() {
                                 <option value="all">Todas las piezas</option>
                             </select>
                             <select
-                                className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg mt-3 lg:fixed lg:hover:w-60 lg:transition-all lg:top-72"
-                                name="medida"
+                                className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg mt-3 lg:hover:w-60 lg:transition-all lg:bottom-44"
                                 defaultValue={''}
                                 onChange={e => setCaratage(e.target.value)}
                             >
@@ -78,9 +94,20 @@ export default function Products() {
                                 <option value="18K">18k</option>
                                 <option value="">Todos los kilatajes</option>
                             </select>
+                            <select
+                                className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg mt-3 lg:hover:w-60 lg:transition-all"
+                                defaultValue={''}
+                                onChange={e => setAvailability(e.target.value)}
+                            >
+                                <option value="" disabled>-- Disponibilidad --</option>
+                                <option value="true">Disponible</option>
+                                <option value="false">No disponible</option>
+                                <option value="">Todas las disp.</option>
+                            </select>
                         </section>
-                    )}
+                    </Transition>
                 </div>
+
                 <div className="lg:col-span-3 w-full px-3 grid gap-x-2 gap-y-12 grid-cols-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:px-0 lg:grid-cols-4">
                     {filteredPieces.map(piece => (
                         <PieceCard
@@ -92,7 +119,7 @@ export default function Products() {
             </div>
 
             {!filteredPieces.length && (
-                <div className="text-center w-full mt-10 mb-20">
+                <div className="text-center w-full mt-10 mb-36">
                     <p className="font-bold uppercase text-xl">No hay piezas con esas características.</p>
                 </div>
             )}
