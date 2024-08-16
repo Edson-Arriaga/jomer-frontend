@@ -35,7 +35,8 @@ export default function Products() {
         setIsFilterActive(prev => !prev)
         setAvailability('')
         setCaratage('')
-        setCategory('all')
+        if (category !== 'all') setCategory(category)
+        else setCategory('all')
     }
 
     if (isLoading) return <Loading />

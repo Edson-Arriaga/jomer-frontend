@@ -20,7 +20,6 @@ export default {
         'about-us-phone': 'url("/images/aboutUs/about-us-phone.webp")',
       },
       height:{
-        '26rem' : '26rem',
         'hero-lg': 'calc(100svh - 88px)',
         'screen-50': 'calc(100svh - 50svh)'
       }

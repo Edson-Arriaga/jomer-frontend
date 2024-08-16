@@ -15,24 +15,22 @@ export default function PieceDetails() {
         retry: 1
     })
 
-    console.log(data)
-
-    const [photoSelected, setPhotoSelected] = useState('')
+    const [photoSelected, setPhotoSelected] = useState(data?.photos[0])
 
     if(isLoading) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
 
     if (data) return (
-        <div className="mt-10 max-w-5xl mx-8 lg:mx-auto lg:w-full grid grid-cols-1 lg:grid-cols-12 justify-between gap-10 mb-10">
-            <div className="flex justify-center lg:col-span-5">
-                <img className="w-9/12 lg:w-auto" src={photoSelected || data.photos[0]} alt={`photo 1 of ${data.name}`} />
+        <div className="mt-10 max-w-5xl mx-8 grid grid-cols-1 justify-between gap-10 mb-10 md:mx-auto md:w-full md:grid-cols-12 items-center ">
+            <div className="flex justify-center  md:col-span-5 h-full items-center">
+                <img className="w-9/12 md:w-10/12 lg:w-11/12" src={photoSelected || data.photos[0]} alt={`photo 1 of ${data.name}`} />
             </div>
 
-            <div className="flex justify-center mx-auto items-center gap-3 lg:gap-5 lg:w-auto lg:flex-col lg:col-span-1">
+            <div className="flex justify-center mx-auto items-center gap-3 md:gap-5 md:w-12 md:flex-col">
                 {data.photos.map((photo, i) => (
                     <div
                         key={data.photos[i]}
-                        className={photo === photoSelected ? "cursor-pointer opacity-100 scale-110 lg:-translate-x-5": "cursor-pointer opacity-80 hover:scale-105 lg:-translate-x-5"}
+                        className={photo === photoSelected ? "cursor-pointer opacity-100 scale-110 md:-translate-x-10 lg:-translate-x-5": "cursor-pointer opacity-80 hover:scale-105 md:-translate-x-10 lg:-translate-x-5 transition-transform"}
                         onClick={() => setPhotoSelected(photo)}
                     >
                         <img className="w-20" src={photo} alt={`photo ${i + 1} of ${data.name}`} />
@@ -40,7 +38,7 @@ export default function PieceDetails() {
                 ))}
             </div>
            
-            <div className="lg:col-span-6 flex flex-col gap-5">
+            <div className="flex flex-col gap-5 md:col-span-6 pr-5">
                 <h1 className="font-bold text-3xl uppercase tracking-wide">{data.name}</h1>
                 <p>{data.description}</p>
                 {data.availability === true
@@ -49,28 +47,30 @@ export default function PieceDetails() {
                 }
                 
                 <table className="text-sm text-left w-full mx-auto rounded-sm flex-grow shadow-inner">
-                    <tr className="bg-gray-100 border-b border-black shadow-inner">
-                        <th className="px-6 py-4 font-extrabold tracking-wider">Kilataje</th>
-                        <td className="px-6 py-4 font-extrabold">{data.caratage}</td>
-                    </tr>
-                    <tr className="bg-gray-100  border-b border-black shadow-inner">
-                        <th className="px-6 py-4 font-extrabold tracking-wider">{data.category === 'weddingRing' ? 'Med. Argolla 1' : 'Medida'}</th>
-                        <td className="px-6 py-4 font-extrabold">{data.measure === 0 ? 'Unitalla' : `${data.measure} ${["chain", "cuffBracelet", "pendant"].includes(data.category) ? ' cm.' : ''}`}</td>
-                    </tr>
-                    {data.category === 'weddingRing' && (
-                        <tr className="bg-gray-100  border-b border-black shadow-inner">
-                            <th className="px-6 py-4 font-extrabold tracking-wider">Med. Argolla 2</th>
-                            <td className="px-6 py-4 font-extrabold">{data.measure2}</td>
+                    <tbody>
+                        <tr className="bg-gray-100 border-b border-black shadow-inner">
+                            <th className="px-6 py-4 font-extrabold tracking-wider">Kilataje</th>
+                            <td className="px-6 py-4 font-extrabold">{data.caratage}</td>
                         </tr>
-                    )}
-                    <tr className="bg-gray-100 border-b border-black shadow-inner">
-                        <th className="px-6 py-4 font-extrabold tracking-wider">Peso</th>
-                        <td className="px-6 py-4 font-extrabold lowercase">{data.weight} g.</td>
-                    </tr>
-                    <tr className="bg-gray-100 shadow-inner">
-                        <th className="px-6 py-4 font-extrabold tracking-wider">Categoría</th>
-                        <td className="px-6 py-4 font-extrabold">{categoryTranslations[data.category]}</td>
-                    </tr>
+                        <tr className="bg-gray-100  border-b border-black shadow-inner">
+                            <th className="px-6 py-4 font-extrabold tracking-wider">{data.category === 'weddingRing' ? 'Med. Argolla 1' : 'Medida'}</th>
+                            <td className="px-6 py-4 font-extrabold">{data.measure === 0 ? 'Unitalla' : `${data.measure} ${["chain", "cuffBracelet", "pendant"].includes(data.category) ? ' cm.' : ''}`}</td>
+                        </tr>
+                        {data.category === 'weddingRing' && (
+                            <tr className="bg-gray-100  border-b border-black shadow-inner">
+                                <th className="px-6 py-4 font-extrabold tracking-wider">Med. Argolla 2</th>
+                                <td className="px-6 py-4 font-extrabold">{data.measure2}</td>
+                            </tr>
+                        )}
+                        <tr className="bg-gray-100 border-b border-black shadow-inner">
+                            <th className="px-6 py-4 font-extrabold tracking-wider">Peso</th>
+                            <td className="px-6 py-4 font-extrabold lowercase">{data.weight} g.</td>
+                        </tr>
+                        <tr className="bg-gray-100 shadow-inner">
+                            <th className="px-6 py-4 font-extrabold tracking-wider">Categoría</th>
+                            <td className="px-6 py-4 font-extrabold">{categoryTranslations[data.category]}</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
