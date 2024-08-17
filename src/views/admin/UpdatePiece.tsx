@@ -17,6 +17,7 @@ export default function UpdatePiece() {
     const [category, setCategory] = useState('')
     const [photoSelected, setPhotoSelected] = useState('')
     const [newPhotoFile, setNewPhotoFile] = useState<File | null>(null)
+    const [actionPhoto, setActionPhoto] = useState<'delete' | 'update'>()
 
     const params = useParams()
     const pieceId = params.pieceId!
@@ -119,6 +120,8 @@ export default function UpdatePiece() {
                         </div>
                     ))}
                 </div>
+
+                
 
                 {photoSelected ? (
                     <div className="h-full xs:col-span-2 mt-2 flex flex-col justify-center items-center">

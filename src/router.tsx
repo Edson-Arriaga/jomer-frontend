@@ -12,6 +12,7 @@ import AdminLogin from "./views/admin/AdminLogin"
 import AdminLayout from "./layouts/AdminLayout"
 import AdminDashboard from "./views/admin/AdminDashboard"
 import UpdatePiece from "./views/admin/UpdatePiece"
+import NotFound from "./views/NotFound"
 
 export default function Router(){
     return (
@@ -25,6 +26,7 @@ export default function Router(){
                     <Route path="/wish-list" element={<WishList />}/>
                     <Route path="/piece/:pieceId" element={<PieceDetails />}/>
                     <Route path="/gracias/:form" element={<Thanks />}/>
+                    <Route path="/404" element={<NotFound />}/>
                 </Route>
 
                 <Route element={<AdminLayout />}>
