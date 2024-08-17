@@ -17,7 +17,7 @@ export default function UpdatePiece() {
     const [category, setCategory] = useState('')
     const [photoSelected, setPhotoSelected] = useState('')
     const [newPhotoFile, setNewPhotoFile] = useState<File | null>(null)
-    const [actionPhoto, setActionPhoto] = useState<'delete' | 'update'>()
+    // const [actionPhoto, setActionPhoto] = useState<'delete' | 'update'>()
 
     const params = useParams()
     const pieceId = params.pieceId!
