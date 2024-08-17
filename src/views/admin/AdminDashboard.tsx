@@ -63,8 +63,8 @@ export default function AdminDashboard() {
                 </Link>
             </div>
             <div className="overflow-x-auto shadow-lg sm:rounded-md mx-10 xl:max-w-screen-lg xl:w-full xl:mx-auto mb-8">
-                <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
-                    <thead className="text-xs uppercase bg-gray-50 dark:bg-black text-white">
+                <table className="text-sm text-left rtl:text-right text-gray-400 w-full">
+                    <thead className="text-xs uppercase bg-black text-white">
                         <tr className="text-sm">
                             <th className="px-6 py-3">
                                 Nombre del producto
