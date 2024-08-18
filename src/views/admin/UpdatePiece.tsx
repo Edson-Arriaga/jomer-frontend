@@ -164,7 +164,7 @@ export default function UpdatePiece() {
 
                 <div className="flex flex-col mx-auto w-full justify-between sm:flex-row xs:col-span-2 gap-y-5">
                     <button
-                        className="shadow valid:hover:shadow-inner valid:hover:bg-red-100 disabled:opacity-50 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
+                        className="shadow valid:hover:shadow-inner valid:hover:bg-blue-100 disabled:opacity-50 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
                         disabled={photoSelected === ""}
                         onClick={(e) => {
                             e.preventDefault()
@@ -181,7 +181,8 @@ export default function UpdatePiece() {
                         }}
                     >Eliminar Foto</button>
                     <button
-                        className="shadow hover:shadow-inner hover:bg-emerald-100 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
+                        className="shadow valid:hover:shadow-inner valid:hover:bg-emerald-100 disabled:opacity-50 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
+                        disabled={data.photos.length === 5}
                         onClick={(e) => {
                             e.preventDefault()
                             setIsActiveSubmitFile(true)
