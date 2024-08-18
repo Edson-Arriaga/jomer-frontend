@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { getPieceById, updatePiece, updatePieceProps } from "../../api/PieceAPI"
+import { addImage, deleteImage, getPieceById, updatePiece, updatePieceProps } from "../../api/PieceAPI"
 import InputFieldsPieceForm from "../../components/InputFieldsPieceForm"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
@@ -17,7 +17,8 @@ export default function UpdatePiece() {
     const [category, setCategory] = useState('')
     const [photoSelected, setPhotoSelected] = useState('')
     const [newPhotoFile, setNewPhotoFile] = useState<File | null>(null)
-    // const [actionPhoto, setActionPhoto] = useState<'delete' | 'update'>()
+    const [isActiveSubmitFile, setIsActiveSubmitFile] = useState(false)
+    const [currentlyAction, setCurrentlyAction] = useState('')
 
     const params = useParams()
     const pieceId = params.pieceId!
@@ -50,7 +51,9 @@ export default function UpdatePiece() {
         }
     }, [data])
 
-    const { mutate } = useMutation({
+
+    //Update Mutate
+    const { mutate : updateMutate } = useMutation({
         mutationFn: ({formDataWithFiles, pieceId, photoSelected} : updatePieceProps) => updatePiece({formDataWithFiles, pieceId, photoSelected}),
         onError: (error) => {
             toast.error(error.message)
@@ -64,12 +67,40 @@ export default function UpdatePiece() {
         }
     })
 
+    //Delete Mutate
+    const { mutate : deleteImageMutate } = useMutation({
+        mutationFn: deleteImage,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            queryClient.invalidateQueries({queryKey: ['pieces']})
+            queryClient.invalidateQueries({queryKey: ['piece', pieceId]})
+            toast.success(data)
+            navigate('/admin')
+        }
+    })
+
+    //Add Mutate
+    const { mutate : addImageMutation } = useMutation({
+        mutationFn: addImage,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            queryClient.invalidateQueries({queryKey: ['pieces']})
+            queryClient.invalidateQueries({queryKey: ['piece', pieceId]})
+            toast.success(data)
+            navigate('/admin')
+        }
+    })
+
     const handleUpdatePiece = (formData : PieceFormData) => {
         if(photoSelected !== '' && newPhotoFile === null){
             toast.error("Ingresa la nueva foto.")
         }else{
             const formDataWithFiles = {...formData, newPhotoFile}
-            mutate({formDataWithFiles, pieceId, photoSelected})
+            updateMutate({formDataWithFiles, pieceId, photoSelected})
         }
     }
 
@@ -115,17 +146,57 @@ export default function UpdatePiece() {
                 
                 <div className="flex mx-auto xs:col-span-2 justify-center gap-4 px-10 flex-wrap">
                     {data.photos.map(photo => (
-                        <div key={photo} className="w-32 cursor-pointer" onClick={() => setPhotoSelected(photo)}>
+                        <div
+                            key={photo} 
+                            className="w-32 cursor-pointer" 
+                            onClick={() => {
+                                setPhotoSelected(photo)
+                                if(isActiveSubmitFile){
+                                    setIsActiveSubmitFile(false)
+                                }
+                            }} 
+                                
+                        >
                             <img className={photo === photoSelected ? `scale-105 rounded-lg outline outline-4 outline-blue-300` : `hover:scale-105 rounded-lg transition-transform`} src={`${photo}?t=${new Date().getTime()}`} />
                         </div>
                     ))}
                 </div>
 
-                
+                <div className="flex flex-col mx-auto w-full justify-between sm:flex-row xs:col-span-2 gap-y-5">
+                    <button
+                        className="shadow valid:hover:shadow-inner valid:hover:bg-red-100 disabled:opacity-50 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
+                        disabled={photoSelected === ""}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setIsActiveSubmitFile(true)  
+                        }}
+                    >Actualizar Foto</button>
 
-                {photoSelected ? (
+                    <button
+                        className="shadow valid:hover:shadow-inner valid:hover:bg-red-100 disabled:opacity-50 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
+                        disabled={photoSelected === "" || data.photos.length === 1}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            deleteImageMutate({pieceId, photo: photoSelected})
+                        }}
+                    >Eliminar Foto</button>
+                    <button
+                        className="shadow hover:shadow-inner hover:bg-emerald-100 ease transition-colors py-1 px-3 rounded-xl text-balck uppercase border"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setIsActiveSubmitFile(true)
+                            setCurrentlyAction('add')
+                            if(newPhotoFile !== null){
+                                addImageMutation({pieceId, photo: newPhotoFile})
+                            }
+                            setPhotoSelected('')
+                        }}
+                    >Agregar foto</button>
+                </div>
+
+                {isActiveSubmitFile && (
                     <div className="h-full xs:col-span-2 mt-2 flex flex-col justify-center items-center">
-                        <label htmlFor="images" className="text-center uppercase mb-4 font-bold">Sube al menos una foto de la pieza:</label>
+                        <label htmlFor="image" className="text-center uppercase mb-4 font-bold">Sube La Foto nueva:</label>
                         <input 
                             type="file" 
                             accept="image/jpeg, image/jpg"
@@ -133,15 +204,14 @@ export default function UpdatePiece() {
                             className="pl-14 pt-3 pb-1"
                             onChange={e => setNewPhotoFile(e.target.files![0])}
                         />
-                    </div>
-                ) : (
-                    <p className="xs:col-span-2 text-center">Selecciona la foto que deseas actualizar</p>
+                    </div> 
                 )}
-        
+                
                 <div className="xs:col-span-2 flex justify-center mt-5">
                     <button 
                         type="submit"
-                        className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors py-2 px-4 rounded-xl bg-black text-balck uppercase text-white"
+                        className="shadow hover:shadow-inner active:hover:bg-gray-800 disabled:opacity-50 ease transition-colors py-2 px-4 rounded-xl bg-black text-balck uppercase text-white"
+                        disabled={currentlyAction === 'add'}
                     >
                     Actualizar Pieza
                     </button>

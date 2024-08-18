@@ -49,7 +49,7 @@ export async function getPieceById(pieceId: Piece['_id']){
 }
 
 export type updatePieceProps = {
-    formDataWithFiles : PieceFormData, 
+    formDataWithFiles : PieceFormData,
     pieceId: Piece['_id'],
     photoSelected: string
 }
@@ -93,4 +93,28 @@ export async function changeAvailability (pieceId : Piece['_id']) {
         }
     }
 }
+
+export async function deleteImage ({pieceId, photo} : {pieceId : Piece['_id'], photo : string}) {
+    try {
+        const {data} = await api.patch<string>(`/pieces/${pieceId}/delete-image`, {photo})
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response){
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+export async function addImage ({pieceId, photo} : {pieceId : Piece['_id'], photo : File}) {
+    try {
+        const {data} = await api.patch<string>(`/pieces/${pieceId}/add-image`, {photo})
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response){
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+
 

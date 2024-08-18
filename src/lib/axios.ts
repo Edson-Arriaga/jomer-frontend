@@ -7,7 +7,7 @@ const api = axios.create({
 api.interceptors.request.use(config => {
     const token = localStorage.getItem('AUTH_TOKEN_JOMER')
 
-    if(config.method === 'post' || config.method === 'put'){
+    if(config.method === 'post' || config.method === 'put' || config.method === 'patch'){
         config.headers["Content-Type"] = 'multipart/form-data'
     }
     
