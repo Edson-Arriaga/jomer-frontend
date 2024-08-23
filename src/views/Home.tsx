@@ -26,7 +26,7 @@ export function Home() {
                 <Hero />
             </section>
 
-            <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-14">Nuestras Piezas</h1>
+            <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-5 after:bg-black after:block after:w-6/12 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:w-8/12 before:h-[2px] before:mx-auto before:mb-4">Nuestras Piezas</h1>
             <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
                 <Link to={'catalogo/chain'}>
                 <CategoryCard
@@ -76,8 +76,9 @@ export function Home() {
                 </Link>
             </section>
 
-            <h1 className="text-center pb-5 px-6 pt-0 text-4xl sm:p-10 sm:text-5xl uppercase">Crea tu propia pieza personalizada</h1>
-            <section>
+            <h1 className="text-center pb-2 px-6 pt-0 text-4xl sm:p-10 sm:text-5xl uppercase after:bg-black after:block after:w-8/12 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:w-6/12 before:h-[2px] before:mx-auto before:mb-4">Crea tu propia pieza personalizada</h1>
+
+            <section className='mt-4'>
                 <CustomizationForm/>
             </section>
         </>

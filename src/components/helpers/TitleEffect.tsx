@@ -20,8 +20,8 @@ export default function TitleEffect({children} : {children: ReactNode}) {
     }, []);
     
     return (
-        <h1 className='ml3 text-5xl text-white tracking-wider lg:text-6xl'>
+        <>
             {children}
-        </h1>
-    );
+        </>
+    )
 }

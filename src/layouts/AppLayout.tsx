@@ -14,14 +14,17 @@ export default function AppLayout() {
     const [fixedHeader, setFixedHeader] = useState(false)
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            if(window.scrollY > 600){
-                setFixedHeader(true)
+        const handleScroll = () => {
+            if (window.scrollY > 600) {
+                setFixedHeader(true);
+            } else if (window.scrollY === 0) {
+                setFixedHeader(false);
             }
-            if (window.scrollY === 0){
-                setFixedHeader(false)
-            }
-        })
+        }
+    
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     return (

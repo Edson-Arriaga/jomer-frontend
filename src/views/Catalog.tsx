@@ -45,7 +45,7 @@ export default function Products() {
 
     return (
         <>
-            <h1 className="text-center pt-10 text-5xl uppercase pb-6">Catálogo</h1>
+            <h1 className="text-center mt-10 text-5xl uppercase pb-10">Catálogo</h1>
             
             <div className="grid grid-cols-1 gap-10 mx-2 xs:mx-5 sm:mx-10 lg:grid-cols-4 mb-16">
                 <div className="col-span-1">
