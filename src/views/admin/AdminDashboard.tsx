@@ -57,7 +57,7 @@ export default function AdminDashboard() {
             <div className="flex justify-center mb-5">
                 <Link
                     to={'/admin/agregar-pieza'}
-                    className="shadow hover:shadow-inner hover:bg-gray-700 ease transition-colors p-2 rounded-md bg-black text-white uppercase"
+                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors p-2 rounded-md bg-black text-white uppercase"
                 >
                     Agregar Pieza
                 </Link>

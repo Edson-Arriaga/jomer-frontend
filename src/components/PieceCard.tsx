@@ -5,13 +5,20 @@ import { SwiperSlide, Swiper } from "swiper/react"
 import "swiper/css/bundle";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import LoadingPhoto from "./helpers/LoadingPhoto"
+import { usePiecesStore } from "../store";
 
 type PieceCardProps = {
     piece: Piece
 }
 
 export default function PieceCard({piece} : PieceCardProps) {
-  
+    
+    const favoritePieces = usePiecesStore(state => state.favoritePieces)
+    const isFavorite = favoritePieces.some(pz => pz._id === piece._id)
+
+    const addFavoritePiece = usePiecesStore(state => state.addFavoritePiece)
+    const removeFavoritePiece = usePiecesStore(state => state.removeFavoritePiece)
+
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true)
 
@@ -20,7 +27,7 @@ export default function PieceCard({piece} : PieceCardProps) {
             key={piece._id}
             className="rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col hover:shadow-md cursor-pointer hover:scale-[1.015] transition-all"
         >
-            <div>
+            <div className="relative">
                 <Swiper
                         loop={piece.photos.length > 1}   
                         pagination={{
@@ -48,6 +55,16 @@ export default function PieceCard({piece} : PieceCardProps) {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                <div 
+                    className="absolute z-30 w-8 lg:w-10 opacity-80 right-0 bottom-0 p-1 hover:scale-110"
+                    onClick={() => isFavorite ? removeFavoritePiece(piece._id) : addFavoritePiece(piece)}
+                >
+                    <img
+                        src={`/images/icons/${isFavorite ? 'heart-white.svg' : 'heart-border-white.svg'}`} 
+                        alt="Wish-List logo"
+                    />
+                </div>
             </div>
 
             <div
@@ -67,9 +84,8 @@ export default function PieceCard({piece} : PieceCardProps) {
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
                 {piece.availability === true
                     ?   <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
-                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">No Disponible</p>
+                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-5 py-1 rounded-xl text-sm mt-5 font-black">Agotado</p>
                 }
-            
             </div>
         </div>
     )

@@ -35,8 +35,9 @@ export default function Products() {
         setIsFilterActive(prev => !prev)
         setAvailability('')
         setCaratage('')
-        if (category !== 'all') setCategory(category)
-        else setCategory('all')
+        if (isFilterActive){
+            setCategory('all')
+        }
     }
 
     if (isLoading) return <Loading />
@@ -71,7 +72,7 @@ export default function Products() {
                         <section className="flex flex-col space-y-6 lg:fixed justify-start mt-5 lg:mt-0 lg:w-40">
                             <select
                                 className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg mt-3 lg:hover:w-60 lg:transition-all"
-                                defaultValue={''}
+                                defaultValue={category === 'all' ? '' : category}
                                 onChange={handleChange}
                             >
                                 <option value="" disabled>-- Categría --</option>
@@ -102,7 +103,7 @@ export default function Products() {
                             >
                                 <option value="" disabled>-- Disponibilidad --</option>
                                 <option value="true">Disponible</option>
-                                <option value="false">No disponible</option>
+                                <option value="false">Agotado</option>
                                 <option value="">Todas las disp.</option>
                             </select>
                         </section>

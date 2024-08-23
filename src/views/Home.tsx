@@ -26,7 +26,7 @@ export function Home() {
                 <Hero />
             </section>
 
-            <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-14">Nuestras Piezas</h1>
+            <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-14 after:w-10 after:h-10 after:bg-red-200 after:absolute after:mx after:block">Nuestras Piezas</h1>
             <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
                 <Link to={'catalogo/chain'}>
                 <CategoryCard
@@ -37,7 +37,7 @@ export function Home() {
                 </Link>
                 <Link to={'catalogo/cuffBracelet'}>
                 <CategoryCard
-                    image='earings.webp'
+                    image='cuffBracelets.webp'
                     category='Esclavas'
                     rotate='-rotate-6'
                 />
@@ -53,7 +53,7 @@ export function Home() {
                 
                 <Link to={'catalogo/marriage'}>
                 <CategoryCard
-                    image='earings.webp'
+                    image='marriage.webp'
                     category='Matrimonio'
                     rotate='rotate-12'
                 />
@@ -61,7 +61,7 @@ export function Home() {
                 
                 <Link to={'catalogo/pendant'}>
                 <CategoryCard
-                    image='earings.webp'
+                    image='pendants.webp'
                     category='Dijes'
                     rotate='-rotate-3'
                 />
