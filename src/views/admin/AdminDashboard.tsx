@@ -52,6 +52,8 @@ export default function AdminDashboard() {
     if(isLoading || isLoadingAuth) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
     
+    const hasMorePages = data?.pages[data.pages.length - 1]?.nextPage;
+
     if (data) return (
         <>
             <h1 className="text-center pt-10 text-5xl uppercase pb-5">Panel de Administración</h1>
@@ -137,8 +139,9 @@ export default function AdminDashboard() {
 
             <div className="flex justify-center mb-10 gap-x-5">
                 <button
-                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors p-2 rounded-md bg-black text-white uppercase"
+                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors p-2 rounded-md bg-black text-white uppercase disabled:opacity-50"
                     onClick={() => fetchNextPage()}
+                    disabled={!hasMorePages}
                 >
                     Mostrar más piezas
                 </button>

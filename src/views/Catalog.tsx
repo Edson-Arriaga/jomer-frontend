@@ -8,7 +8,6 @@ import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
 import { Transition } from "@headlessui/react"
 import { useIsBottom } from "../hooks/useIsBottom.ts"
-import TittleEffect from "../components/helpers/TittleEffect.tsx"
 
 export default function Products() {
     const { filter } = useParams()
@@ -58,7 +57,7 @@ export default function Products() {
 
     return (
         <>  
-            <TittleEffect>Catálogo</TittleEffect>
+            <h1 className="text-center mt-10 text-[2.6rem] sm:text-5xl uppercase pb-10 after:bg-black after:block after:w-64 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:w-64 before:h-[2px] before:mx-auto before:mb-4">Catálogo</h1>
             
             <div className="grid grid-cols-1 gap-10 mx-2 xs:mx-5 sm:mx-10 lg:grid-cols-4 mb-16">
                 <div className="col-span-1">

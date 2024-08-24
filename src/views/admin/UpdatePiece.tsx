@@ -53,7 +53,7 @@ export default function UpdatePiece() {
 
 
     //Update Mutate
-    const { mutate : updateMutate } = useMutation({
+    const { mutate : updateMutate, isPending: isPendingUpdate } = useMutation({
         mutationFn: ({formDataWithFiles, pieceId, photoSelected} : updatePieceProps) => updatePiece({formDataWithFiles, pieceId, photoSelected}),
         onError: (error) => {
             toast.error(error.message)
@@ -68,7 +68,7 @@ export default function UpdatePiece() {
     })
 
     //Delete Mutate
-    const { mutate : deleteImageMutate } = useMutation({
+    const { mutate : deleteImageMutate, isPending: isPendingDelete } = useMutation({
         mutationFn: deleteImage,
         onError: (error) => {
             toast.error(error.message)
@@ -82,7 +82,7 @@ export default function UpdatePiece() {
     })
 
     //Add Mutate
-    const { mutate : addImageMutation } = useMutation({
+    const { mutate : addImageMutation, isPending: isPendingAddImage } = useMutation({
         mutationFn: addImage,
         onError: (error) => {
             toast.error(error.message)
@@ -113,7 +113,7 @@ export default function UpdatePiece() {
         }
     }, [isErrorAuth, errorAuth])
 
-    if(isLoading || isLoadingAuth) return <Loading />
+    if(isLoading || isLoadingAuth || isPendingUpdate || isPendingDelete || isPendingAddImage) return <Loading />
 
     if (data) return (
         <>

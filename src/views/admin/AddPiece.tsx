@@ -7,6 +7,7 @@ import { PieceFormData, PieceFormDataWithFiles } from "../../types"
 import { toast } from "react-toastify"
 import InputFieldsPieceForm from "../../components/InputFieldsPieceForm"
 import useAuth from "../../hooks/useAuth"
+import Loading from "../../components/helpers/Loading"
 
 export default function AddPiece() {
     const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
@@ -23,7 +24,7 @@ export default function AddPiece() {
     const {register, handleSubmit, reset, formState: {errors}, resetField} = useForm({defaultValues: initialValues}) 
 
     const queryClient = useQueryClient()
-    const { mutate } = useMutation({
+    const { mutate, isPending } = useMutation({
         mutationFn: (formDataWithFiles : PieceFormDataWithFiles) => addPiece(formDataWithFiles),
         onError: (error) => {
             toast.error(error.message)
@@ -53,11 +54,7 @@ export default function AddPiece() {
         }
     }, [isErrorAuth, errorAuth])
 
-    if (isLoadingAuth) return (
-        <div className="w-full h-32 flex justify-center items-center">
-            <p className="text-2xl animate-pulse">Cargando...</p>
-        </div>
-    )
+    if (isLoadingAuth || isPending) return <Loading />
     
     return (
         <>

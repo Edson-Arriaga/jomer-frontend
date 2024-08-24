@@ -1,7 +1,7 @@
 import anime from "animejs";
 import { useEffect } from "react"
 
-export default function TittleEffect({children, catalog} : {children: React.ReactNode, catalog?: boolean}) {
+export default function TittleEffect({children} : {children: React.ReactNode}) {
     
     useEffect(()=>{
         var textWrapper = document.querySelector('.ml1 .letters');
@@ -27,7 +27,7 @@ export default function TittleEffect({children, catalog} : {children: React.Reac
             offset: '-=875',
             delay: (_el, i, l) => 80 * (l - i)
         })
-    }, [catalog])
+    }, [])
     
     return (
         <h1 className="ml1 text-center mt-10 text-[2.6rem] sm:text-5xl uppercase pb-10">
