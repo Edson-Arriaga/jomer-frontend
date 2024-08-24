@@ -22,9 +22,12 @@ export async function addPiece(formDataWithFiles : PieceFormDataWithFiles) {
 
 export async function getPieces({pageParam}: {pageParam?: number}){
     try {
+        console.log("Consultando api...")
         const {data} = await api(`/pieces?page=${pageParam}`)
         const response = PiecesShemaPagination.safeParse(data)
+        console.log('Response: ' + response)
         if(response.success){
+            console.log("Aceptada")
             return response.data
         }
     } catch (error) {

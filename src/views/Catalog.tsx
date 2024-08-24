@@ -21,7 +21,7 @@ export default function Products() {
     
     const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery({
         queryKey: ['pieces'],
-        queryFn: ({ pageParam = 1 }) => getPieces({ pageParam }),
+        queryFn: ({ pageParam }) => getPieces({ pageParam }),
         getNextPageParam: (lastPage) => lastPage?.nextPage,
         initialPageParam: 1,
         retry: 2
