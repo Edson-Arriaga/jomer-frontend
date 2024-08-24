@@ -23,8 +23,8 @@ export default function Products() {
         queryKey: ['pieces'],
         queryFn: ({ pageParam }) => getPieces({ pageParam }),
         getNextPageParam: (lastPage) => lastPage?.nextPage,
-        initialPageParam: 1,
-        retry: 1
+        initialPageParam: 0,
+        retry: 2
     });
 
     const filteredPieces = useMemo(
