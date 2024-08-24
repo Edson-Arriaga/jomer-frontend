@@ -7,7 +7,6 @@ import { filterPieces } from "../utils/filterPieces.ts"
 import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
 import { Transition } from "@headlessui/react"
-import TittleEffect from "../components/helpers/TittleEffect.tsx"
 
 export default function Products() {
     const { filter } = useParams()
@@ -50,8 +49,8 @@ export default function Products() {
     if (isError) return <Navigate to={'/404'}/>
 
     return (
-        <>
-            <TittleEffect>Catálogo</TittleEffect>
+        <>  
+            <h1 className="text-center mt-10 text-[2.6rem] sm:text-5xl uppercase pb-10">Catálogo</h1>
             
             <div className="grid grid-cols-1 gap-10 mx-2 xs:mx-5 sm:mx-10 lg:grid-cols-4 mb-16">
                 <div className="col-span-1">

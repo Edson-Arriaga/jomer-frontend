@@ -1,6 +1,6 @@
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { changeAvailability, getPieces } from "../../api/PieceAPI";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { categoryTranslations } from "../../locales/es";
 import DeleteModal from "../../components/DeleteModal";
 import useAuth from "../../hooks/useAuth";
@@ -18,12 +18,13 @@ export default function AdminDashboard() {
     const activedeleteModal = queryParams.get('deleteModal')
     const [isLoadingImage, setIsLoadingImage] = useState(true)
     
-    const { data, isLoading, isError } = useQuery({
+    const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery({
         queryKey: ['pieces'],
-        queryFn: getPieces,
-        retry: 2,
-        refetchOnWindowFocus: true
-    })
+        queryFn: ({ pageParam }) => getPieces({ pageParam }),
+        getNextPageParam: (lastPage) => lastPage?.nextPage,
+        initialPageParam: 1,
+        retry: 2
+    });
 
     const queryClient = useQueryClient()
     const { mutate } = useMutation({
@@ -84,56 +85,63 @@ export default function AdminDashboard() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(piece => (
-                            <tr key={piece._id} className="odd:bg-gray-300 even:bg-gray-200 border-b text-[1.15rem]">
-                                <th
-                                    className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase overflow-hidden text-ellipsis max-w-64"
-                                >
-                                    {piece.name}
-                                </th>
-                                <td className="px-6 py-4 text-gray-900 whitespace-nowrap">
-                                    {categoryTranslations[piece.category]}
-                                </td>
-                                <td className="px-6 py-4 text-gray-900">
-                                    {piece.availability === true 
-                                        ?  <button
-                                                className="text-green-700 w-full bg-green-50 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
-                                                onClick={() => mutate(piece._id)}    
-                                            >Disponible</button>
-                                        :  <button
-                                                className="text-red-700 w-full bg-red-50 b px-3 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
-                                                onClick={() => mutate(piece._id)}   
-                                            >No Disponible</button>
-                                    }
-                                </td>
-                                <td className="py-2 text-gray-900 text-center flex justify-center">
-
-                                    <div className="w-16 rounded-xl overflow-hidden">
-                                        { isLoadingImage && <LoadingPhoto />}
-                                        <img 
-                                            src={`${piece.photos[0]}?t=${new Date().getTime()}`} 
-                                            alt={`Main photo of ${piece.name}`}
-                                            onLoad={() => setIsLoadingImage(false)}
-                                        />
-                                    </div>
-                                </td>
-                                <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">
-                                    <Link
-                                        className="font-medium text-blue-600 hover:underline"
-                                        to={`actualizar-pieza/${piece._id}`}
-                                    >Actualizar</Link>
-                                    <Link
-                                        className="font-medium text-red-600 hover:underline"
-                                        to={location.pathname + `?deleteModal=${piece._id}`}
-                                        >Eliminar</Link>
-                                </td>
-                            </tr>
-                        ))}                 
+                        {data.pages.map((page) =>
+                            page?.pieces.map((piece) => (
+                                <tr key={piece._id} className="odd:bg-gray-300 even:bg-gray-200 border-b text-[1.15rem]">
+                                    <th
+                                        className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase overflow-hidden text-ellipsis max-w-64"
+                                    >
+                                        {piece.name}
+                                    </th>
+                                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap">
+                                        {categoryTranslations[piece.category]}
+                                    </td>
+                                    <td className="px-6 py-4 text-gray-900">
+                                        {piece.availability === true 
+                                            ?  <button
+                                                    className="text-green-700 w-full bg-green-50 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
+                                                    onClick={() => mutate(piece._id)}    
+                                                >Disponible</button>
+                                            :  <button
+                                                    className="text-red-700 w-full bg-red-50 b px-3 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
+                                                    onClick={() => mutate(piece._id)}   
+                                                >No Disponible</button>
+                                        }
+                                    </td>
+                                    <td className="py-2 text-gray-900 text-center flex justify-center">
+                                        <div className="w-16 rounded-xl overflow-hidden">
+                                            { isLoadingImage && <LoadingPhoto />}
+                                            <img 
+                                                src={`${piece.photos[0]}?t=${new Date().getTime()}`} 
+                                                alt={`Main photo of ${piece.name}`}
+                                                onLoad={() => setIsLoadingImage(false)}
+                                            />
+                                        </div>
+                                    </td>
+                                    <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">
+                                        <Link
+                                            className="font-medium text-blue-600 hover:underline"
+                                            to={`actualizar-pieza/${piece._id}`}
+                                        >Actualizar</Link>
+                                        <Link
+                                            className="font-medium text-red-600 hover:underline"
+                                            to={location.pathname + `?deleteModal=${piece._id}`}
+                                            >Eliminar</Link>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
             </div>
 
-            <div className="flex justify-center mb-10">
+            <div className="flex justify-center mb-10 gap-x-5">
+                <button
+                    className="shadow hover:shadow-inner hover:bg-gray-800 ease transition-colors p-2 rounded-md bg-black text-white uppercase"
+                    onClick={() => fetchNextPage()}
+                >
+                    Mostrar más piezas
+                </button>
                 <button
                     className="shadow hover:shadow-inner hover:bg-red-800 ease transition-colors p-2 rounded-md bg-red-600 text-white uppercase"
                     onClick={handleClick}

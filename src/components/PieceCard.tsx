@@ -46,7 +46,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                         <SwiperSlide key={i} className="overflow-hidden">
                             {isLoading && <LoadingPhoto/>}
                             <img
-                                className="hover:scale-105 ease duration-200"
+                                className={`hover:scale-110 ease duration-200 ${isLoading ? "opacity-0 absolute" : "opacity-100"}`}
                                 src={imageURL}
                                 alt={`Photo ${i} ${piece.name}`}
                                 onClick={() => navigate(`/piece/${piece._id}`)}
@@ -55,7 +55,6 @@ export default function PieceCard({piece} : PieceCardProps) {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-
                 <div 
                     className="absolute z-30 w-8 lg:w-10 opacity-80 right-0 bottom-0 p-1 hover:scale-110"
                     onClick={() => isFavorite ? removeFavoritePiece(piece._id) : addFavoritePiece(piece)}
@@ -66,7 +65,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                     />
                 </div>
             </div>
-
+            
             <div
                 className=" flex flex-col pt-6 justify-center items-center px-3 pb-4"
                 onClick={() => navigate(`/piece/${piece._id}`)}
@@ -75,10 +74,10 @@ export default function PieceCard({piece} : PieceCardProps) {
                 {piece.category == 'weddingRing'
                     ? <p className="text-md sm:text-lg mt-5">Medidas: {''} 
                         <span className="font-black">{piece.measure} Y {piece.measure2}</span>
-                      </p>
+                    </p>
                     : <p className="text-md sm:text-lg mt-5">Medida: {''} 
                         <span className="font-black">{piece.measure === 0 ? 'Unitalla' : `${piece.measure} ${["chain", "cuffBracelet", "pendant"].includes(piece.category) ? ' cm.' : ''}`} </span>
-                      </p>
+                    </p>
                 }
                 <p className="text-md sm:text-lg">Kilataje  : <span className="font-black">{piece.caratage} </span></p>
                 <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
@@ -86,7 +85,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                     ?   <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
                     :   <p className="text-red-700 border bg-red-50 border-red-700 px-5 py-1 rounded-xl text-sm mt-5 font-black">Agotado</p>
                 }
-            </div>
+            </div>   
         </div>
     )
 }
