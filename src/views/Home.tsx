@@ -30,7 +30,7 @@ export function Home() {
             <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
                 <Link to={'catalogo/chain'}>
                 <CategoryCard
-                    image='earings.webp'
+                    image='cadenas.webp'
                     category='Cadenas'
                     rotate='rotate-12'
                 />
@@ -69,7 +69,7 @@ export function Home() {
                 
                 <Link to={'catalogo/ring'}>
                 <CategoryCard
-                    image='earings.webp'
+                    image='rings.webp'
                     category='Anillos'
                     rotate='rotate-6'
                 />

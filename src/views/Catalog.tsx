@@ -7,6 +7,8 @@ import { filterPieces } from "../utils/filterPieces.ts"
 import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
 import { Transition } from "@headlessui/react"
+import { useIsBottom } from "../hooks/useIsBottom.ts"
+import TittleEffect from "../components/helpers/TittleEffect.tsx"
 
 export default function Products() {
     const { filter } = useParams()
@@ -14,6 +16,8 @@ export default function Products() {
     const [caratage, setCaratage] = useState('')
     const [availability, setAvailability] = useState('')
     const [isFilterActive, setIsFilterActive] = useState(false)
+
+    const {isBottom} = useIsBottom()
     
     const navigate = useNavigate()
     const {width} = useScreenSize()
@@ -25,6 +29,10 @@ export default function Products() {
         initialPageParam: 1,
         retry: 2
     });
+
+    if(isBottom){
+        fetchNextPage()
+    }
 
     const filteredPieces = useMemo(
         () => filterPieces(data?.pages.flatMap(page => page!.pieces) || [], category, caratage, availability),
@@ -50,7 +58,7 @@ export default function Products() {
 
     return (
         <>  
-            <h1 className="text-center mt-10 text-[2.6rem] sm:text-5xl uppercase pb-10">Catálogo</h1>
+            <TittleEffect>Catálogo</TittleEffect>
             
             <div className="grid grid-cols-1 gap-10 mx-2 xs:mx-5 sm:mx-10 lg:grid-cols-4 mb-16">
                 <div className="col-span-1">
@@ -130,11 +138,6 @@ export default function Products() {
                     <p className="font-bold uppercase text-xl">No hay piezas con esas características.</p>
                 </div>
             )}
-
-            <button 
-                className="text-center w-full font-bold text-2xl"
-                onClick={() => fetchNextPage()}
-            >Mostrar mas</button>
             
             {width >= 1024 && <div className="inset-0 z-10 w-10 fixed bg-black" />}
         </>
