@@ -1,5 +1,5 @@
 import { isAxiosError } from "axios"
-import { Piece, PieceFormData, PieceFormDataWithFiles, pieceSchema, piecesSchema } from "../types"
+import { Piece, PieceFormData, PieceFormDataWithFiles, PieceSchema, PiecesShemaPagination } from "../types"
 import api from "../lib/axios"
 
 export async function addPiece(formDataWithFiles : PieceFormDataWithFiles) {
@@ -20,10 +20,10 @@ export async function addPiece(formDataWithFiles : PieceFormDataWithFiles) {
     }
 }
 
-export async function getPieces(){
+export async function getPieces({pageParam}: {pageParam?: number}){
     try {
-        const {data} = await api(`/pieces`)
-        const response = piecesSchema.safeParse(data)
+        const {data} = await api(`/pieces?page=${pageParam}`)
+        const response = PiecesShemaPagination.safeParse(data)
         if(response.success){
             return response.data
         }
@@ -37,7 +37,7 @@ export async function getPieces(){
 export async function getPieceById(pieceId: Piece['_id']){
     try {
         const {data} = await api(`/pieces/${pieceId}`)
-        const response = pieceSchema.safeParse(data)
+        const response = PieceSchema.safeParse(data)
         if(response.success){
             return response.data
         }

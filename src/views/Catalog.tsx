@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery } from "@tanstack/react-query"
 import PieceCard from "../components/PieceCard"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { getPieces } from "../api/PieceAPI.ts"
@@ -7,6 +7,7 @@ import { filterPieces } from "../utils/filterPieces.ts"
 import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
 import { Transition } from "@headlessui/react"
+import TittleEffect from "../components/helpers/TittleEffect.tsx"
 
 export default function Products() {
     const { filter } = useParams()
@@ -18,13 +19,18 @@ export default function Products() {
     const navigate = useNavigate()
     const {width} = useScreenSize()
     
-    const { data, isLoading, isError } = useQuery({
+    const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery({
         queryKey: ['pieces'],
-        queryFn: getPieces,
-        retry: 2
-    })
+        queryFn: ({ pageParam }) => getPieces({ pageParam }),
+        getNextPageParam: (lastPage) => lastPage?.nextPage,
+        initialPageParam: 1,
+        retry: 1
+    });
 
-    const filteredPieces = useMemo(() => filterPieces(data, category, caratage, availability), [data, category, caratage, availability])
+    const filteredPieces = useMemo(
+        () => filterPieces(data?.pages.flatMap(page => page!.pieces) || [], category, caratage, availability),
+        [category, caratage, availability, data]
+    );
 
     const handleChange = (e : ChangeEvent<HTMLSelectElement>) => {
         navigate(`/catalogo/${e.target.value}`)
@@ -45,7 +51,7 @@ export default function Products() {
 
     return (
         <>
-            <h1 className="text-center mt-10 text-5xl uppercase pb-10">Catálogo</h1>
+            <TittleEffect>Catálogo</TittleEffect>
             
             <div className="grid grid-cols-1 gap-10 mx-2 xs:mx-5 sm:mx-10 lg:grid-cols-4 mb-16">
                 <div className="col-span-1">
@@ -125,6 +131,11 @@ export default function Products() {
                     <p className="font-bold uppercase text-xl">No hay piezas con esas características.</p>
                 </div>
             )}
+
+            <button 
+                className="text-center w-full font-bold text-2xl"
+                onClick={() => fetchNextPage()}
+            >Mostrar mas</button>
             
             {width >= 1024 && <div className="inset-0 z-10 w-10 fixed bg-black" />}
         </>

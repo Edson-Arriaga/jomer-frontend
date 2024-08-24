@@ -1,3 +1,4 @@
+import TittleEffect from "../components/helpers/TittleEffect";
 import PieceCard from "../components/PieceCard";
 import { usePiecesStore } from "../store";
 
@@ -8,7 +9,7 @@ export default function WishList() {
     
     return (
         <>
-            <h1 className="text-center pt-10 text-5xl uppercase pb-6">Tus piezas favoritas</h1>
+            <TittleEffect>Tus piezas favoritas</TittleEffect>
             {favoritePieces.length ? (
                 <>
                     <div className="w-full max-w-5xl mx-auto px-3 xs:px-6 grid gap-x-2 gap-y-12 grid-cols-2 xs:px-30 md:px-20 xs:grid-cols-3 lg:grid-cols-4 pb-10">
@@ -28,7 +29,7 @@ export default function WishList() {
                         >Eliminar Todas las piezas favoritas</button>
                     </div>
                 </>
-            ) : <p className="text-center mb-40 pt-5 px-10 font-black text-xl">Agrega productos a favoritos para verlos aquí.</p>}
+            ) : <p className="text-center mb-40 pt-5 px-10 font-black text-xl">Agrega piezas a favoritos para verlos aquí.</p>}
         </>
     );
 }

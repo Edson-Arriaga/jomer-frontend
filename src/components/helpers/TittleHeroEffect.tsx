@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react'
 import anime from 'animejs';
 
-export default function TitleEffect({children} : {children: ReactNode}) {
+export default function TittleHeroEffect({children} : {children: ReactNode}) {
     
     useEffect(() => {
         const textWrapper = document.querySelector('.ml3');

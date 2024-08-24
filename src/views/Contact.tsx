@@ -1,7 +1,9 @@
+import TittleEffect from "../components/helpers/TittleEffect";
+
 export default function Contact() {
     return (
         <>
-            <h1 className="text-center px-5 pt-10 text-4xl pb-10 lg:p-10 lg:text-5xl uppercase">Contáctanos</h1>
+            <TittleEffect>Contáctanos</TittleEffect>
             <form 
                 className="mx-2 sm:mx-auto max-w-screen-sm shadow-lg grid grid-cols-2 gap-5 p-5 lg:p-10 mb-20 rounded-xl bg-white border-y-[1.5rem] border-black"
                 action="https://formsubmit.co/db8e06899d780c750f034f6f69c58e8f"

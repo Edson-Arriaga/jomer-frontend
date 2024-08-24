@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
-import TitleEffect from "../helpers/TitleEffect";
+import TittleHeroEffect from "../helpers/TittleHeroEffect";
 import { Link } from "react-router-dom";
 
 export default function Hero() {
@@ -24,7 +24,7 @@ export default function Hero() {
             <SwiperSlide>
                 <div className="bg-hero-1 bg-cover text-white h-hero-lg lg:bg-center flex flex-col items-start justify-center gap-y-10 mx-auto px-5 lg:pl-10">
                 <h1 className='ml3 text-5xl text-white tracking-wider lg:text-6xl'>
-                    <TitleEffect>La Perfección En Cada Detalle.</TitleEffect>
+                    <TittleHeroEffect>La Perfección En Cada Detalle.</TittleHeroEffect>
                 </h1>
                 <Link
                     to={"/catalogo/all"}
