@@ -5,7 +5,7 @@ import CategoryCard from '../components/home/CategoryCard';
 import useScreenSize from '../hooks/useScreenSize';
 
 export function Home() {
-    const {width} = useScreenSize() 
+    const {width} = useScreenSize()
 
     return (
         <>
@@ -27,7 +27,7 @@ export function Home() {
             </section>
             
             <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-5 after:bg-black after:block after:w-9/12 lg:after:w-6/12 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:10/12 lg:before:w-8/12 before:h-[2px] before:mx-auto before:mb-4">Nuestras Piezas</h1>
-            <section className='grid mb-20 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
+            <section className='grid mb-8 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
                 <Link to={'catalogo/chain'}>
                 <CategoryCard
                     image='cadenas.webp'

@@ -173,3 +173,11 @@ img {
 
 .ml1 .line1 { top: -0.5rem; }
 .ml1 .line2 { bottom: 0; }
+
+.aboutUs-decoration-top{
+  clip-path: polygon(18% 10%, 28% 10%, 40% 23%, 52% 28%, 66% 40%, 80% 44%, 88% 55%, 100% 66%, 100% 100%, 0 100%, 0 0, 9% 4%);
+}
+
+.aboutUs-decoration-bottom{
+  clip-path: polygon(0 66%, 0 30%, 0 23%, 0 0, 100% 0, 100% 100%, 88% 92%, 75% 91%, 53% 91%, 36% 84%, 21% 78%, 11% 71%);
+}
