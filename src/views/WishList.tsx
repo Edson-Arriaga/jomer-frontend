@@ -1,4 +1,4 @@
-import TittleEffect from "../components/helpers/TittleEffect";
+import LittleTittleEffect from "../components/helpers/LittleTittleEffect";
 import PieceCard from "../components/PieceCard";
 import { usePiecesStore } from "../store";
 
@@ -9,7 +9,7 @@ export default function WishList() {
     
     return (
         <>
-            <TittleEffect>Tus piezas favoritas</TittleEffect>
+            <LittleTittleEffect>Piezas favoritas</LittleTittleEffect>
             {favoritePieces.length ? (
                 <>
                     <div className="w-full max-w-5xl mx-auto px-3 xs:px-6 grid gap-x-2 gap-y-12 grid-cols-2 xs:px-30 md:px-20 xs:grid-cols-3 lg:grid-cols-4 pb-10">

@@ -1,4 +1,4 @@
-import TittleEffect from "../components/helpers/TittleEffect";
+import LittleTittleEffect from "../components/helpers/LittleTittleEffect";
 import useScreenSize from "../hooks/useScreenSize";
 
 export default function AboutUs() {
@@ -7,7 +7,7 @@ export default function AboutUs() {
 
     return (
         <>
-            <TittleEffect>Nosotros</TittleEffect>
+            <LittleTittleEffect>Nosotros</LittleTittleEffect>
             <section className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-300 mt-5 lg:mt-0">
                 <div className="flex flex-col justify-center items-center p-10 py-16 sm:p-20 text-xl text-center gap-10 relative">
                     <h2 className="text-5xl after:w-32 after:bg-black font-black after:h-[0.1rem] after:block after: after:mx-auto">PIEZAS</h2>

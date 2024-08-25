@@ -1,7 +1,7 @@
 import anime from "animejs";
 import { useEffect } from "react"
 
-export default function TittleEffect({children} : {children: React.ReactNode}) {
+export default function LittleTittleEffect({children} : {children: React.ReactNode}) {
     
     useEffect(()=>{
         var textWrapper = document.querySelector('.ml1 .letters');
@@ -30,7 +30,7 @@ export default function TittleEffect({children} : {children: React.ReactNode}) {
     }, [])
     
     return (
-        <h1 className="ml1 text-center mt-10 text-[2.6rem] sm:text-5xl uppercase pb-10">
+        <h1 className="ml1 h-32 mt-10 text-center text-[2.4rem] sm:text-5xl uppercase pb-10 px-4">
             <span className="text-wrapper">
                 <span className="line line1"></span>
                 <span className="letters">{children}</span>

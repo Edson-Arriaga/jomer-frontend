@@ -181,3 +181,8 @@ img {
 .aboutUs-decoration-bottom{
   clip-path: polygon(0 66%, 0 30%, 0 23%, 0 0, 100% 0, 100% 100%, 88% 92%, 75% 91%, 53% 91%, 36% 84%, 21% 78%, 11% 71%);
 }
+
+.ml15 .word {
+  display: inline-block;
+  line-height: 1em;
+}

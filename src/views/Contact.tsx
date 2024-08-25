@@ -1,9 +1,9 @@
-import TittleEffect from "../components/helpers/TittleEffect";
+import LittleTittleEffect from "../components/helpers/LittleTittleEffect";
 
 export default function Contact() {
     return (
         <>
-            <TittleEffect>Contáctanos</TittleEffect>
+            <LittleTittleEffect>Contáctanos</LittleTittleEffect>
             <form 
                 className="mx-2 sm:mx-auto max-w-screen-sm shadow-lg grid grid-cols-2 gap-5 p-5 lg:p-10 mb-20 rounded-xl bg-white border-y-[1.5rem] border-black"
                 action="https://formsubmit.co/db8e06899d780c750f034f6f69c58e8f"

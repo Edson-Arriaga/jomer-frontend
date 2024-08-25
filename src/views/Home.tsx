@@ -1,15 +1,49 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CustomizationForm from '../components/home/CustomizationForm';
 import Hero from '../components/home/Hero';
 import CategoryCard from '../components/home/CategoryCard';
 import useScreenSize from '../hooks/useScreenSize';
+import BigTittleEffect from '../components/helpers/BigTittleEffect';
+import LittleTittleEffect from '../components/helpers/LittleTittleEffect';
 
 export function Home() {
     const {width} = useScreenSize()
 
+    const personalizationTittleRef = useRef<HTMLDivElement | null>(null)
+    const ourPiecesTittleRef = useRef<HTMLDivElement | null>(null)
+
+    const [isPersonalizationTittleActive, setIsPersonalizationTittleActive] = useState(false)
+    const [isOurPiecesTittleActive, setIsOurPiecesTittleActive] = useState(false)
+
+     
+    useEffect(() => {
+        const handleScroll = () => {
+            const personalizationTittle = personalizationTittleRef.current
+            const {y : personalizationY} = personalizationTittle!.getBoundingClientRect()
+            
+            if(personalizationY <= 400){
+                setIsPersonalizationTittleActive(true)
+            }
+
+            const ourPiecesTittle = ourPiecesTittleRef.current
+            const {y : ourPiecesY} = ourPiecesTittle!.getBoundingClientRect()
+
+            if(ourPiecesY <= 400){
+                setIsOurPiecesTittleActive(true)
+            }
+            
+            console.log(personalizationY)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
         <>
-            <section className='relative'>
+            <section className='relative mb-20'>
                 {width > 1024 ? (
                 <img 
                     src="/images/logos/vertical-white-logo.webp"
@@ -26,7 +60,10 @@ export function Home() {
                 <Hero />
             </section>
             
-            <h1 className="text-center p-10 text-5xl mb-5 uppercase mt-5 after:bg-black after:block after:w-9/12 lg:after:w-6/12 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:10/12 lg:before:w-8/12 before:h-[2px] before:mx-auto before:mb-4">Nuestras Piezas</h1>
+            <div ref={ourPiecesTittleRef} className={`${!isOurPiecesTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
+                {isOurPiecesTittleActive ? <LittleTittleEffect>Nuestras Piezas</LittleTittleEffect>: <div className='h-32 mt-10'></div>}
+            </div>
+            
             <section className='grid mb-8 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
                 <Link to={'catalogo/chain'}>
                 <CategoryCard
@@ -75,8 +112,10 @@ export function Home() {
                 />
                 </Link>
             </section>
-
-            <h1 className="text-center pb-8 lg:pb-2 px-6 pt-0 text-4xl sm:p-10 sm:text-5xl uppercase after:bg-black after:block after:w-8/12 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:w-6/12 before:h-[2px] before:mx-auto before:mb-4">Crea tu propia pieza personalizada</h1>
+            
+            <div ref={personalizationTittleRef} className={`${!isPersonalizationTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
+                {isPersonalizationTittleActive ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> : <div className='h-56 xs:h-40 md:h-36 mt-24 lg:mt-36'></div>}
+            </div>
 
             <section className='mt-4'>
                 <CustomizationForm/>

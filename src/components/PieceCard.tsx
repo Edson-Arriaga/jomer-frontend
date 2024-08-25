@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { Piece } from "../types"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { SwiperSlide, Swiper } from "swiper/react"
 import "swiper/css/bundle";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import LoadingPhoto from "./helpers/LoadingPhoto"
 import { usePiecesStore } from "../store";
+import { Transition } from "@headlessui/react";
 
 type PieceCardProps = {
     piece: Piece
@@ -22,12 +23,15 @@ export default function PieceCard({piece} : PieceCardProps) {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true)
 
+    const [pieceInfoActive, setPieceInfoActive] = useState<string[]>([])
+    const isPieceInfoActive = useMemo(() => pieceInfoActive.some(pz => pz === piece._id), [pieceInfoActive])
+
     return (
         <div 
             key={piece._id}
-            className="rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col hover:shadow-md cursor-pointer hover:scale-[1.015] transition-all"
+            className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col transition-all`}
         >
-            <div className="relative">
+            <div className="relative cursor-pointer">
                 <Swiper
                         loop={piece.photos.length > 1}   
                         pagination={{
@@ -65,27 +69,55 @@ export default function PieceCard({piece} : PieceCardProps) {
                     />
                 </div>
             </div>
+
+            <div className="flex justify-center h-10">
+                {isPieceInfoActive ? (
+                    <button 
+                        className="w-11 h-11 hover:scale-105 ease transition-transform animate-pulse"
+                        onClick={() => setPieceInfoActive(state => state.filter(pz => pz !== piece._id))}
+                    >
+                        <img src={`/images/icons/upArrow.webp`} alt="Up Arrow" />
+                    </button>
+                ) : (
+                    <button 
+                        className="w-7 h-7 hover:scale-105 hover:translate-y-1 pt-2 ease transition-transform animate-pulse"
+                        onClick={() => setPieceInfoActive(state => [...state, piece._id])}  
+                    >
+                        <img src={`/images/icons/downArrow.webp`} alt="Down Arrow" />
+                    </button>
+                )}
+            </div>
             
-            <div
-                className=" flex flex-col pt-6 justify-center items-center px-3 pb-4"
-                onClick={() => navigate(`/piece/${piece._id}`)}
+            <Transition
+                show={isPieceInfoActive}
+                enter="ease-in duration-500"
+                enterFrom="opacity-0 -translate-y-10"
+                enterTo="opacity-100 translate-y-0"
+                leave="ease-out duration-500"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 -translate-y-10"
             >
-                <h1 className="text-center font-bold text-[1.1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
-                {piece.category == 'weddingRing'
-                    ? <p className="text-md sm:text-lg mt-5">Medidas: {''} 
-                        <span className="font-black">{piece.measure} Y {piece.measure2}</span>
-                    </p>
-                    : <p className="text-md sm:text-lg mt-5">Medida: {''} 
-                        <span className="font-black">{piece.measure === 0 ? 'Unitalla' : `${piece.measure} ${["chain", "cuffBracelet", "pendant"].includes(piece.category) ? ' cm.' : ''}`} </span>
-                    </p>
-                }
-                <p className="text-md sm:text-lg">Kilataje  : <span className="font-black">{piece.caratage} </span></p>
-                <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
-                {piece.availability === true
-                    ?   <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
-                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-5 py-1 rounded-xl text-sm mt-5 font-black">Agotado</p>
-                }
-            </div>   
+                <div
+                    className={`${isPieceInfoActive && 'cursor-pointer'} flex flex-col pt-3 justify-center items-center px-3 pb-3`}
+                    onClick={() => navigate(`/piece/${piece._id}`)}
+                >
+                    <h1 className="text-center font-bold text-[1.1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
+                    {piece.category == 'weddingRing'
+                        ? <p className="text-md sm:text-lg mt-4">Medidas: {''} 
+                            <span className="font-black">{piece.measure} Y {piece.measure2}</span>
+                        </p>
+                        : <p className="text-md sm:text-lg mt-4">Medida: {''} 
+                            <span className="font-black">{piece.measure === 0 ? 'Unitalla' : `${piece.measure} ${["chain", "cuffBracelet", "pendant"].includes(piece.category) ? ' cm.' : ''}`} </span>
+                        </p>
+                    }
+                    <p className="text-md sm:text-lg">Kilataje: <span className="font-black">{piece.caratage} </span></p>
+                    <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
+                    {piece.availability === true
+                        ?   <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
+                        :   <p className="text-red-700 border bg-red-50 border-red-700 px-5 py-1 rounded-xl text-sm mt-5 font-black">Agotado</p>
+                    }
+                </div>
+            </Transition>
         </div>
     )
 }
