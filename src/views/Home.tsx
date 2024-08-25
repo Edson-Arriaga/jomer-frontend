@@ -22,7 +22,7 @@ export function Home() {
             const personalizationTittle = personalizationTittleRef.current
             const {y : personalizationY} = personalizationTittle!.getBoundingClientRect()
             
-            if(personalizationY <= 400){
+            if(personalizationY <= 550){
                 setIsPersonalizationTittleActive(true)
             }
 
@@ -43,7 +43,7 @@ export function Home() {
 
     return (
         <>
-            <section className='relative mb-20'>
+            <section className='relative'>
                 {width > 1024 ? (
                 <img 
                     src="/images/logos/vertical-white-logo.webp"
@@ -60,64 +60,69 @@ export function Home() {
                 <Hero />
             </section>
             
-            <div ref={ourPiecesTittleRef} className={`${!isOurPiecesTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
-                {isOurPiecesTittleActive ? <LittleTittleEffect>Nuestras Piezas</LittleTittleEffect>: <div className='h-32 mt-10'></div>}
-            </div>
             
-            <section className='grid mb-8 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
-                <Link to={'catalogo/chain'}>
-                <CategoryCard
-                    image='cadenas.webp'
-                    category='Cadenas'
-                    rotate='rotate-12'
-                />
-                </Link>
-                <Link to={'catalogo/cuffBracelet'}>
-                <CategoryCard
-                    image='cuffBracelets.webp'
-                    category='Esclavas'
-                    rotate='-rotate-6'
-                />
-                </Link>
+            <section className='bg-home bg-cover bg-center pt-8 pb-20 relative'>
+                <div className='absolute w-full h-full inset-0 bg-slate-100'></div>
+                <div ref={ourPiecesTittleRef} className={`${!isOurPiecesTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
+                    {isOurPiecesTittleActive ? <LittleTittleEffect home="text-black sm:text-6xl">Nuestras Piezas</LittleTittleEffect>: <div className='h-32 mt-10'></div>}
+                </div>
                 
-                <Link to={'catalogo/earings'}>
-                <CategoryCard
-                    image='earings.webp'
-                    category='Aretes'
-                    rotate='rotate-6'
-                />
-                </Link>
+                <div className='grid mb-8 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
+                    <Link to={'catalogo/chain'}>
+                    <CategoryCard
+                        image='cadenas.webp'
+                        category='Cadenas'
+                        rotate='rotate-12'
+                    />
+                    </Link>
+                    <Link to={'catalogo/cuffBracelet'}>
+                    <CategoryCard
+                        image='cuffBracelets.webp'
+                        category='Esclavas'
+                        rotate='-rotate-6'
+                    />
+                    </Link>
                 
-                <Link to={'catalogo/marriage'}>
-                <CategoryCard
-                    image='marriage.webp'
-                    category='Matrimonio'
-                    rotate='rotate-12'
-                />
-                </Link>
+                    <Link to={'catalogo/earings'}>
+                    <CategoryCard
+                        image='earings.webp'
+                        category='Aretes'
+                        rotate='rotate-6'
+                    />
+                    </Link>
                 
-                <Link to={'catalogo/pendant'}>
-                <CategoryCard
-                    image='pendants.webp'
-                    category='Dijes'
-                    rotate='-rotate-3'
-                />
-                </Link>
+                    <Link to={'catalogo/marriage'}>
+                    <CategoryCard
+                        image='marriage.webp'
+                        category='Matrimonio'
+                        rotate='rotate-12'
+                    />
+                    </Link>
                 
-                <Link to={'catalogo/ring'}>
-                <CategoryCard
-                    image='rings.webp'
-                    category='Anillos'
-                    rotate='rotate-6'
-                />
-                </Link>
+                    <Link to={'catalogo/pendant'}>
+                    <CategoryCard
+                        image='pendants.webp'
+                        category='Dijes'
+                        rotate='-rotate-3'
+                    />
+                    </Link>
+                
+                    <Link to={'catalogo/ring'}>
+                    <CategoryCard
+                        image='rings.webp'
+                        category='Anillos'
+                        rotate='rotate-6'
+                    />
+                    </Link>
+                </div>
+                <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
             </section>
             
             <div ref={personalizationTittleRef} className={`${!isPersonalizationTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
-                {isPersonalizationTittleActive ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> : <div className='h-56 xs:h-40 md:h-36 mt-24 lg:mt-36'></div>}
+                {isPersonalizationTittleActive ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> : <div className='h-56 xs:h-40 md:h-36 mt-10'></div>}
             </div>
 
-            <section className='mt-4'>
+            <section>
                 <CustomizationForm/>
             </section>
         </>

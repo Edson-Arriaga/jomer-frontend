@@ -29,7 +29,7 @@ export default function PieceCard({piece} : PieceCardProps) {
     return (
         <div 
             key={piece._id}
-            className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease hover:bg-gray-100 h-full flex flex-col transition-all`}
+            className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease h-full flex flex-col transition-all`}
         >
             <div className="relative cursor-pointer">
                 <Swiper

@@ -18,6 +18,7 @@ export default {
         'about-us-1': 'url("/images/aboutUs/about-us-1.webp")',
         'about-us-2': 'url("/images/aboutUs/about-us-2.webp")',
         'about-us-phone': 'url("/images/aboutUs/about-us-phone.webp")',
+        'home': 'url("/images/decor/decor-1.webp")'
       },
       height:{
         'hero-lg': 'calc(100svh - 88px)',
