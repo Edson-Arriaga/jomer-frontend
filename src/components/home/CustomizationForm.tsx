@@ -7,7 +7,7 @@ export default function CustomizationForm() {
 
     return (
         <form
-            className="mx-2 sm:mx-auto sm:w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-20 rounded-xl xs:grid-cols-2 bg-white border border-y-[1.5rem] border-y-black"
+            className="sm:w-full max-w-screen-sm shadow-lg grid grid-cols-1 gap-5 p-10 px-5 xs:px-10 pt-5 mb-20 rounded-xl xs:grid-cols-2 bg-white border border-y-[1.5rem] border-y-black"
             action="https://formsubmit.co/db8e06899d780c750f034f6f69c58e8f"
             method="POST"
             encType="multipart/form-data"

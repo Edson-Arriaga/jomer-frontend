@@ -133,9 +133,9 @@ export function Home() {
                 <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
             </div>
 
-            <section className='flex flex-col lg:flex-row mx-5 relative mt-5'>
+            <section className='flex flex-col lg:flex-row relative mt-5 mx-2'>
                 
-                <p className='absolute text-center left-32 top-10 mx-auto rotate-12 font-black text-3xl w-52 uppercase'>¿No te llamó la atención algo del <span className='text-blue-900 uppercase text-4xl'>catálogo</span>?</p>
+                <p className='absolute text-center left-5 sm:left-32 top-10 mx-auto rotate-12 font-black text-3xl w-52 uppercase'>¿No te llamó la atención algo del <span className='text-blue-900 uppercase text-4xl'>catálogo</span>?</p>
                 
                 {/* <div className='absolute text-center left-32 top-86 mx-auto rotate-12'>
                     <img src="/images/icons/curvedArrow.png" alt="Curved Arrow" />
