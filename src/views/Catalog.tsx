@@ -123,7 +123,7 @@ export default function Products() {
                 </div>
 
                 <div className="lg:col-span-3 w-full px-3 grid gap-x-2 gap-y-8 grid-cols-2 xs:px-30 md:px-20 xs:grid-cols-3 md:grid-cols-3 lg:px-0 lg:grid-cols-4">
-                    {filteredPieces.map(piece => (
+                    {filteredPieces.map(piece => ( 
                         <PieceCard
                             key={piece._id}
                             piece={piece}

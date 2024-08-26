@@ -60,8 +60,7 @@ export function Home() {
                 <Hero />
             </section>
             
-            
-            <section className='bg-home bg-cover bg-center pt-8 pb-20 relative'>
+            <section className='bg-cover bg-center pt-8 pb-20 relative'>
                 <div className='absolute w-full h-full inset-0 bg-slate-100'></div>
                 <div ref={ourPiecesTittleRef} className={`${!isOurPiecesTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
                     {isOurPiecesTittleActive ? <LittleTittleEffect home="text-black sm:text-6xl">Nuestras Piezas</LittleTittleEffect>: <div className='h-32 mt-10'></div>}
@@ -115,14 +114,25 @@ export function Home() {
                     />
                     </Link>
                 </div>
-                <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
             </section>
+
+            <div className='flex flex-col sm:flex-row overflow-hidden relative'>
+                <div className="aboutUs-decoration-bottom bg-slate-100 h-32 absolute w-full -top-10 z-10"></div>
+                <div className='overflow-hidden brightness-50 cursor-pointer'>
+                    <img className='hover:scale-105 transition-transform' src="/images/decor/decor-2.jpg" alt="" loading='lazy' />
+                </div>
+                <div className='overflow-hidden brightness-50 cursor-pointer'>
+                    <img className='hover:scale-105 transition-transform' src="/images/decor/decor-3.jpg" alt="" loading='lazy' />
+                </div>
+                <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
+            </div>
             
             <div ref={personalizationTittleRef} className={`${!isPersonalizationTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
-                {isPersonalizationTittleActive ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> : <div className='h-56 xs:h-40 md:h-36 mt-10'></div>}
+                {isPersonalizationTittleActive ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> : <div className='h-56 xs:h-40 md:h-36 mt-10 sm:mb-5'></div>}
             </div>
+            
 
-            <section>
+            <section className='relative'>
                 <CustomizationForm/>
             </section>
         </>

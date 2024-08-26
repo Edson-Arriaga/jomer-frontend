@@ -1,18 +1,21 @@
+import { lazy } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "./views/Home"
 import AppLayout from "./layouts/AppLayout"
+import Home from "./views/Home"
 import Catalog from "./views/Catalog"
 import AboutUs from "./views/AboutUs"
 import Contact from "./views/Contact"
 import WishList from "./views/WishList"
 import PieceDetails from "./views/PieceDetails"
-import Thanks from "./views/Thanks"
-import AddPiece from "./views/admin/AddPiece"
-import AdminLogin from "./views/admin/AdminLogin"
-import AdminLayout from "./layouts/AdminLayout"
-import AdminDashboard from "./views/admin/AdminDashboard"
-import UpdatePiece from "./views/admin/UpdatePiece"
-import NotFound from "./views/NotFound"
+
+const Thanks = lazy(() => import("./views/Thanks"))
+const AddPiece = lazy(() => import("./views/admin/AddPiece"))
+const AdminLogin = lazy(() => import("./views/admin/AdminLogin"))
+const AdminLayout = lazy(() => import("./layouts/AdminLayout"))
+const AdminDashboard = lazy(() => import("./views/admin/AdminDashboard"))
+const UpdatePiece = lazy(() => import("./views/admin/UpdatePiece"))
+const NotFound = lazy(() => import("./views/NotFound"))
+
 
 export default function Router(){
     return (
@@ -27,6 +30,7 @@ export default function Router(){
                     <Route path="/piece/:pieceId" element={<PieceDetails />}/>
                     <Route path="/gracias/:form" element={<Thanks />}/>
                     <Route path="/404" element={<NotFound />}/>
+                    <Route path="*" element={<NotFound />} />
                 </Route>
 
                 <Route element={<AdminLayout />}>
@@ -35,8 +39,6 @@ export default function Router(){
                     <Route path="/admin/agregar-pieza" element={<AddPiece />}/>
                     <Route path="/admin/actualizar-pieza/:pieceId" element={<UpdatePiece />}/>
                 </Route>
-
-
             </Routes>
         </BrowserRouter>
     )  

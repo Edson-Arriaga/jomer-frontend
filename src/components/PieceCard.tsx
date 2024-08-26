@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom"
-import { Piece } from "../types"
 import { useMemo, useState } from "react"
-import { SwiperSlide, Swiper } from "swiper/react"
-import "swiper/css/bundle";
+import { useNavigate } from "react-router-dom"
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import LoadingPhoto from "./helpers/LoadingPhoto"
-import { usePiecesStore } from "../store";
+import { SwiperSlide, Swiper } from "swiper/react"
+import { Piece } from "../types"
+import "swiper/css/bundle";
 import { Transition } from "@headlessui/react";
+import { usePiecesStore } from "../store";
+import LoadingPhoto from "./helpers/LoadingPhoto"
 
 type PieceCardProps = {
     piece: Piece
@@ -27,10 +27,7 @@ export default function PieceCard({piece} : PieceCardProps) {
     const isPieceInfoActive = useMemo(() => pieceInfoActive.some(pz => pz === piece._id), [pieceInfoActive])
 
     return (
-        <div 
-            key={piece._id}
-            className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease h-full flex flex-col transition-all`}
-        >
+        <div className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease h-full flex flex-col transition-all`}>
             <div className="relative cursor-pointer">
                 <Swiper
                         loop={piece.photos.length > 1}   
@@ -55,6 +52,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                                 alt={`Photo ${i} ${piece.name}`}
                                 onClick={() => navigate(`/piece/${piece._id}`)}
                                 onLoad={() => setIsLoading(false)}
+                                loading="lazy"
                             />
                         </SwiperSlide>
                     ))}
@@ -90,12 +88,12 @@ export default function PieceCard({piece} : PieceCardProps) {
             
             <Transition
                 show={isPieceInfoActive}
-                enter="ease-in duration-500"
-                enterFrom="opacity-0 -translate-y-10"
-                enterTo="opacity-100 translate-y-0"
-                leave="ease-out duration-500"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 -translate-y-10"
+                enter="ease-in duration-700"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-out duration-700"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
             >
                 <div
                     className={`${isPieceInfoActive && 'cursor-pointer'} flex flex-col pt-3 justify-center items-center px-3 pb-3`}
