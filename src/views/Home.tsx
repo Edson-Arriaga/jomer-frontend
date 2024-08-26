@@ -22,7 +22,7 @@ export function Home() {
             const personalizationTittle = personalizationTittleRef.current
             const {y : personalizationY} = personalizationTittle!.getBoundingClientRect()
             
-            if(personalizationY <= 550){
+            if(personalizationY <= 200){
                 setIsPersonalizationTittleActive(true)
             }
 
@@ -61,9 +61,11 @@ export function Home() {
             </section>
             
             <section className='bg-cover bg-center pt-8 pb-20 relative'>
-                <div className='absolute w-full h-full inset-0 bg-slate-100'></div>
                 <div ref={ourPiecesTittleRef} className={`${!isOurPiecesTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
-                    {isOurPiecesTittleActive ? <LittleTittleEffect home="text-black sm:text-6xl">Nuestras Piezas</LittleTittleEffect>: <div className='h-32 mt-10'></div>}
+                    {isOurPiecesTittleActive 
+                        ? <LittleTittleEffect home="sm:text-6xl">Nuestras Piezas</LittleTittleEffect>
+                        : <div className='h-32 mt-10'></div>
+                    }
                 </div>
                 
                 <div className='grid mb-8 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
@@ -117,22 +119,35 @@ export function Home() {
             </section>
 
             <div className='flex flex-col sm:flex-row overflow-hidden relative'>
-                <div className="aboutUs-decoration-bottom bg-slate-100 h-32 absolute w-full -top-10 z-10"></div>
-                <div className='overflow-hidden brightness-50 cursor-pointer'>
-                    <img className='hover:scale-105 transition-transform' src="/images/decor/decor-2.jpg" alt="" loading='lazy' />
+                <div className="aboutUs-decoration-bottom bg-zinc-200 h-32 absolute w-full -top-10 z-10"></div>
+                
+                <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
+                    <p className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl top-24 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Section 1</></p>
+                    <img className='brightness-50 ' src="/images/decor/decor-2.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
-                <div className='overflow-hidden brightness-50 cursor-pointer'>
-                    <img className='hover:scale-105 transition-transform' src="/images/decor/decor-3.jpg" alt="" loading='lazy' />
+                <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
+                    <p className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl -top-12 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>section 2</></p>
+                    <img className='hover:scale-105 transition-transform brightness-50 ' src="/images/decor/decor-3.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
+
                 <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
             </div>
-            
-            <div ref={personalizationTittleRef} className={`${!isPersonalizationTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
-                {isPersonalizationTittleActive ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> : <div className='h-56 xs:h-40 md:h-36 mt-10 sm:mb-5'></div>}
-            </div>
-            
 
-            <section className='relative'>
+            <section className='flex flex-col lg:flex-row mx-5 relative mt-5'>
+                
+                <p className='absolute text-center left-32 top-10 mx-auto rotate-12 font-black text-3xl w-52 uppercase'>¿No te llamó la atención algo del <span className='text-blue-900 uppercase text-4xl'>catálogo</span>?</p>
+                
+                {/* <div className='absolute text-center left-32 top-86 mx-auto rotate-12'>
+                    <img src="/images/icons/curvedArrow.png" alt="Curved Arrow" />
+                </div> */}
+
+                <div ref={personalizationTittleRef} className={`${!isPersonalizationTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity lg:w-1/2`}>
+                    {isPersonalizationTittleActive 
+                        ? <BigTittleEffect>Crea tu propia pieza personalizada</BigTittleEffect> 
+                        : <div className='h-56 xs:h-40 md:h-36 mt-96'></div>
+                    }
+                </div>
+                
                 <CustomizationForm/>
             </section>
         </>

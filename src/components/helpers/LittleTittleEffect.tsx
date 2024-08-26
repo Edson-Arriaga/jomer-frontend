@@ -21,7 +21,7 @@ export default function LittleTittleEffect({children, home} : LittleTittleEffect
             opacity: [0, 1],
             translateZ: 0,
             easing: "easeOutExpo",
-            duration: 600,
+            duration: 700,
             delay: (_el, i) => 70 * (i+1)
         }).add({
             targets: '.ml1 .line',
