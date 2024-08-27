@@ -135,11 +135,11 @@ export function Home() {
 
             <section className='flex flex-col lg:flex-row relative mt-5 mx-2'>
                 
-                <p className='absolute text-center left-5 sm:left-32 top-10 mx-auto rotate-12 font-black text-3xl w-52 uppercase'>¿No te llamó la atención algo del <span className='text-blue-900 uppercase text-4xl'>catálogo</span>?</p>
-                
-                {/* <div className='absolute text-center left-32 top-86 mx-auto rotate-12'>
-                    <img src="/images/icons/curvedArrow.png" alt="Curved Arrow" />
-                </div> */}
+                <p className='absolute text-center left-5 xs:left-16 sm:left-32 lg:left-5 xl:left-32 top-10 mx-auto rotate-12 font-black text-3xl w-56 uppercase z-10'>¿No te llamó la atención algo del <Link to={`/catalogo/all`} className='text-blue-900 uppercase text-4xl hover:scale-105 animate-pulse'>catálogo</Link>?</p>
+        
+                <div className={`${isPersonalizationTittleActive && 'opacity-100'} transition-opacity opacity-0 absolute text-center left-40 xs:left-52 sm:left-64 lg:left-40 xl:left-64 top-36 mx-auto rotate-180 -scale-x-10 w-60`}>
+                    <img src="/images/icons/straightArrow.svg" alt="Bent Arrow" />
+                </div>
 
                 <div ref={personalizationTittleRef} className={`${!isPersonalizationTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity lg:w-1/2`}>
                     {isPersonalizationTittleActive 
