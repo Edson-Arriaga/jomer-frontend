@@ -111,17 +111,26 @@ img {
 
 /* Styles for swiper */
 
+.swiper-button-next{
+  display: none;
+}
+
 .swiper-button-prev:after, .swiper-button-next:after{
   color: transparent;
-  transform: scale(0.65);
+  transform: scale(0);
   opacity: 0.6;
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 @media (min-width: 1024px) {
-  .swiper-button-prev:after, .swiper-button-next:after{
+  .swiper-button-prev, .swiper-button-next{
+    display: flex;
+  }
+
+  .swiper-button-prev::after, .swiper-button-next::after{
       color: white;
+      transform: scale(0.60);
   }
 }
 
