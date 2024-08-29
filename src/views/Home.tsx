@@ -118,7 +118,7 @@ export function Home() {
             </section>
 
             <div className='flex flex-col sm:flex-row overflow-hidden relative'>
-                <div className="aboutUs-decoration-bottom bg-zinc-200 h-32 absolute w-full -top-10 z-10"></div>
+                <div className="absolute-decoration-bottom bg-zinc-200 h-32 absolute w-full -top-10 z-10"></div>
                 
                 <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
                     <Link to={'/catalogo/all'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl top-24 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Catálogo</></Link>
@@ -129,7 +129,7 @@ export function Home() {
                     <img className='hover:scale-105 transition-transform brightness-50 ' src="/images/decor/decor-3.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
 
-                <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
+                <div className="absolute-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
             </div>
 
             <section className='flex flex-col lg:flex-row relative mt-5 mx-2 lg:mx-10'>
