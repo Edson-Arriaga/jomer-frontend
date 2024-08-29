@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getPieceById } from "../api/PieceAPI";
 import Loading from "../components/helpers/Loading";
 import { categoryTranslations } from "../locales/es";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function PieceDetails() {
     const params = useParams();
@@ -15,25 +15,31 @@ export default function PieceDetails() {
         retry: 1
     })
 
-    const [photoSelected, setPhotoSelected] = useState(data?.photos[0])
+    const [photoSelected, setPhotoSelected] = useState('')
+
+    useEffect(() => {
+        if (data && data.photos) {
+            setPhotoSelected(data.photos[0]);
+        }
+    }, [data]);
 
     if(isLoading) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
 
     if (data) return (
         <div className="mt-10 max-w-5xl mx-8 grid grid-cols-1 justify-between gap-10 mb-10 md:mx-auto md:w-full md:grid-cols-12 items-center ">
-            <div className="flex justify-center  md:col-span-5 h-full items-center">
-                <img className="w-9/12 md:w-10/12 lg:w-11/12" src={photoSelected || data.photos[0]} alt={`photo 1 of ${data.name}`} />
+            <div className="flex justify-center md:col-span-5 h-full items-center">
+                <img className="w-9/12 md:w-10/12 lg:w-11/12 rounded-md" src={photoSelected || data.photos[0]} alt={`photo 1 of ${data.name}`} />
             </div>
 
             <div className="flex justify-center mx-auto items-center gap-3 md:gap-5 md:w-12 md:flex-col">
                 {data.photos.map((photo, i) => (
                     <div
                         key={data.photos[i]}
-                        className={photo === photoSelected ? "cursor-pointer opacity-100 scale-110 md:-translate-x-10 lg:-translate-x-5": "cursor-pointer opacity-80 hover:scale-105 md:-translate-x-10 lg:-translate-x-5 transition-transform"}
+                        className={`${photo === photoSelected && 'scale-110 opacity-95'} cursor-pointer md:-translate-x-10 lg:-translate-x-5 opacity-80 hover:scale-105 transition-transform`}
                         onClick={() => setPhotoSelected(photo)}
                     >
-                        <img className="w-20" src={photo} alt={`photo ${i + 1} of ${data.name}`} />
+                        <img className="w-20 rounded-md" src={photo} alt={`photo ${i + 1} of ${data.name}`} />
                     </div>
                 ))}
             </div>
