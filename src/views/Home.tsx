@@ -121,11 +121,11 @@ export function Home() {
                 <div className="absolute-decoration-bottom bg-zinc-200 h-32 absolute w-full -top-10 z-10"></div>
                 
                 <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
-                    <Link to={'/catalogo/all'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl top-24 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Catálogo</></Link>
+                    <Link to={'/catalogo/all'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl top-24 sm:top-0 sm:text-5xl font-bold hover:scale-110 transition-transform'><>Catálogo</></Link>
                     <img className='brightness-50 ' src="/images/decor/decor-2.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
                 <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
-                    <Link to={'/wish-list'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl -top-12 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Piezas Favoritas</></Link>
+                    <Link to={'/wish-list'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl -top-12 sm:top-0 sm:text-5xl font-bold hover:scale-110 transition-transform'><>Piezas Favoritas</></Link>
                     <img className='hover:scale-105 transition-transform brightness-50 ' src="/images/decor/decor-3.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
 

@@ -107,7 +107,7 @@ export default function AdminDashboard() {
                                             :  <button
                                                     className="text-red-700 w-full bg-red-50 b px-3 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
                                                     onClick={() => mutate(piece._id)}   
-                                                >No Disponible</button>
+                                                >Agotado</button>
                                         }
                                     </td>
                                     <td className="py-2 text-gray-900 text-center flex justify-center">

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getPieceById } from "../api/PieceAPI";
 import Loading from "../components/helpers/Loading";
 import { categoryTranslations } from "../locales/es";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PieceDetails() {
     const params = useParams();
@@ -49,7 +49,7 @@ export default function PieceDetails() {
                 <p>{data.description}</p>
                 {data.availability === true
                     ?   <p className="text-green-700 border bg-green-50 border-green-700 p-3 rounded-xl text-sm mt-5 font-black text-center">Disponible</p>
-                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 p-3 rounded-xl text-sm mt-5 font-black text-center">No Disponible</p>
+                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 p-3 rounded-xl text-sm mt-5 font-black text-center">Agotado</p>
                 }
                 
                 <table className="text-sm text-left w-full mx-auto rounded-sm flex-grow shadow-inner">
