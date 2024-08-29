@@ -59,7 +59,7 @@ export function Home() {
                 <Hero />
             </section>
             
-            <section className='bg-cover bg-center pt-8 pb-20 relative'>
+            <section className='bg-cover bg-center pt-8 lg:pb-10 relative'>
                 <div ref={ourPiecesTittleRef} className={`${!isOurPiecesTittleActive ? 'opacity-0' : 'opacity-100'} ease transition-opacity`}>
                     {isOurPiecesTittleActive 
                         ? <LittleTittleEffect home="sm:text-6xl">Nuestras Piezas</LittleTittleEffect>
@@ -117,7 +117,7 @@ export function Home() {
                 </div>
             </section>
 
-            <div className='flex flex-col sm:flex-row overflow-hidden relative'>
+            <div className='flex flex-col sm:flex-row overflow-hidden relative text-center'>
                 <div className="absolute-decoration-bottom bg-zinc-200 h-32 absolute w-full -top-10 z-10"></div>
                 
                 <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
