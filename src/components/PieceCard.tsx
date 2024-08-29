@@ -28,6 +28,7 @@ export default function PieceCard({piece} : PieceCardProps) {
     const isPieceInfoActive = useMemo(() => pieceInfoActive.some(pz => pz === piece._id), [pieceInfoActive])
 
     const { width } = useScreenSize()
+    
     return (
         <div className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease h-full flex flex-col transition-all`}>
             <div className="relative cursor-pointer">
@@ -37,7 +38,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                             clickable: true,
                         }}
                         navigation={{
-                            enabled: width >= 1024 ? true : false,
+                            enabled: width >= 1024,
                         }}
                         modules={[Pagination, Navigation, Autoplay]}
                         autoplay={{

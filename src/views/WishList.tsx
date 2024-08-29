@@ -29,7 +29,7 @@ export default function WishList() {
                         >Eliminar Todas las piezas favoritas</button>
                     </div>
                 </>
-            ) : <p className="text-center mb-40 pt-5 px-10 font-black text-xl">Agrega piezas a favoritos para verlos aquí.</p>}
+            ) : <p className="text-center mb-40 pt-5 px-10 font-black text-xl">Agrega piezas a favoritos para verlas aquí.</p>}
         </>
     );
 }
