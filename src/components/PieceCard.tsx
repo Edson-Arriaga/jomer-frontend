@@ -2,11 +2,12 @@ import { useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react"
-import { Piece } from "../types"
-import "swiper/css/bundle";
 import { Transition } from "@headlessui/react";
+import "swiper/css/bundle";
+import { Piece } from "../types"
 import { usePiecesStore } from "../store";
 import LoadingPhoto from "./helpers/LoadingPhoto"
+import useScreenSize from "../hooks/useScreenSize";
 
 type PieceCardProps = {
     piece: Piece
@@ -26,6 +27,7 @@ export default function PieceCard({piece} : PieceCardProps) {
     const [pieceInfoActive, setPieceInfoActive] = useState<string[]>([])
     const isPieceInfoActive = useMemo(() => pieceInfoActive.some(pz => pz === piece._id), [pieceInfoActive])
 
+    const { width } = useScreenSize()
     return (
         <div className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease h-full flex flex-col transition-all`}>
             <div className="relative cursor-pointer">
@@ -35,7 +37,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                             clickable: true,
                         }}
                         navigation={{
-                            enabled: true,
+                            enabled: width >= 1024 ? true : false,
                         }}
                         modules={[Pagination, Navigation, Autoplay]}
                         autoplay={{

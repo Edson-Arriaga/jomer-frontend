@@ -16,7 +16,6 @@ export function Home() {
     const [isPersonalizationTittleActive, setIsPersonalizationTittleActive] = useState(false)
     const [isOurPiecesTittleActive, setIsOurPiecesTittleActive] = useState(false)
 
-     
     useEffect(() => {
         const handleScroll = () => {
             const personalizationTittle = personalizationTittleRef.current
@@ -122,18 +121,18 @@ export function Home() {
                 <div className="aboutUs-decoration-bottom bg-zinc-200 h-32 absolute w-full -top-10 z-10"></div>
                 
                 <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
-                    <p className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl top-24 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Section 1</></p>
+                    <Link to={'/catalogo/all'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl top-24 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Catálogo</></Link>
                     <img className='brightness-50 ' src="/images/decor/decor-2.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
                 <div className='overflow-hidden cursor-pointer relative hover:scale-105 transition-transform'>
-                    <p className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl -top-12 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>section 2</></p>
+                    <Link to={'/wish-list'} className='inset-0 absolute text-white z-10 flex justify-center items-center uppercase text-4xl -top-12 sm:top-0 sm:text-5xl font-bold hover:scale-125 transition-transform'><>Piezas Favoritas</></Link>
                     <img className='hover:scale-105 transition-transform brightness-50 ' src="/images/decor/decor-3.jpg" alt="Jomer Decor" loading='lazy' />
                 </div>
 
                 <div className="aboutUs-decoration-top bg-zinc-200 h-32 absolute w-full -bottom-10"></div>
             </div>
 
-            <section className='flex flex-col lg:flex-row relative mt-5 mx-2'>
+            <section className='flex flex-col lg:flex-row relative mt-5 mx-2 lg:mx-10'>
                 
                 <p className='absolute text-center left-5 xs:left-16 sm:left-32 lg:left-5 xl:left-32 top-10 mx-auto rotate-12 font-black text-3xl w-56 uppercase z-10'>¿No te llamó la atención algo del <Link to={`/catalogo/all`} className='text-blue-900 uppercase text-4xl hover:scale-105 animate-pulse'>catálogo</Link>?</p>
         
