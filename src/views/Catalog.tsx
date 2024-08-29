@@ -7,7 +7,7 @@ import { filterPieces } from "../utils/filterPieces.ts"
 import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
 import { Transition } from "@headlessui/react"
-import { useIsBottom } from "../hooks/useIsBottom.ts"
+import { useIsBottom } from "../hooks/useIsBottom.tsx"
 
 export default function Products() {
     const { filter } = useParams()
