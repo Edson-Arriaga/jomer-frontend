@@ -21,14 +21,14 @@ export function Home() {
             const personalizationTittle = personalizationTittleRef.current
             const {y : personalizationY} = personalizationTittle!.getBoundingClientRect()
             
-            if(personalizationY <= 200){
+            if(personalizationY <= 350){
                 setIsPersonalizationTittleActive(true)
             }
 
             const ourPiecesTittle = ourPiecesTittleRef.current
             const {y : ourPiecesY} = ourPiecesTittle!.getBoundingClientRect()
 
-            if(ourPiecesY <= 400){
+            if(ourPiecesY <= 500){
                 setIsOurPiecesTittleActive(true)
             }
             
