@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from "react";
 import { SetURLSearchParams, useNavigate } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
 import { Transition } from "@headlessui/react";
 
 type FilterControlsProps = { 
@@ -14,14 +13,6 @@ export default function FilterControls({category, caratage, availability, search
     
     const [isFilterActive, setIsFilterActive] = useState(false)
     const navigate = useNavigate()
-
-    console.log(searchParams)
-    const queryClient = useQueryClient()
-
-    const handleOnClick = () => {
-        setIsFilterActive(false)
-        queryClient.invalidateQueries({queryKey: ['pieces']})
-    }
 
     const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
         searchParams[0].set(e.target.name, e.target.value)
@@ -49,7 +40,7 @@ export default function FilterControls({category, caratage, availability, search
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0 -translate-x-44"   
             >
-                <form className="flex flex-col space-y-6 lg:fixed lg:w-40 lg:left-10 lg:top-52">
+                <form className="flex flex-col space-y-6 lg:fixed lg:w-40 lg:left-10 lg:top-60">
                     <select
                         className="w-48 shadow-inner p-3 lg:p-4 bg-black mx-auto rounded-md uppercase text-white lg:rounded-none lg:rounded-r-lg lg:hover:w-52 lg:transition-all cursor-pointer"
                         defaultValue={category || ''}
@@ -89,11 +80,6 @@ export default function FilterControls({category, caratage, availability, search
                         <option value="false">Agotado</option>
                         <option value="">Todas las disp.</option>
                     </select>
-                    <button 
-                        className="w-40 shadow-inner p-1 font-black uppercase bg-green-100 hover:bg-green-200 border border-green-700 mx-auto rounded-md lg:rounded-none lg:rounded-r-lg mt-3 lg:hover:w-44 lg:transition-all"
-                        type="button"
-                        onClick={handleOnClick}
-                    >Aplicar Filtros</button>
                 </form> 
             </Transition>
         </>

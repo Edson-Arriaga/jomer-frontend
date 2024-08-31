@@ -18,18 +18,18 @@ export default function Catalog() {
     const {isBottom} = useIsBottom()
     const {width} = useScreenSize()
     
-    const { data, fetchNextPage, isLoading, isError, isFetching } = useInfiniteQuery({
-        queryKey: ['pieces'],
+    const { data, fetchNextPage, isLoading, isError, isFetching, refetch } = useInfiniteQuery({
+        queryKey: ['pieces', category, caratage, availability],
         queryFn: ({ pageParam }) => getPieces({ pageParam, category, caratage, availability }),
         getNextPageParam: (lastPage) => lastPage?.nextPage,
         initialPageParam: 1,
-        retry: 2
+        retry: 2,
     });
 
+    useEffect(() => { refetch() }, [])
+
     useEffect(() => {
-        if(isBottom){
-            fetchNextPage()
-        }
+        if(isBottom) fetchNextPage()
     }, [isBottom])
 
     let allPieces : Piece[] = []

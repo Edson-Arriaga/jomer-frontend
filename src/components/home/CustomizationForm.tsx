@@ -143,8 +143,8 @@ export default function CustomizationForm() {
                     <span className="font-black before:bg-rose-300">Rosa<p className="text-transparent">...........</p></span>
                 </label>
                 <label className="flex justify-center xs:justify-normal">
-                    <input type="radio" name="colorDeOro" value="Tricolor"/>
-                    <span className="font-black before:bg-triColor">Tricolor</span>
+                    <input type="radio" name="colorDeOro" value="Florentino"/>
+                    <span className="font-black before:bg-florentine">Florentino</span>
                 </label>
             </div>
 

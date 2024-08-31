@@ -78,7 +78,7 @@ export default function PieceDetails() {
                         </tr>
                     </tbody>
                 </table>
-                <p>Contáctanos por medio de <a target="_blank" href={`https://wa.me/${3317086806}?text=${encodeURIComponent("Hola como estas Si SI")}`} className="text-green-400 font-bold text-xl animate-bounce">Whatsapp</a> si te llamó la atención este producto.</p>
+                <p>Contáctanos por medio de <a target="_blank" href={`https://wa.me/${import.meta.env.JOMER_NUM}?text=${encodeURIComponent(`Me interesó esta pieza: ${data.name}.`)}`} className="text-green-400 font-bold text-2xl">Whatsapp</a> si te llamó la atención esta pieza.</p>
             </div>
         </div>
     )

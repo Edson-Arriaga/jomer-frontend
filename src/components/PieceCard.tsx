@@ -114,7 +114,12 @@ export default function PieceCard({piece} : PieceCardProps) {
                     <p className="text-md sm:text-lg">Kilataje: <span className="font-black">{piece.caratage} </span></p>
                     <p className="text-md sm:text-lg">Peso: <span className="font-black">{piece.weight} g.</span></p>
                     {piece.availability === true
-                        ?   <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
+                        ?  (
+                            <>
+                                {/* <p className="text-md sm:text-lg">Color: <span className="font-black">{piece.weight} g.</span></p> */}
+                                <p className="text-green-700 border bg-green-50 border-green-700 px-3 py-1 rounded-xl text-sm mt-5 font-black">Disponible</p>
+                            </>
+                        )
                         :   <p className="text-red-700 border bg-red-50 border-red-700 px-5 py-1 rounded-xl text-sm mt-5 font-black">Agotado</p>
                     }
                 </div>
