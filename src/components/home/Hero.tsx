@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 export default function Hero() {
     return (
         <Swiper
-            spaceBetween={30}
             effect={"fade"}
             autoplay={{
                 delay: 4000,
@@ -27,7 +26,7 @@ export default function Hero() {
                     <TittleHeroEffect>La Perfección En Cada Detalle.</TittleHeroEffect>
                 </h1>
                 <Link
-                    to={"/catalogo/all"}
+                    to={"/catalog"}
                     className="border border-white px-5 py-2 hover:scale-105 ease transition-transform rounded-lg text-2xl lg:text-3xl font-black animate-pulse uppercase"
                 >
                     Ver Catálogo
@@ -40,7 +39,7 @@ export default function Hero() {
                     Intentando Lo Imposible.
                 </h1>
                 <Link
-                    to={"/nosotros"}
+                    to={"/about-us"}
                     className="border border-white px-5 py-2 hover:scale-105 ease transition-transform rounded-lg text-2xl lg:text-3xl font-black animate-pulse uppercase"
                 >
                     Sobre Nosotros
@@ -53,7 +52,7 @@ export default function Hero() {
                     Estilo Que Trasciende.
                 </h1>
                 <Link
-                    to={"/contacto"}
+                    to={"/contact"}
                     className="border border-white px-5 py-2 hover:scale-105 ease transition-transform rounded-lg text-2xl lg:text-3xl font-black animate-pulse uppercase"
                 >
                     Contáctanos

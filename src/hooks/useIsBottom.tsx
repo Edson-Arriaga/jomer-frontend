@@ -1,20 +1,25 @@
-import { useState, useEffect } from 'react';
+    import { useState, useEffect } from 'react';
+    import useScreenSize from './useScreenSize';
 
-export const useIsBottom = () => {
-    const [isBottom, setIsBottom] = useState(false);
+    export const useIsBottom = () => {
+        const [isBottom, setIsBottom] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-            setIsBottom(scrolledToBottom);
-        };
+        const {width} = useScreenSize()
+        const isPhone = width <= 768
 
-        window.addEventListener('scroll', handleScroll);
+        useEffect(() => {
+            const handleScroll = () => {
+                const footerOffset = isPhone ? 328 : 176;
+                const scrolledToBottom = window.innerHeight + window.scrollY  >= document.body.offsetHeight - footerOffset;
+                setIsBottom(scrolledToBottom);
+            };
 
-        handleScroll();
+            window.addEventListener('scroll', handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+            handleScroll();
 
-    return {isBottom};
-}
+            return () => window.removeEventListener('scroll', handleScroll);
+        }, []);
+
+        return {isBottom};
+    }

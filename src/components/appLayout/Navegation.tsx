@@ -15,17 +15,17 @@ export default function Navegation({setIsActiveModal} : NavegacionProps) {
                 onClick={() => setIsActiveModal(false)}
             >Inicio</NavLink>
             <NavLink 
-                to="/catalogo/all"
+                to="/catalog"
                 className={({isActive}) => `lg:hover:scale-105 ease transition-transform ${isActive && "font-black"}`}
                 onClick={() => setIsActiveModal(false)}
             >Catálogo</NavLink>
             <NavLink 
-                to="/nosotros"
+                to="/about-us"
                 className={({isActive}) => `lg:hover:scale-105 ease transition-transform ${isActive && "font-black"}`}
                 onClick={() => setIsActiveModal(false)}
             >Nosotros</NavLink>
             <NavLink
-                to="/contacto"
+                to="/contact"
                 className={({isActive}) => `lg:hover:scale-105 ease transition-transform ${isActive && "font-black"}`}
                 onClick={() => setIsActiveModal(false)}
             >Contacto</NavLink>

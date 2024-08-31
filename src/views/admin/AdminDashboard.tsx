@@ -20,10 +20,11 @@ export default function AdminDashboard() {
     
     const { data, fetchNextPage, isLoading, isError } = useInfiniteQuery({
         queryKey: ['pieces'],
-        queryFn: ({ pageParam }) => getPieces({ pageParam }),
+        queryFn: ({ pageParam }) => getPieces({ pageParam, category: '', caratage: '', availability: ''}),
         getNextPageParam: (lastPage) => lastPage?.nextPage,
         initialPageParam: 1,
-        retry: 2
+        retry: 2,
+        refetchOnWindowFocus: false
     });
 
     const queryClient = useQueryClient()

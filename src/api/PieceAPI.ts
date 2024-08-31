@@ -20,9 +20,17 @@ export async function addPiece(formDataWithFiles : PieceFormDataWithFiles) {
     }
 }
 
-export async function getPieces({pageParam}: {pageParam?: number}){
+type getPiecesProps = {
+    pageParam?: number,
+    category: string,
+    caratage: string,
+    availability: string
+}
+
+export async function getPieces({pageParam, category, caratage, availability} : getPiecesProps){
     try {
-        const {data} = await api(`/pieces?page=${pageParam}`)
+        const url = `/pieces?page=${pageParam}&category=${category}&caratage=${caratage}&availability=${availability}`
+        const {data} = await api(url)
         const response = PiecesShemaPagination.safeParse(data)
         if(response.success){
             return response.data

@@ -81,7 +81,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                     </button>
                 ) : (
                     <button 
-                        className="w-7 h-7 hover:scale-105 hover:translate-y-1 pt-2 ease transition-transform animate-pulse"
+                        className="w-7 h-7 hover:scale-110 pt-2 ease transition-transform animate-pulse"
                         onClick={() => setPieceInfoActive(state => [...state, piece._id])}  
                     >
                         <img src={`/images/icons/downArrow.webp`} alt="Down Arrow" />
@@ -91,10 +91,10 @@ export default function PieceCard({piece} : PieceCardProps) {
             
             <Transition
                 show={isPieceInfoActive}
-                enter="ease-in duration-700"
+                enter="ease-in duration-500"
                 enterFrom="opacity-0"
                 enterTo="opacity-100"
-                leave="ease-out duration-700"
+                leave="ease-out duration-500"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
             >

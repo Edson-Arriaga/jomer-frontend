@@ -23,12 +23,12 @@ export default function Router(){
             <Routes>
                 <Route element={<AppLayout />}>
                     <Route path="/" element={<Home />} index/>
-                    <Route path="/catalogo/:filter" element={<Catalog />}/>
-                    <Route path="/nosotros" element={<AboutUs />}/>
-                    <Route path="/contacto" element={<Contact />}/>
+                    <Route path="/catalog" element={<Catalog />}/>
+                    <Route path="/about-us" element={<AboutUs />}/>
+                    <Route path="/contact" element={<Contact />}/>
                     <Route path="/wish-list" element={<WishList />}/>
                     <Route path="/piece/:pieceId" element={<PieceDetails />}/>
-                    <Route path="/gracias/:form" element={<Thanks />}/>
+                    <Route path="/thanks/:form" element={<Thanks />}/>
                     <Route path="/404" element={<NotFound />}/>
                     <Route path="*" element={<NotFound />} />
                 </Route>

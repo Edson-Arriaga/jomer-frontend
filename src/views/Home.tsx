@@ -31,8 +31,6 @@ export function Home() {
             if(ourPiecesY <= 500){
                 setIsOurPiecesTittleActive(true)
             }
-            
-            console.log(personalizationY)
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -68,14 +66,14 @@ export function Home() {
                 </div>
                 
                 <div className='grid mb-8 mx-auto gap-10 px-5 grid-cols-2 xs:px-20 sm:px-10 sm:grid-cols-3 md:px-16 lg:px-8 md:grid-cols-3 lg:grid-cols-6 gap-y-30'>
-                    <Link to={'catalogo/chain'}>
+                    <Link to={'catalog?category=chain'}>
                     <CategoryCard
                         image='cadenas.webp'
                         category='Cadenas'
                         rotate='rotate-12'
                     />
                     </Link>
-                    <Link to={'catalogo/cuffBracelet'}>
+                    <Link to={'catalog?category=cuffBracelet'}>
                     <CategoryCard
                         image='cuffBracelets.webp'
                         category='Esclavas'
@@ -83,7 +81,7 @@ export function Home() {
                     />
                     </Link>
                 
-                    <Link to={'catalogo/earings'}>
+                    <Link to={'catalog?category=earings'}>
                     <CategoryCard
                         image='earings.webp'
                         category='Aretes'
@@ -91,7 +89,7 @@ export function Home() {
                     />
                     </Link>
                 
-                    <Link to={'catalogo/marriage'}>
+                    <Link to={'catalog?category=marriage'}>
                     <CategoryCard
                         image='marriage.webp'
                         category='Matrimonio'
@@ -99,7 +97,7 @@ export function Home() {
                     />
                     </Link>
                 
-                    <Link to={'catalogo/pendant'}>
+                    <Link to={'catalog?category=pendant'}>
                     <CategoryCard
                         image='pendants.webp'
                         category='Dijes'
@@ -107,7 +105,7 @@ export function Home() {
                     />
                     </Link>
                 
-                    <Link to={'catalogo/ring'}>
+                    <Link to={'catalog?category=ring'}>
                     <CategoryCard
                         image='rings.webp'
                         category='Anillos'
