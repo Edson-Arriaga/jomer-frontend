@@ -33,18 +33,18 @@ export default function PieceCard({piece} : PieceCardProps) {
         <div className={`${isPieceInfoActive && 'hover:shadow-xl hover:scale-[1.015]'} rounded-lg overflow-hidden ease h-full flex flex-col transition-all`}>
             <div className="relative cursor-pointer">
                 <Swiper
-                        loop={piece.photos.length > 1}   
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={{
-                            enabled: width >= 1024,
-                        }}
-                        modules={[Pagination, Navigation, Autoplay]}
-                        autoplay={{
-                            delay: Math.random() > 0.5 ? 3000 : 3500
-                        }}
-                        className="mySwiper"
+                    loop={piece.photos.length > 1}   
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={{
+                        enabled: width >= 1024,
+                    }}
+                    modules={[Pagination, Navigation, Autoplay]}
+                    autoplay={{
+                        delay: Math.random() > 0.5 ? 3000 : 3500
+                    }}
+                    className="mySwiper"
                 >
                     {piece.photos.map((imageURL, i) => (
                         <SwiperSlide key={i} className="overflow-hidden">
@@ -103,6 +103,7 @@ export default function PieceCard({piece} : PieceCardProps) {
                     onClick={() => navigate(`/piece/${piece._id}`)}
                 >
                     <h1 className="text-center font-bold text-[1.1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
+                    <p>{piece._id}</p>
                     {piece.category == 'weddingRing'
                         ? <p className="text-md sm:text-lg mt-4">Medidas: {''} 
                             <span className="font-black">{piece.measure} Y {piece.measure2}</span>

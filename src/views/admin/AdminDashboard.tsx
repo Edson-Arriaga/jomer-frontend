@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Loading from "../../components/helpers/Loading";
 import LoadingPhoto from "../../components/helpers/LoadingPhoto";
 import { toast } from "react-toastify";
+import { Piece } from "../../types";
 
 export default function AdminDashboard() {
     const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
@@ -49,6 +50,20 @@ export default function AdminDashboard() {
             navigate('/admin/login')
         }
     }, [isErrorAuth, errorAuth])
+
+    const pieceMap = new Map<string, Piece>();
+
+    if (data) {
+        data.pages.forEach(page => {
+            page?.pieces.forEach(piece => {
+                if (!pieceMap.has(piece._id)) {
+                    pieceMap.set(piece._id, piece);
+                }
+            });
+        });
+    }
+
+    const uniquePieces = Array.from(pieceMap.values());
     
     if(isLoading || isLoadingAuth) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
@@ -88,8 +103,7 @@ export default function AdminDashboard() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.pages.map((page) =>
-                            page?.pieces.map((piece) => (
+                        {uniquePieces.map((piece) => (
                                 <tr key={piece._id} className="odd:bg-gray-300 even:bg-gray-200 border-b text-[1.15rem]">
                                     <th
                                         className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase overflow-hidden text-ellipsis max-w-64"
@@ -132,8 +146,7 @@ export default function AdminDashboard() {
                                             >Eliminar</Link>
                                     </td>
                                 </tr>
-                            ))
-                        )}
+                        ))}
                     </tbody>
                 </table>
             </div>

@@ -32,11 +32,19 @@ export default function Catalog() {
         if(isBottom) fetchNextPage()
     }, [isBottom])
 
-    let allPieces : Piece[] = []
+    const pieceMap = new Map<string, Piece>();
 
-    if(data){
-        allPieces = data.pages.flatMap(page => page?.pieces) as Piece[];
+    if (data) {
+        data.pages.forEach(page => {
+            page?.pieces.forEach(piece => {
+                if (!pieceMap.has(piece._id)) {
+                    pieceMap.set(piece._id, piece);
+                }
+            });
+        });
     }
+
+    const uniquePieces = Array.from(pieceMap.values());
 
     if (isLoading) return <Loading />
     if (isError) return <Navigate to={'/404'}/>
@@ -57,13 +65,13 @@ export default function Catalog() {
                 </div>
 
                 <div className="lg:col-span-3 w-full mb-5 px-2 grid gap-x-2 gap-y-8 grid-cols-2 xs:px-30 md:px-20 xs:grid-cols-3 lg:px-10 lg:grid-cols-4">
-                    {allPieces.length === 0 ? (
+                    {uniquePieces.length === 0 ? (
                         <div className="col-span-3 text-center w-full mt-10 mb-36">
                             <p className="font-bold uppercase text-xl">No hay piezas con esas características.</p>
                         </div>
                     ) : (
                         <>
-                            {allPieces.map(piece =>(
+                            {uniquePieces.map(piece => (
                                 <PieceCard
                                     key={piece._id}
                                     piece={piece}
