@@ -103,7 +103,6 @@ export default function PieceCard({piece} : PieceCardProps) {
                     onClick={() => navigate(`/piece/${piece._id}`)}
                 >
                     <h1 className="text-center font-bold text-[1.1rem] sm:text-[1.2rem] lg:text-[1.40rem] uppercase flex-grow leading-5 lg:leading-6">{piece.name}</h1>
-                    <p>{piece._id}</p>
                     {piece.category == 'weddingRing'
                         ? <p className="text-md sm:text-lg mt-4">Medidas: {''} 
                             <span className="font-black">{piece.measure} Y {piece.measure2}</span>

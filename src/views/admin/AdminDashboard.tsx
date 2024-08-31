@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import Loading from "../../components/helpers/Loading";
 import LoadingPhoto from "../../components/helpers/LoadingPhoto";
 import { toast } from "react-toastify";
-import { Piece } from "../../types";
 
 export default function AdminDashboard() {
     const {isErrorAuth, isLoadingAuth, errorAuth} = useAuth()
@@ -51,20 +50,6 @@ export default function AdminDashboard() {
         }
     }, [isErrorAuth, errorAuth])
 
-    const pieceMap = new Map<string, Piece>();
-
-    if (data) {
-        data.pages.forEach(page => {
-            page?.pieces.forEach(piece => {
-                if (!pieceMap.has(piece._id)) {
-                    pieceMap.set(piece._id, piece);
-                }
-            });
-        });
-    }
-
-    const uniquePieces = Array.from(pieceMap.values());
-    
     if(isLoading || isLoadingAuth) return <Loading />
     if(isError) return <Navigate to={'/404'}/>
     
@@ -103,50 +88,50 @@ export default function AdminDashboard() {
                         </tr>
                     </thead>
                     <tbody>
-                        {uniquePieces.map((piece) => (
-                                <tr key={piece._id} className="odd:bg-gray-300 even:bg-gray-200 border-b text-[1.15rem]">
-                                    <th
-                                        className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase overflow-hidden text-ellipsis max-w-64"
-                                    >
-                                        {piece.name}
-                                    </th>
-                                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap">
-                                        {categoryTranslations[piece.category]}
-                                    </td>
-                                    <td className="px-6 py-4 text-gray-900">
-                                        {piece.availability === true 
-                                            ?  <button
-                                                    className="text-green-700 w-full bg-green-50 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
-                                                    onClick={() => mutate(piece._id)}    
-                                                >Disponible</button>
-                                            :  <button
-                                                    className="text-red-700 w-full bg-red-50 b px-3 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
-                                                    onClick={() => mutate(piece._id)}   
-                                                >Agotado</button>
-                                        }
-                                    </td>
-                                    <td className="py-2 text-gray-900 text-center flex justify-center">
-                                        <div className="w-16 rounded-xl overflow-hidden">
-                                            { isLoadingImage && <LoadingPhoto />}
-                                            <img 
-                                                src={`${piece.photos[0]}?t=${new Date().getTime()}`} 
-                                                alt={`Main photo of ${piece.name}`}
-                                                onLoad={() => setIsLoadingImage(false)}
-                                            />
-                                        </div>
-                                    </td>
-                                    <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">
-                                        <Link
-                                            className="font-medium text-blue-600 hover:underline"
-                                            to={`actualizar-pieza/${piece._id}`}
-                                        >Actualizar</Link>
-                                        <Link
-                                            className="font-medium text-red-600 hover:underline"
-                                            to={location.pathname + `?deleteModal=${piece._id}`}
-                                            >Eliminar</Link>
-                                    </td>
-                                </tr>
-                        ))}
+                        {data?.pages.map(page => page?.pieces.map(piece => (
+                            <tr key={piece._id} className="odd:bg-gray-300 even:bg-gray-200 border-b text-[1.15rem]">
+                                <th
+                                    className="px-6 py-4 font-black text-gray-900 whitespace-nowrap uppercase overflow-hidden text-ellipsis max-w-64"
+                                >
+                                    {piece.name}
+                                </th>
+                                <td className="px-6 py-4 text-gray-900 whitespace-nowrap">
+                                    {categoryTranslations[piece.category]}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {piece.availability === true 
+                                        ?  <button
+                                                className="text-green-700 w-full bg-green-50 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
+                                                onClick={() => mutate(piece._id)}    
+                                            >Disponible</button>
+                                        :  <button
+                                                className="text-red-700 w-full bg-red-50 b px-3 p-2 rounded-xl text-sm font-black text-center hover:scale-105 transition-transform"
+                                                onClick={() => mutate(piece._id)}   
+                                            >Agotado</button>
+                                    }
+                                </td>
+                                <td className="py-2 text-gray-900 text-center flex justify-center">
+                                    <div className="w-16 rounded-xl overflow-hidden">
+                                        { isLoadingImage && <LoadingPhoto />}
+                                        <img 
+                                            src={`${piece.photos[0]}?t=${new Date().getTime()}`} 
+                                            alt={`Main photo of ${piece.name}`}
+                                            onLoad={() => setIsLoadingImage(false)}
+                                        />
+                                    </div>
+                                </td>
+                                <td className="px-3 py-4 justify-center items-center text-center space-x-14 h-full text-lg">
+                                    <Link
+                                        className="font-medium text-blue-600 hover:underline"
+                                        to={`actualizar-pieza/${piece._id}`}
+                                    >Actualizar</Link>
+                                    <Link
+                                        className="font-medium text-red-600 hover:underline"
+                                        to={location.pathname + `?deleteModal=${piece._id}`}
+                                        >Eliminar</Link>
+                                </td>
+                            </tr>
+                        )))}
                     </tbody>
                 </table>
             </div>

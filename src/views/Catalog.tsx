@@ -7,7 +7,6 @@ import Loading from "../components/helpers/Loading.tsx"
 import useScreenSize from "../hooks/useScreenSize.tsx"
 import { useIsBottom } from "../hooks/useIsBottom.tsx"
 import FilterControls from "../components/FilterControls.tsx"
-import { Piece } from "../types/index.tsx"
 
 export default function Catalog() {
     const searchParams = useSearchParams()
@@ -32,22 +31,10 @@ export default function Catalog() {
         if(isBottom) fetchNextPage()
     }, [isBottom])
 
-    const pieceMap = new Map<string, Piece>();
-
-    if (data) {
-        data.pages.forEach(page => {
-            page?.pieces.forEach(piece => {
-                if (!pieceMap.has(piece._id)) {
-                    pieceMap.set(piece._id, piece);
-                }
-            });
-        });
-    }
-
-    const uniquePieces = Array.from(pieceMap.values());
-
     if (isLoading) return <Loading />
     if (isError) return <Navigate to={'/404'}/>
+
+    const totalPieces = data?.pages.reduce((acc, page) => acc + (page?.pieces?.length || 0), 0);
 
     return (
         <>  
@@ -65,18 +52,18 @@ export default function Catalog() {
                 </div>
 
                 <div className="lg:col-span-3 w-full mb-5 px-2 grid gap-x-2 gap-y-8 grid-cols-2 xs:px-30 md:px-20 xs:grid-cols-3 lg:px-10 lg:grid-cols-4">
-                    {uniquePieces.length === 0 ? (
+                    {totalPieces === 0 ? (
                         <div className="col-span-3 text-center w-full mt-10 mb-36">
                             <p className="font-bold uppercase text-xl">No hay piezas con esas características.</p>
                         </div>
                     ) : (
                         <>
-                            {uniquePieces.map(piece => (
+                            {data?.pages.map(page => page?.pieces.map(piece => (
                                 <PieceCard
                                     key={piece._id}
                                     piece={piece}
                                 />
-                            ))}
+                            )))}
                         </>
                     )}
                     
