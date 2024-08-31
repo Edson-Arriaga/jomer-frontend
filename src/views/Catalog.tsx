@@ -44,7 +44,7 @@ export default function Catalog() {
     return (
         <>  
             <h1 className="text-center mt-10 text-[2.6rem] sm:text-5xl uppercase mb-3 after:bg-black after:block after:w-64 after:h-[2px] after:mx-auto after:mt-3 before:bg-black before:block before:w-64 before:h-[2px] before:mx-auto before:mb-4">Catálogo</h1>
-            <p className="text-center font-bold pb-10 px-14">*Los productos disponibles están listos para entrega inmediata.</p>
+            <p className="text-center font-bold pb-10 px-14">*Las piezas disponibles están listas para entrega inmediata.</p>
             
             <div className="grid grid-cols-1 lg:grid-cols-4">
                 <div className="lg:col-span-1 mb-10">

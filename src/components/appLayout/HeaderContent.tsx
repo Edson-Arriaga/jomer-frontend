@@ -12,10 +12,10 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
            <div className='grid grid-cols-2 max-w-screen-xl mx-auto lg:grid-cols-12 h-full relative'>
                 <div className='lg:col-span-3'>
                     <Link className="overflow-hidden" to={'/'}>
-                        <div className="absolute -top-[4.3rem] w-56 left-1 lg:left-3">
+                        <div className="absolute -top-[4.3rem] w-56 ">
                             <img src="/images/logos/horizontal-black-logo.webp" alt="jomer-horizontal-black-logo" />
                         </div>
-                        <p className="absolute inset-0 left-56 top-10 font-bold font-italic text-xl">By Aly</p>
+                        <p className="absolute inset-0 left-52 top-11 font-bold font-italic text-xl w-16">By Aly</p>
                     </Link>
                 </div>
 
