@@ -44,12 +44,12 @@ export default function PieceDetails() {
                 ))}
             </div>
            
-            <div className="flex flex-col gap-5 md:col-span-6 pr-5">
+            <div className="flex flex-col items-center gap-5 md:col-span-6 lg:pr-5">
                 <h1 className="font-bold text-3xl uppercase tracking-wide">{data.name}</h1>
                 <p>{data.description}</p>
                 {data.availability === true
-                    ?   <p className="text-green-700 border bg-green-50 border-green-700 p-3 rounded-xl text-sm mt-5 font-black text-center">Disponible</p>
-                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 p-3 rounded-xl text-sm mt-5 font-black text-center">Agotado</p>
+                    ?   <p className="text-green-700 border bg-green-50 border-green-700 p-3 rounded-xl text-sm mt-5 font-black text-center w-full">Disponible</p>
+                    :   <p className="text-red-700 border bg-red-50 border-red-700 px-3 p-3 rounded-xl text-sm mt-5 font-black text-center w-full">Agotado</p>
                 }
                 
                 <table className="text-sm text-left w-full mx-auto rounded-sm flex-grow shadow-inner">
@@ -78,7 +78,7 @@ export default function PieceDetails() {
                         </tr>
                     </tbody>
                 </table>
-                <p>Contáctanos por medio de <a target="_blank" href={`https://wa.me/${import.meta.env.VITE_JOMER_NUM}?text=${encodeURIComponent(`Quiero información sobre este producto: ${data.name.toUpperCase()}.`)}`} className="text-green-400 font-bold text-2xl">Whatsapp</a> si te llamó la atención esta pieza.</p>
+                <p>Contáctanos por medio de <a target="_blank" href={`https://wa.me/${import.meta.env.VITE_JOMER_NUM}?text=${encodeURIComponent(`Quiero información sobre este producto: ${data.name.toUpperCase()}.`)}`} className="text-green-500 font- bg-green-50 border hover:bg-green-100 border-green-500 px-2 py-1 rounded-lg text-xl transition-colors">WhatsApp</a> si te llamó la atención esta pieza.</p>
             </div>
         </div>
     )
