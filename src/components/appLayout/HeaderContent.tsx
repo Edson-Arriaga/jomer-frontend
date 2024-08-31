@@ -15,7 +15,7 @@ export default function HeaderContent({ setIsActiveModal } : HeaderPrps) {
                         <div className="absolute -top-[4.3rem] w-56 ">
                             <img src="/images/logos/horizontal-black-logo.webp" alt="jomer-horizontal-black-logo" />
                         </div>
-                        <p className="absolute inset-0 left-52 top-11 font-bold font-italic text-xl w-16">By Aly</p>
+                        <p className="absolute inset-0 left-52 top-11 font-bold font-italic text-xl -z-10">By Aly</p>
                     </Link>
                 </div>
 
